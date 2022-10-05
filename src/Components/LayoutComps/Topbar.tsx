@@ -10,7 +10,7 @@ const Topbar = () => {
    console.log('microphone')
  }
   return (
-    <div className={"w-screen sm:w-11/12 flex justify-between"}>
+    <div className={"w-screen sm:w-11/12 flex justify-between mx-auto"}>
       <div id="logo" className={"w-full"}>
         <img src="src/assets/Logo.png" className={"w-[60px] h-[60px]"} alt="Logo"/>
       </div>
