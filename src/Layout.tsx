@@ -1,23 +1,25 @@
 import React from 'react';
-import {router} from './createRoutes'
-import {
-  RouterProvider,
-  Route,
-} from "react-router-dom";
 import Topbar from "./Components/LayoutComps/Topbar";
+import NavbarComp from "./Components/LayoutComps/NavbarComp";
+import useWindowSize from "./hooks/use.window.size";
+import SearchBarComp from "./Components/LayoutComps/SearchBarComp";
 
 type Props={
   children?: React.ReactNode
 }
 const Layout:React.FC<Props> = ({children}) => {
+  const {windowBig} = useWindowSize();
+
   return (
     <>
-      <section className={"py-2"}>
+      <section className={"py-2 md:flex items-center md:w-10/12 mx-auto"}>
         <Topbar/>
+        <NavbarComp />
+        {windowBig && <SearchBarComp />}
       </section>
 
       <main>
-        <RouterProvider router={router}></RouterProvider>
+        {children}
       </main>
     </>
   );

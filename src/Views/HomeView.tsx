@@ -4,6 +4,7 @@ import {SanityImageSource} from "@sanity/image-url/lib/types/types";
 import imageUrlBuilder from "@sanity/image-url";
 import {PortableText} from "@portabletext/react"
 import {TypedObject} from "@portabletext/types";
+import useWindowSize from "../hooks/use.window.size";
 
 import sanity from '../client.js'
 
@@ -19,6 +20,8 @@ const HomeView = () => {
   const urlFor = (source: SanityImageSource) => {
     return builder.image(source)
   }
+
+  const {windowBig} = useWindowSize();
 
   useEffect(() => {
     if (!heroContent) {
@@ -39,17 +42,20 @@ const HomeView = () => {
     <>
       <div className={"h-fit w-full relative"}>
         {
-          heroContent && <img src={urlFor(heroContent[0].mainImage).width(400).url()} alt="hero image"/>
+          heroContent && !windowBig && <img src={urlFor(heroContent[0].mainImage).width(400).url()} alt="hero image"/>
         }
-        <div className={"mx-auto w-11/12 -translate-y-28 p-2"} style={{background: 'white'}}>
+        {
+          heroContent && windowBig && <img className={"object-cover w-full"} src={urlFor(heroContent[0].mainImage).width(1400).height(900).url()} alt="hero image"/>
+        }
+        <div className={"mx-auto w-11/12 md:w-fit md:px-6 -translate-y-28 md:-translate-y-32 p-2 border-2 border-gray-light"} style={{background: 'white'}}>
           {
-            heroContent && <h2 className={`text-center text-3xl font-bold text-blue border border-gray-light
-              mx-auto `} >{heroContent[0].title}</h2>
+            heroContent && <h2 className={`text-left text-3xl md:text-6xl font-bold text-blue
+              mx-auto `}>{heroContent[0].title}</h2>
           }
           {
             heroContent &&
-             <span className={"text-center"}>
-                <PortableText value={heroContent[0].text} />
+            <span className={"text-left md:text-2xl"}>
+                <PortableText value={heroContent[0].text}/>
              </span>
 
           }
