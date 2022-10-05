@@ -45,9 +45,12 @@ const HomeView = () => {
           heroContent && !windowBig && <img src={urlFor(heroContent[0].mainImage).width(400).url()} alt="hero image"/>
         }
         {
-          heroContent && windowBig && <img className={"object-cover w-full"} src={urlFor(heroContent[0].mainImage).width(1400).height(900).url()} alt="hero image"/>
+          heroContent && windowBig &&
+          <img className={"object-cover w-full"} src={urlFor(heroContent[0].mainImage).url()} alt="hero image"/>
         }
-        <div className={"mx-auto w-11/12 md:w-fit md:px-6 -translate-y-28 md:-translate-y-32 p-2 border-2 border-gray-light"} style={{background: 'white'}}>
+        <div
+          className={"mx-auto md:ml-40 w-11/12 md:w-fit md:px-6 -translate-y-28 md:-translate-y-40 p-2 border-2 border-gray-light"}
+          style={{background: 'white'}}>
           {
             heroContent && <h2 className={`text-left text-3xl md:text-6xl font-bold text-blue
               mx-auto `}>{heroContent[0].title}</h2>

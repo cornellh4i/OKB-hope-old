@@ -7,7 +7,7 @@ const NavbarComp = () => {
 
   return (
     <nav className={"w-full bg-white md:text-lg"}>
-      <ul className={"flex justify-between md:justify-end md:gap-4 px-2 items-center md:h-16 md:pr-4"}>
+      <ul className={"flex justify-between md:justify-end md:gap-6 px-2 items-center md:h-16 md:pr-6"}>
         <li>
           <NavLink to={"/"}
                    style={({isActive}) => isActive ? activeStyle : undefined}>
