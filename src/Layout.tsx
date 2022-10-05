@@ -12,7 +12,7 @@ type Props={
 const Layout:React.FC<Props> = ({children}) => {
   return (
     <>
-      <section className={"pt-2"}>
+      <section className={"py-2"}>
         <Topbar/>
       </section>
 
