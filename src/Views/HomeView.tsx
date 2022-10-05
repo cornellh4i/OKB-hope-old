@@ -42,7 +42,7 @@ const HomeView = () => {
     <>
       <div className={"h-fit w-full relative"}>
         {
-          heroContent && !windowBig && <img src={urlFor(heroContent[0].mainImage).width(400).url()} alt="hero image"/>
+          heroContent && !windowBig && <img className={"object-cover w-full"} src={urlFor(heroContent[0].mainImage).width(400).url()} alt="hero image"/>
         }
         {
           heroContent && windowBig &&
