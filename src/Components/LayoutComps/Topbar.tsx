@@ -1,6 +1,7 @@
 import React from 'react';
 import RoundedButton from "../Buttons/RoundedButton";
 import microphone from '../../assets/microphone.svg'
+import logo from '../../assets/Logo.png'
 
 const Topbar = () => {
  const searchHandler = () => {
@@ -12,7 +13,7 @@ const Topbar = () => {
   return (
     <div className={"w-screen sm:w-11/12 flex justify-between mx-auto"}>
       <div id="logo" className={"w-full"}>
-        <img src="src/assets/Logo.png" className={"w-[60px] h-[60px]"} alt="Logo"/>
+        <img src={logo} alt="logo" className={"w-[60px] h-[60px]"}/>
       </div>
 
       <div className={"flex px-2 gap-2"}>
