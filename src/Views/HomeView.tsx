@@ -1,12 +1,8 @@
 import {useEffect, useState} from "react";
 import sanityClient from "../client.js";
-import {SanityImageSource} from "@sanity/image-url/lib/types/types";
-import imageUrlBuilder from "@sanity/image-url";
-import {PortableText} from "@portabletext/react"
 import {TypedObject} from "@portabletext/types";
-import useWindowSize from "../hooks/use.window.size";
-
-import sanity from '../client.js'
+import HeroComp from "../Components/HomeViewComps/HeroComp";
+import FeelingComp from "../Components/HomeViewComps/FeelingComp";
 
 type Herocontent = {
   title: string,
@@ -18,24 +14,26 @@ type Slug = {
   _type: string
 }
 
-interface HomeViewContent {
+export interface HomeViewContent {
   heroContent: Herocontent,
   slug: Slug,
   title: string,
-  text:TypedObject
+  text: TypedObject
 
 }
 
-const HomeView = () => {
-  const [homeViewContent, setHomeViewContent] = useState<null | HomeViewContent>(null);
-  const [feelings, setFeelings] = useState<null|any>(null );
-  // sanity
-  const builder = imageUrlBuilder(sanity);
-  const urlFor = (source: SanityImageSource) => {
-    return builder.image(source)
-  }
+export type Feeling = {
+  body: TypedObject
+  icon: any
+  page: string
+  tag: string
+  title: string
+}
 
-  const {windowBig} = useWindowSize();
+const HomeView = () => {
+  const [error, setError] = useState<null | string>(null);
+  const [homeViewContent, setHomeViewContent] = useState<null | HomeViewContent>(null);
+  const [feelings, setFeelings] = useState<null | Feeling[]>(null);
 
   useEffect(() => {
     if (!homeViewContent) {
@@ -44,7 +42,10 @@ const HomeView = () => {
           `*[_type == 'homeView']`
         )
         .then((data) => setHomeViewContent(data[0]))
-        .catch(console.error);
+        .catch((err) => {
+          console.log(err);
+          setError('error loading data')
+        });
     }
     if (!feelings) {
       sanityClient
@@ -52,43 +53,22 @@ const HomeView = () => {
           `*[_type == 'feelingsPreview' && page=='home']`
         )
         .then((data) => setFeelings(data))
-        .catch(console.error);
+        .catch((err) => {
+          console.log(err);
+          setError('error loading data')
+        });
     }
   }, [homeViewContent])
 
-  console.log(homeViewContent)
-  // console.log(feelings);
-
   return (
     <>
-      <div className={"h-fit w-full relative"}>
-        {
-          homeViewContent && !windowBig &&
-          <img className={"object-cover w-full"} src={urlFor(homeViewContent.heroContent.mainImage).width(445 ).height(300).url()}
-               alt="hero image"/>
-        }
-        {
-          homeViewContent && windowBig &&
-          <img className={"object-cover w-full"} src={urlFor(homeViewContent.heroContent.mainImage).url()} alt="hero image"/>
-        }
-        <div
-          className={"mx-auto md:ml-40 w-11/12 md:w-fit md:px-6 -translate-y-28 md:-translate-y-40 p-2 border-2 border-gray-light"}
-          style={{background: 'white'}}>
-          {
-            homeViewContent && <h2 className={`text-left text-3xl md:text-6xl font-bold text-blue
-              mx-auto `}>{homeViewContent.heroContent.title}</h2>
-          }
-          {
-            homeViewContent &&
-            <span className={"text-left md:text-2xl"}>
-                <PortableText value={homeViewContent.heroContent.text}/>
-             </span>
-
-          }
-        </div>
-
+      {error && <div>{error}</div>}
+      <div className={''}>
+        <HeroComp homeViewContent={homeViewContent}/>
       </div>
-
+      <div>
+        {feelings && <FeelingComp feelings={feelings}/>
+        }      </div>
     </>
   );
 };
