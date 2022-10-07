@@ -12,9 +12,23 @@ type Herocontent = {
   title: string,
   mainImage: any,
   text: TypedObject
+};
+type Slug = {
+  current: string,
+  _type: string
 }
+
+interface HomeViewContent {
+  heroContent: Herocontent,
+  slug: Slug,
+  title: string,
+  text:TypedObject
+
+}
+
 const HomeView = () => {
-  const [heroContent, setHeroContent] = useState<null | Herocontent[]>(null);
+  const [homeViewContent, setHomeViewContent] = useState<null | HomeViewContent>(null);
+  const [feelings, setFeelings] = useState<null|any>(null );
   // sanity
   const builder = imageUrlBuilder(sanity);
   const urlFor = (source: SanityImageSource) => {
@@ -24,41 +38,50 @@ const HomeView = () => {
   const {windowBig} = useWindowSize();
 
   useEffect(() => {
-    if (!heroContent) {
+    if (!homeViewContent) {
       sanityClient
         .fetch(
-          `*[_type == "hero_content"]`
+          `*[_type == 'homeView']`
         )
-        .then((data) => setHeroContent(data))
+        .then((data) => setHomeViewContent(data[0]))
         .catch(console.error);
-
-
     }
-  }, [heroContent])
+    if (!feelings) {
+      sanityClient
+        .fetch(
+          `*[_type == 'feelingsPreview' && page=='home']`
+        )
+        .then((data) => setFeelings(data))
+        .catch(console.error);
+    }
+  }, [homeViewContent])
 
-  console.log(heroContent)
+  console.log(homeViewContent)
+  // console.log(feelings);
 
   return (
     <>
       <div className={"h-fit w-full relative"}>
         {
-          heroContent && !windowBig && <img className={"object-cover w-full"} src={urlFor(heroContent[0].mainImage).width(400).url()} alt="hero image"/>
+          homeViewContent && !windowBig &&
+          <img className={"object-cover w-full"} src={urlFor(homeViewContent.heroContent.mainImage).width(445 ).height(300).url()}
+               alt="hero image"/>
         }
         {
-          heroContent && windowBig &&
-          <img className={"object-cover w-full"} src={urlFor(heroContent[0].mainImage).url()} alt="hero image"/>
+          homeViewContent && windowBig &&
+          <img className={"object-cover w-full"} src={urlFor(homeViewContent.heroContent.mainImage).url()} alt="hero image"/>
         }
         <div
           className={"mx-auto md:ml-40 w-11/12 md:w-fit md:px-6 -translate-y-28 md:-translate-y-40 p-2 border-2 border-gray-light"}
           style={{background: 'white'}}>
           {
-            heroContent && <h2 className={`text-left text-3xl md:text-6xl font-bold text-blue
-              mx-auto `}>{heroContent[0].title}</h2>
+            homeViewContent && <h2 className={`text-left text-3xl md:text-6xl font-bold text-blue
+              mx-auto `}>{homeViewContent.heroContent.title}</h2>
           }
           {
-            heroContent &&
+            homeViewContent &&
             <span className={"text-left md:text-2xl"}>
-                <PortableText value={heroContent[0].text}/>
+                <PortableText value={homeViewContent.heroContent.text}/>
              </span>
 
           }
