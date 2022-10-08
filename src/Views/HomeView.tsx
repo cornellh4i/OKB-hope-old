@@ -5,6 +5,7 @@ import HeroComp from "../Components/HomeViewComps/HeroComp";
 import FeelingComp from "../Components/HomeViewComps/FeelingComp";
 import GetInspiredComp from "../Components/HomeViewComps/GetInspiredComp";
 import useWindowSize from "../hooks/use.window.size";
+import GetToKnowUs from "../Components/HomeViewComps/GetToKnowUs";
 
 type Herocontent = {
   title: string,
@@ -104,6 +105,9 @@ const HomeView = () => {
       </section>
       <section id={'inspiration'} className={'max-w-screen-xl mx-auto lg:mt-6'}>
         <GetInspiredComp inspirations={inspirations}/>
+      </section>
+      <section id={'us'}>
+        <GetToKnowUs />
       </section>
     </>
   );
