@@ -19,7 +19,7 @@ const HeroComp:React.FC<Props> = ({homeViewContent}) => {
 
   const {windowBig} = useWindowSize();
   return (
-    <div className={"w-full relative bg-light-purple"}>
+    <div className={"w-full relative bg-light-purple min-h-20"}>
       {
         homeViewContent && !windowBig &&
         <img className={"object-cover w-full"} src={urlFor(homeViewContent.heroContent.mainImage).width(445 ).height(300).url()}

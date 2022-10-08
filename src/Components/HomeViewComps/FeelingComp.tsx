@@ -2,6 +2,7 @@ import React, {useMemo, useState} from 'react';
 import {Feeling} from "../../Views/HomeView";
 import FeelingButton from "../Buttons/FeelingButton";
 import FeelingInfoHint from "./FeelingInfoHint";
+import {Link} from "react-router-dom";
 
 type Props = {
   feelings: Feeling[]
@@ -9,6 +10,7 @@ type Props = {
 
 const FeelingComp: React.FC<Props> = ({feelings}) => {
   const [tag, setTag] = useState<string | null>(null);
+
   const buttonFeelings = useMemo(() => {
     if (feelings) {
       return feelings.map(f => {
@@ -32,28 +34,37 @@ const FeelingComp: React.FC<Props> = ({feelings}) => {
   const buttonClickHandler = (s: string) => {
     setTag(s);
   }
-  console.log(buttonFeelings)
+
   return (
-    <>
-      <div className={'flex flex-col w-full py-2 px-4'}>
+    <div className={" py-2 px-4"}>
+      <div className={'flex flex-col w-full py-2'}>
         <h3 className={"text-center text-2xl md:text-5xl font-bold text-blue"}>How are you doing?</h3>
         <p className={"text-center text-base my-2"}>
           We may have some useful tips for you! Simply tell us how you are feeling.
         </p>
       </div>
-      <div className={'flex justify-center  w-full gap-2 py-2 px-4'}>
+      <div className={'md:flex md:justify-center md:gap-4 py-2'}>
+         <div className={'flex flex-wrap justify-center items-start md:w-2/3 mx-auto h-fit gap-2'}>
 
-        {buttonFeelings && buttonFeelings.map(f => <FeelingButton onClick={buttonClickHandler}
-                                                                  key={f.text}
-                                                                  feelingButton={f}/>)}
+          {buttonFeelings && buttonFeelings.map(f => <FeelingButton onClick={buttonClickHandler}
+                                                                    key={f.text}
+                                                                    activeFeeling={chosenFeeling ? chosenFeeling.tag : null}
+                                                                    feelingButton={f}/>)}
+        </div>
+
+
+         <div className={" w-full mt-4 md:mt-0"}>
+           {chosenFeeling && <FeelingInfoHint feeling={chosenFeeling}/>}
+          </div>
 
       </div>
-      <div className={"py-2 px-4"}>
-        {
-          chosenFeeling && <FeelingInfoHint feeling={chosenFeeling} />
-        }
+      <div className={'w-full mt-4 md:mt-0'}>
+      <Link to={'/info-advice'}>
+        Browse specific topics
+      </Link>
       </div>
-    </>
+
+    </div>
   );
 };
 
