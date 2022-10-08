@@ -3,6 +3,7 @@ import sanityClient from "../client.js";
 import {TypedObject} from "@portabletext/types";
 import HeroComp from "../Components/HomeViewComps/HeroComp";
 import FeelingComp from "../Components/HomeViewComps/FeelingComp";
+import GetInspiredComp from "../Components/HomeViewComps/GetInspiredComp";
 
 type Herocontent = {
   title: string,
@@ -30,10 +31,19 @@ export type Feeling = {
   title: string
 }
 
+export type Inspiration = {
+  mainImage: any
+  page: string
+  tag: string
+  text: TypedObject
+  title: string
+}
+
 const HomeView = () => {
   const [error, setError] = useState<null | string>(null);
   const [homeViewContent, setHomeViewContent] = useState<null | HomeViewContent>(null);
   const [feelings, setFeelings] = useState<null | Feeling[]>(null);
+  const [inspirations, setInspirations] = useState<null | Inspiration[]>(null);
 
   useEffect(() => {
     if (!homeViewContent) {
@@ -58,17 +68,33 @@ const HomeView = () => {
           setError('error loading data')
         });
     }
-  }, [homeViewContent])
+    if (!inspirations) {
+      sanityClient
+        .fetch(
+          `*[_type == 'getInspired' && page=='home']`
+        )
+        .then((data) => setInspirations(data))
+        .catch((err) => {
+          console.log(err);
+          setError('error loading data')
+        });
+    }
+  }, [homeViewContent, feelings, inspirations])
 
+  console.log(inspirations)
   return (
     <>
       {error && <div>{error}</div>}
-      <div className={''}>
+      <section id={'hero'} className={''}>
         <HeroComp homeViewContent={homeViewContent}/>
-      </div>
-      <div className={'mt-2 md:mt-6'}>
+      </section>
+      <section id={'feelings'} className={'mt-2 md:mt-6 max-w-screen-xl mx-auto'}>
         {feelings && <FeelingComp feelings={feelings}/>
-        }      </div>
+        }
+      </section>
+      <section id={'inspiration'} className={'max-w-screen-xl mx-auto'}>
+        <GetInspiredComp inspirations={inspirations}/>
+      </section>
     </>
   );
 };
