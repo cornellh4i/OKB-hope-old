@@ -4,6 +4,7 @@ import {TypedObject} from "@portabletext/types";
 import HeroComp from "../Components/HomeViewComps/HeroComp";
 import FeelingComp from "../Components/HomeViewComps/FeelingComp";
 import GetInspiredComp from "../Components/HomeViewComps/GetInspiredComp";
+import useWindowSize from "../hooks/use.window.size";
 
 type Herocontent = {
   title: string,
@@ -44,6 +45,8 @@ const HomeView = () => {
   const [homeViewContent, setHomeViewContent] = useState<null | HomeViewContent>(null);
   const [feelings, setFeelings] = useState<null | Feeling[]>(null);
   const [inspirations, setInspirations] = useState<null | Inspiration[]>(null);
+  const {windowBig} = useWindowSize();
+
 
   useEffect(() => {
     if (!homeViewContent) {
@@ -81,6 +84,13 @@ const HomeView = () => {
     }
   }, [homeViewContent, feelings, inspirations])
 
+  useEffect(() => {
+    if (!windowBig && inspirations && inspirations.length > 2) {
+      const slicedInspirations = inspirations.slice(0, 2)
+      setInspirations(slicedInspirations);
+    }
+  }, [windowBig, inspirations])
+
   console.log(inspirations)
   return (
     <>
@@ -88,11 +98,11 @@ const HomeView = () => {
       <section id={'hero'} className={''}>
         <HeroComp homeViewContent={homeViewContent}/>
       </section>
-      <section id={'feelings'} className={'mt-2 md:mt-6 max-w-screen-xl mx-auto'}>
+      <section id={'feelings'} className={'mt-2 lg:mt-6 max-w-screen-xl mx-auto'}>
         {feelings && <FeelingComp feelings={feelings}/>
         }
       </section>
-      <section id={'inspiration'} className={'max-w-screen-xl mx-auto'}>
+      <section id={'inspiration'} className={'max-w-screen-xl mx-auto lg:mt-6'}>
         <GetInspiredComp inspirations={inspirations}/>
       </section>
     </>

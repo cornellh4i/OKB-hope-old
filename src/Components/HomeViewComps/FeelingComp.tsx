@@ -2,7 +2,7 @@ import React, {useMemo, useState} from 'react';
 import {Feeling} from "../../Views/HomeView";
 import FeelingButton from "../Buttons/FeelingButton";
 import FeelingInfoHint from "./FeelingInfoHint";
-import {Link} from "react-router-dom";
+import RedirectToInfoAdvice from "./RedirectToInfoAdvice";
 
 type Props = {
   feelings: Feeling[]
@@ -60,11 +60,10 @@ const FeelingComp: React.FC<Props> = ({feelings}) => {
           </div>
 
       </div>
-      <div className={'w-full mt-4 md:mt-4'}>
-      <Link to={'/info-advice'}>
+
+      <RedirectToInfoAdvice>
         Browse specific topics
-      </Link>
-      </div>
+      </RedirectToInfoAdvice>
 
     </div>
   );
