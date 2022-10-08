@@ -66,7 +66,7 @@ const HomeView = () => {
       <div className={''}>
         <HeroComp homeViewContent={homeViewContent}/>
       </div>
-      <div>
+      <div className={'mt-2 md:mt-6'}>
         {feelings && <FeelingComp feelings={feelings}/>
         }      </div>
     </>

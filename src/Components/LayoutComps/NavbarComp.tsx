@@ -1,19 +1,21 @@
 import {NavLink} from "react-router-dom";
+import modules from './NavbarComp.module.css'
 
 const NavbarComp = () => {
-  let activeStyle = {
-    textDecoration: "underline",
+  const activeStyle = {
+    textDecoration: "none",
   };
 
   return (
-    <nav className={"w-full bg-white md:text-lg"}>
+    <nav className={`w-full bg-white md:text-lg`}>
       <ul className={"flex justify-between md:justify-end md:gap-6 px-2 items-center md:h-16 md:pr-6"}>
         <li>
           <NavLink to={"/"}
-                   style={({isActive}) => isActive ? activeStyle : undefined}>
+                   style={({isActive}) => isActive ? activeStyle : undefined}
+          >
             <span className={"flex md:items-center"}>
               <span>
-            <svg width="19" height="19" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <svg width="21" height="21" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M3.95833 9.5H2.375L9.5 2.375L16.625 9.5H15.0417" stroke="#2469A6" strokeWidth="1.5" strokeLinecap="round"
       strokeLinejoin="round"/>
 <path
@@ -25,7 +27,7 @@ const NavbarComp = () => {
 </svg>
 
           </span>
-              <span>Home</span>
+              <span className={modules.nav_links}>Home</span>
             </span>
           </NavLink>
         </li>
@@ -50,7 +52,7 @@ const NavbarComp = () => {
 </svg>
 
               </span>
-              <span>
+              <span className={modules.nav_links}>
                 Info-Advice
               </span>
             </span>
@@ -61,7 +63,7 @@ const NavbarComp = () => {
 
             <span className={"flex md:items-center"}>
               <span>
-                <svg width="19" height="19" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <svg width="21" height="21" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path
   d="M2.375 9.5H3.16667M9.5 2.375V3.16667M15.8333 9.5H16.625M4.43333 4.43333L4.9875 4.9875M14.5667 4.43333L14.0125 4.9875"
   stroke="black" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
@@ -72,7 +74,7 @@ const NavbarComp = () => {
 </svg>
 
               </span>
-              <span>
+              <span className={modules.nav_links}>
                 Tips
               </span>
             </span>

@@ -43,6 +43,8 @@ const FeelingComp: React.FC<Props> = ({feelings}) => {
           We may have some useful tips for you! Simply tell us how you are feeling.
         </p>
       </div>
+
+
       <div className={'md:flex md:justify-center md:gap-4 py-2'}>
          <div className={'flex flex-wrap justify-center items-start md:w-2/3 mx-auto h-fit gap-2'}>
 
@@ -58,7 +60,7 @@ const FeelingComp: React.FC<Props> = ({feelings}) => {
           </div>
 
       </div>
-      <div className={'w-full mt-4 md:mt-0'}>
+      <div className={'w-full mt-4 md:mt-4'}>
       <Link to={'/info-advice'}>
         Browse specific topics
       </Link>
