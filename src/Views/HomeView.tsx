@@ -6,7 +6,6 @@ import FeelingComp from "../Components/HomeViewComps/FeelingComp";
 import GetInspiredComp from "../Components/HomeViewComps/GetInspiredComp";
 import useWindowSize from "../hooks/use.window.size";
 import GetToKnowUs from "../Components/HomeViewComps/GetToKnowUs";
-import ScrollToTop from "react-scroll-to-top";
 
 type Herocontent = {
   title: string,
@@ -107,15 +106,7 @@ const HomeView = () => {
       <section id={'inspiration'} className={'max-w-screen-xl mx-auto lg:mt-6'}>
         <GetInspiredComp inspirations={inspirations}/>
       </section>
-      <div className={'max-w-screen-xl mx-auto relative h-[72px]'}>
-        <ScrollToTop smooth={true} color={'white'} height={'22'}
-                     style={{position:'absolute', right: windowBig? '3rem': '1rem', top:'1rem',
-                       width:'60px', background:'#2469A6', color:'white',
-                       borderRadius:'3rem', padding: '0 1rem'}}
-                     // component={<span>back to top</span>}
-        />
-      </div>
-      <section id={'us'}>
+      <section id={'us'} className={'mt-16'}>
         <GetToKnowUs />
       </section>
     </>
