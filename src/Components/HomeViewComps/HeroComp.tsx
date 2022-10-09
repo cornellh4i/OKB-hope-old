@@ -30,7 +30,7 @@ const HeroComp:React.FC<Props> = ({homeViewContent}) => {
         <img className={"object-cover w-full"} src={urlFor(homeViewContent.heroContent.mainImage).url()} alt="hero image"/>
       }
       <div
-        className={"mx-auto md:ml-40 w-11/12 md:w-fit md:px-6 absolute bottom-3 left-0 right-0 md:right-6 md:bottom-10 p-2 border-2 border-gray-light"}
+        className={"mx-auto w-11/12  md:w-fit md:px-6 absolute bottom-3 left-0 right-0 md:bottom-10 p-2 border-2 border-gray-light"}
         style={{background: 'white'}}>
         {
           homeViewContent && <h2 className={`text-left text-3xl md:text-6xl font-bold text-blue
@@ -38,7 +38,7 @@ const HeroComp:React.FC<Props> = ({homeViewContent}) => {
         }
         {
           homeViewContent &&
-          <span className={"text-left md:text-2xl"}>
+          <span className={"text-left lg:text-2xl"}>
                 <PortableText value={homeViewContent.heroContent.text}/>
              </span>
 
