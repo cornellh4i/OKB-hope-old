@@ -2,11 +2,13 @@ import React from 'react';
 
 type Props = {
   children: React.ReactNode
+  onClick?: () => void
 }
 
-const BoringRoundedButton:React.FC<Props> = ({children}) => {
+const BoringRoundedButton: React.FC<Props> = ({children, onClick}) => {
   return (
-    <button className={'bg-blue rounded-full py-2 px-6 text-lg text-white'} style={{fontFamily:'Roboto'}}>
+    <button onClick={onClick}
+            className={'bg-blue rounded-full py-2 px-6 text-lg lg:text-xl text-white'} style={{fontFamily: 'Roboto'}}>
       {children}
     </button>
   );

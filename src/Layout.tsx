@@ -21,6 +21,9 @@ const Layout:React.FC<Props> = ({children}) => {
       <main>
         {children}
       </main>
+      <footer>
+        Footer
+      </footer>
     </>
   );
 };
