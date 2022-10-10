@@ -5,7 +5,7 @@ import HeroComp from "../Components/HomeViewComps/HeroComp";
 import FeelingComp from "../Components/HomeViewComps/FeelingComp";
 import GetInspiredComp from "../Components/HomeViewComps/GetInspiredComp";
 import useWindowSize from "../hooks/use.window.size";
-import GetToKnowUs from "../Components/HomeViewComps/GetToKnowUs";
+import RadiantCommunicationSection from "../Components/HomeViewComps/RadiantCommunicationSection";
 
 type Herocontent = {
   title: string,
@@ -92,7 +92,7 @@ const HomeView = () => {
     }
   }, [windowBig, inspirations])
 
-  console.log(inspirations)
+
   return (
     <>
       {error && <div>{error}</div>}
@@ -107,7 +107,7 @@ const HomeView = () => {
         <GetInspiredComp inspirations={inspirations}/>
       </section>
       <section id={'us'} className={'mt-16'}>
-        <GetToKnowUs />
+        <RadiantCommunicationSection url={'/about-us'} title={'Get to know us!'} buttonText={'Learn more about us'} />
       </section>
     </>
   );

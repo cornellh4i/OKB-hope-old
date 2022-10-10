@@ -2,16 +2,13 @@ import {NavLink} from "react-router-dom";
 import modules from './NavbarComp.module.css'
 
 const NavbarComp = () => {
-  const activeStyle = {
-    textDecoration: "none",
-  };
+
 
   return (
     <nav className={`w-full bg-white md:text-lg`}>
       <ul className={"flex justify-between md:justify-end md:gap-6 px-3 items-center md:h-16 md:pr-6"}>
         <li>
-          <NavLink to={"/"}
-                   style={({isActive}) => isActive ? activeStyle : undefined}
+          <NavLink className={modules.nav_links} to={"/"}
           >
             <span className={"flex md:items-center"}>
               <span>
@@ -27,22 +24,25 @@ const NavbarComp = () => {
 </svg>
 
           </span>
-              <span className={modules.nav_links}>Home</span>
+              <span  >Home</span>
             </span>
           </NavLink>
         </li>
         <li>
-          <NavLink to={'/info-advice'} style={({isActive}) => isActive ? activeStyle : undefined}>
+          <NavLink className={modules.nav_links} to={'/info-advice'}>
             <span className={"flex md:items-center"}>
               <span>
 
                 <svg width="17" height="20" viewBox="0 0 17 20" fill="none" xmlns="http://www.w3.org/2000/svg">
 <g clipPath="url(#clip0_409_5379)">
-<path d="M10.0001 0.90918H2.72736C1.72736 0.90918 0.90918 1.72736 0.90918 2.72736V17.2728C0.90918 18.2728 1.72736 19.091 2.72736 19.091H13.6365C14.6365 19.091 15.4546 18.2728 15.4546 17.2728V6.36372L10.0001 0.90918Z" stroke="black" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+<path
+  d="M10.0001 0.90918H2.72736C1.72736 0.90918 0.90918 1.72736 0.90918 2.72736V17.2728C0.90918 18.2728 1.72736 19.091 2.72736 19.091H13.6365C14.6365 19.091 15.4546 18.2728 15.4546 17.2728V6.36372L10.0001 0.90918Z"
+  stroke="black" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
 <path d="M10 0.90918V6.36373H15.4545" stroke="black" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
 <path d="M11.8186 10.9092H4.5459" stroke="black" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
 <path d="M11.8186 14.5459H4.5459" stroke="black" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-<path d="M6.36408 7.27246H5.45499H4.5459" stroke="black" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+<path d="M6.36408 7.27246H5.45499H4.5459" stroke="black" strokeWidth="1.5" strokeLinecap="round"
+      strokeLinejoin="round"/>
 </g>
 <defs>
 <clipPath id="clip0_409_5379">
@@ -52,14 +52,14 @@ const NavbarComp = () => {
 </svg>
 
               </span>
-              <span className={modules.nav_links}>
+              <span >
                 Info-Advice
               </span>
             </span>
           </NavLink>
         </li>
         <li>
-          <NavLink to={'/tips'} style={({isActive}) => isActive ? activeStyle : undefined}>
+          <NavLink className={modules.nav_links} to={'/tips'}>
 
             <span className={"flex md:items-center"}>
               <span>
@@ -74,7 +74,7 @@ const NavbarComp = () => {
 </svg>
 
               </span>
-              <span className={modules.nav_links}>
+              <span >
                 Tips
               </span>
             </span>

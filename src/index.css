@@ -3,41 +3,46 @@
 @tailwind utilities;
 
 :root {
-  font-family: Futura, sans-serif;
-  font-size: 16px;
-  line-height: 24px;
-  font-weight: 400;
+    font-family: Futura, sans-serif;
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 400;
 
 
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-text-size-adjust: 100%;
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-text-size-adjust: 100%;
 }
 
 a {
-  font-weight: 600;
-  color: #535bf2;
-  /*color: black;*/
-  text-decoration: underline;
+    font-weight: 500;
+    color: #535bf2;
+    /*color: black;*/
+    text-decoration: underline;
 }
+
 a:hover {
-  color: #535bf2;
+    color: #1C2430;
 }
+
 a:active {
-  color: #535bf2;
+    color: #1C2430;
 }
+
+
 
 body {
-  margin: 0;
-  min-height: 100vh;
-  overflow: auto;
+    margin: 0;
+    min-height: 100vh;
+    overflow: auto;
 }
 
-h1,h2,h3,h4,h5,h6 {
-  font-family: Futura, sans-serif;
+h1, h2, h3, h4, h5, h6 {
+    font-family: Futura, sans-serif;
 }
+
 p {
-  font-family: Roboto,sans-serif;
+    font-family: Roboto, sans-serif;
 }

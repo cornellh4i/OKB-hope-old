@@ -6,12 +6,13 @@ export default {
   name: 'homeView',
   title: 'Home View',
   type: 'document',
-  // __experimental_actions: [/*'create',*/ 'update', /*'delete',*/ 'publish'],
+  __experimental_actions: [/*'create',*/ 'update', /*'delete',*/ 'publish'],
   fields: [
     {
       name: 'title',
       title: 'Title',
       type: 'string',
+      
     },
     {
       name: 'slug',

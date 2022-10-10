@@ -10,7 +10,7 @@ import useWindowSize from "../../hooks/use.window.size";
 type Props = {
   homeViewContent: HomeViewContent | null
 }
-const HeroComp:React.FC<Props> = ({homeViewContent}) => {
+const HeroComp: React.FC<Props> = ({homeViewContent}) => {
   // sanity
   const builder = imageUrlBuilder(sanity);
   const urlFor = (source: SanityImageSource) => {
@@ -22,19 +22,22 @@ const HeroComp:React.FC<Props> = ({homeViewContent}) => {
     <div className={"w-full relative bg-light-purple min-h-20"}>
       {
         homeViewContent && !windowBig &&
-        <img className={"object-cover w-full"} src={urlFor(homeViewContent.heroContent.mainImage).width(445 ).height(300).url()}
+        <img className={"object-cover w-full"}
+             src={urlFor(homeViewContent.heroContent.mainImage).width(445).height(300).url()}
              alt="hero image"/>
       }
       {
         homeViewContent && windowBig &&
-        <img className={"object-cover w-full"} src={urlFor(homeViewContent.heroContent.mainImage).url()} alt="hero image"/>
+        <img className={"object-cover w-full"} src={urlFor(homeViewContent.heroContent.mainImage).url()}
+             alt="hero image"/>
       }
       <div
         className={"mx-auto w-11/12  md:w-fit md:px-6 absolute bottom-3 left-0 right-0 md:bottom-10 p-2 border-2 border-gray-light"}
         style={{background: 'white'}}>
         {
-          homeViewContent && <h2 className={`text-left text-3xl md:text-6xl font-bold text-blue
-              mx-auto `}>{homeViewContent.heroContent.title}</h2>
+          homeViewContent && <h2 className={`text-left text-3xl md:text-6xl font-bold text-blue mx-auto`}>
+            {homeViewContent.heroContent.title}
+          </h2>
         }
         {
           homeViewContent &&

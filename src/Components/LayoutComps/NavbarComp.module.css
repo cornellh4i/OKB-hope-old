@@ -1,4 +1,4 @@
 .nav_links {
-    text-decoration: none;
+    text-decoration: none !important;
     color: black;
 }

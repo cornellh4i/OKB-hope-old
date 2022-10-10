@@ -2,7 +2,7 @@ import React, {useMemo, useState} from 'react';
 import {Feeling} from "../../Views/HomeView";
 import FeelingButton from "../Buttons/FeelingButton";
 import FeelingInfoHint from "./FeelingInfoHint";
-import RedirectToInfoAdvice from "./RedirectToInfoAdvice";
+import LinkTo from "./LinkTo";
 
 type Props = {
   feelings: Feeling[]
@@ -61,9 +61,9 @@ const FeelingComp: React.FC<Props> = ({feelings}) => {
 
       </div>
 
-      <RedirectToInfoAdvice>
+      <LinkTo url={'/info-advice'}>
         Browse specific topics
-      </RedirectToInfoAdvice>
+      </LinkTo>
 
     </div>
   );

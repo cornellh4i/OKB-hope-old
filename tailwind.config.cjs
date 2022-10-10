@@ -9,7 +9,7 @@ module.exports = {
     colors: {
       'blue': '#2469A6',
       'light-blue': '#D8EEFF',
-      'greenish-blue':'#D2FFFD',
+      'greenish-blue': '#D2FFFD',
       'light-purple': '#2469A614',
       'pink': '#ff49db',
       'orange': '#ff7849',
@@ -18,7 +18,8 @@ module.exports = {
       'gray-dark': '#273444',
       'gray': '#8492a6',
       'gray-light': '#d3dce6',
-      'white': '#ffffff'
+      'white': '#ffffff',
+      'black': '#000000'
     },
   },
   plugins: [],

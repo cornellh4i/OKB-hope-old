@@ -7,7 +7,7 @@ const FooterComp = () => {
 
       <div className={'flex flex-col gap-2 '}>
         <div>
-          <Link className={'text-white no-underline text-sm'} to={'#'}>About us</Link>
+          <Link className={'text-white no-underline text-sm'} to={'/about-us'}>About us</Link>
         </div>
         <div>
           <Link className={'text-white no-underline  text-sm'} to={'#'}>Contact us</Link>

@@ -1,7 +1,7 @@
 import React from 'react';
 import {Inspiration} from "../../Views/HomeView";
 import InspirationComp from "./InspirationComp";
-import RedirectToInfoAdvice from "./RedirectToInfoAdvice";
+import LinkTo from "./LinkTo";
 
 type Props = {
   inspirations: Inspiration[] | null
@@ -15,9 +15,9 @@ const GetInspiredComp: React.FC<Props> = ({inspirations}) => {
         {inspirations && inspirations
           .map(i => <InspirationComp inspiration={i} key={i.tag}/>)}
       </div>
-      <RedirectToInfoAdvice>
+      <LinkTo url={'/tips'}>
         Find more inspiration
-      </RedirectToInfoAdvice>
+      </LinkTo>
     </div>
   );
 }
