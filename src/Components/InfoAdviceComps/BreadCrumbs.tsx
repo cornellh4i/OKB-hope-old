@@ -13,10 +13,10 @@ const BreadCrumbs = () => {
   return (
     <div className={'py-0.5'}>
       {locationStrings?.map(
-        (str,idx)=><span>
+        (str,idx)=><span key={idx}>
           <Link to={`/${str}`}
                 className={`no-underline px-0.5 text-black`}
-                key={idx}>
+                >
         {str+'>'}
       </Link>
           <span className={'font-bold'}>{location.pathname.split('/')[
