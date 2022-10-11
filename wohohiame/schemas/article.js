@@ -42,6 +42,11 @@ export default {
       title: 'Summary',
       type: 'text'
     },
+    {
+      name: 'teaser',
+      title: 'Teaser',
+      type: 'text'
+    },
     // {
     //   name: 'body',
     //   title: 'Body',

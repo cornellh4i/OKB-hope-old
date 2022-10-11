@@ -1,11 +1,14 @@
-import React from 'react';
 import Layout from "./Layout";
 import {Routes, Route} from "react-router-dom";
 import HomeView from "./Views/HomeView";
 import InfoAdviceView from "./Views/InfoAdviceView";
+import MainFeelingComp from "./Components/InfoAdviceComps/MainFeelingComp";
+import useProvideData from "./hooks/useProvideData";
 
 
 const App = () => {
+  const {categories} = useProvideData();
+
   return (
     <>
       <Layout>
@@ -13,10 +16,10 @@ const App = () => {
           <Route path={"/"} element={<HomeView/>}></Route>
           <Route path={"info-advice"} element={<InfoAdviceView/>}></Route>
 
-          <Route path={'info-advice/you-and-others'} element={<div>you and others</div>}></Route>
-          <Route path={'info-advice/self-identity'} element={<div>Self-identity</div>}></Route>
-          <Route path={'info-advice/relationships'} element={<div>Relationships</div>}></Route>
-          <Route path={'info-advice/abusive-relationships'} element={<div>Abusive relationships</div>}></Route>
+          {categories && categories.length > 0 && categories.map((c, idx) => {
+            return <Route key={idx} path={`info-advice/${c.slug.current}`} element={<MainFeelingComp/>}></Route>
+
+          })}
 
           <Route path={"tips"} element={<div>Tips</div>}></Route>
           <Route path={"about-us"} element={<div>About us</div>}></Route>
