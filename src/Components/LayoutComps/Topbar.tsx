@@ -1,5 +1,4 @@
 import React from 'react';
-import RoundedButton from "../Buttons/RoundedButton";
 import logo from '../../assets/Logo.png';
 import useWindowSize from "../../hooks/use.window.size";
 import SearchBarComp from "./SearchBarComp";

@@ -2,6 +2,9 @@ import React from 'react';
 import {Link} from "react-router-dom";
 import {CategoryObject} from "../../Views/InfoAdviceView";
 import useWindowSize from "../../hooks/use.window.size";
+import friends from '../../assets/friends.png'
+import sad from '../../assets/boy_sad.png'
+import substance from '../../assets/addiction_boy.png'
 
 type Props = {
   categoryObject: CategoryObject
@@ -25,7 +28,8 @@ const GrayLinkContainer: React.FC<Props> = ({categoryObject}) => {
         </div>
         {windowBig ? <div className={'justify-self-end'}>
           <img className={'max-h-24'}
-               src={categoryObject.url === 'you-and-others' ? 'src/assets/friends.png' : categoryObject.url === 'feelings-and-emotions' ? 'src/assets/boy_sad.png' : categoryObject.url === 'substance-abuse' ? 'src/assets/addiction_boy.png' : undefined}
+               src={categoryObject.url === 'you-and-others' ? friends : categoryObject.url === 'feelings-and-emotions'
+                 ? sad : categoryObject.url === 'substance-abuse' ? substance : undefined}
                alt=""/>
         </div> : null}
       </div>
