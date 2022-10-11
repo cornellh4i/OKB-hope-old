@@ -75,7 +75,7 @@ const InfoAdviceView = () => {
 
   console.log(categoryObjects)
   return (
-    <div>
+    <div className={'max-w-screen-xl mx-auto'}>
       <section className={'px-3'}>
         <h2 className={`text-left text-3xl md:text-6xl font-bold text-blue mx-auto`}>
           Info & Advice
@@ -84,11 +84,11 @@ const InfoAdviceView = () => {
           All the information and support you need in one place.
         </p>
       </section>
-      <section className={'p-3'}>
+      <section className={'p-3 md:flex gap-4'}>
 
         {error ? <div>{error}</div> : null}
-        {categoryObjects && categoryObjects.map(c => {
-          return <GrayLinkContainer categoryObject={c}></GrayLinkContainer>
+        {categoryObjects && categoryObjects.map((c,idx) => {
+          return <GrayLinkContainer key={idx+c.title} categoryObject={c}></GrayLinkContainer>
 
         })}
       </section>
