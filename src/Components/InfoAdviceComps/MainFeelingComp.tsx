@@ -3,6 +3,7 @@ import {useLocation} from "react-router-dom";
 import defineLastElementInLocation from "../../hooks/defineLastElementInLocation";
 import useProvideData, {CategoryObject} from "../../hooks/useProvideData";
 import TeaserComp from "./TeaserComp";
+import BreadCrumbs from "./BreadCrumbs";
 
 const MainFeelingComp = () => {
 
@@ -16,9 +17,10 @@ const MainFeelingComp = () => {
       setCategoryObject(filtered[0])
     }
   }, [realLocation, categoryObjects])
-  console.log(categoryObject)
+
   return (
     <div className={'px-3'}>
+      <BreadCrumbs/>
       <h2 className={`text-left text-2xl md:text-5xl font-bold text-blue mx-auto`}>
         {categoryObject?.title}
       </h2>
