@@ -6,23 +6,17 @@ const BreadCrumbs = () => {
   let location = useLocation();
   useEffect(() => {
     if (location) {
-     const splitPath=location.pathname.split('/')
-      setLocationStrings([splitPath[splitPath.length-2]])
+      const splitPath = location.pathname.split('/')
+      // setLocationStrings([splitPath[splitPath.length-2].split('-').join(' ')])
+      setLocationStrings(splitPath.slice(1, splitPath.length - 1))
     }
   }, [location])
+
   return (
     <div className={'py-0.5'}>
-      {locationStrings?.map(
-        (str,idx)=><span key={idx}>
-          <Link to={`/${str}`}
-                className={`no-underline px-0.5 text-black`}
-                >
-        {str+'>'}
-      </Link>
-          <span className={'font-bold'}>{location.pathname.split('/')[
-            location.pathname.split('/').length-1
-            ]}</span>
-        </span>)}
+      {locationStrings && <Link className={'no-underline text-black'} to={`/${locationStrings!.join('/')}`}>
+        {locationStrings!.join('>')}
+      </Link>}
     </div>
   );
 };

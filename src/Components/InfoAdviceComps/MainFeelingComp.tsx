@@ -7,6 +7,9 @@ import BreadCrumbs from "./BreadCrumbs";
 
 const MainFeelingComp = () => {
 
+
+  const [pathLength, setPathLength] = useState(0);
+
   const [categoryObject, setCategoryObject] = useState<null | CategoryObject>(null);
   let location = useLocation();
   const realLocation = defineLastElementInLocation(location.pathname);
@@ -16,17 +19,26 @@ const MainFeelingComp = () => {
       const filtered = categoryObjects?.filter(c => c.url === realLocation)
       setCategoryObject(filtered[0])
     }
-  }, [realLocation, categoryObjects])
+    if (location) {
+      setPathLength(location.pathname.split('/').length)
+      console.log(pathLength)
+    }
+  }, [realLocation, categoryObjects, categoryObject])
 
   return (
-    <div className={'px-3'}>
+    <div className={'md:w-10/12 mx-auto'}>
       <BreadCrumbs/>
       <h2 className={`text-left text-2xl md:text-5xl font-bold text-blue mx-auto`}>
         {categoryObject?.title}
       </h2>
+
       {
-        categoryObject && categoryObject.articles && categoryObject.articles.map(
-          a => <TeaserComp article={a} key={a.title}/>
+        categoryObject && pathLength===3 && categoryObject.articles && categoryObject.articles.map(
+          a =><div className={'lg:flex lg:flex-row w-full'} key={a.title}>
+           <div className={'lg:w-1/3'}>
+             <TeaserComp article={a} />
+           </div>
+          </div>
         )
       }
     </div>
