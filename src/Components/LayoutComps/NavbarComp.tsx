@@ -5,7 +5,7 @@ const NavbarComp = () => {
 
 
   return (
-    <nav className={`w-full z-50 md:text-lg bg-light-blue`}>
+    <nav className={`w-full z-50 md:text-lg `}>
       <ul className={"flex justify-between md:justify-end md:gap-6 px-3 items-center md:h-16 md:pr-6"}>
         <li>
           <NavLink className={modules.nav_links} to={"/"}
@@ -32,7 +32,6 @@ const NavbarComp = () => {
           <NavLink className={modules.nav_links} to={'/info-advice'}>
             <span className={"flex md:items-center"}>
               <span>
-
                 <svg width="17" height="20" viewBox="0 0 17 20" fill="none" xmlns="http://www.w3.org/2000/svg">
 <g clipPath="url(#clip0_409_5379)">
 <path
@@ -53,7 +52,7 @@ const NavbarComp = () => {
 
               </span>
               <span >
-                Info-Advice
+                Info & Advice
               </span>
             </span>
           </NavLink>

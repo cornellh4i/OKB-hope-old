@@ -2,10 +2,10 @@ import Layout from "./Layout";
 import {Routes, Route} from "react-router-dom";
 import HomeView from "./Views/HomeView";
 import InfoAdviceView from "./Views/InfoAdviceView";
-import MainFeelingComp from "./Components/InfoAdviceComps/MainFeelingComp";
+import SomeFeelingView from "./Views/SomeFeelingView";
 import useProvideData from "./hooks/useProvideData";
 import {useEffect, useState} from "react";
-import SomeFeelingComp from "./Components/InfoAdviceComps/SomeFeelingComp";
+import MainFeelingView from "./Views/MainFeelingView";
 
 
 const App = () => {
@@ -36,12 +36,12 @@ const App = () => {
           <Route path={"/"} element={<HomeView/>}></Route>
           <Route path={"info-advice"} element={<InfoAdviceView/>}></Route>
 
-          {categoryObjects && categoryObjects.map(c => <Route key={c.title} element={<MainFeelingComp/>}
+          {categoryObjects && categoryObjects.map(c => <Route key={c.title} element={<MainFeelingView/>}
                                                               path={`info-advice/${c.url}`}>
           </Route>)}
 
           {paths && paths.length>0 && paths.map(
-            p=> p.map(sp=><Route path={sp} element={<SomeFeelingComp />} />)
+            p=> p.map(sp=><Route path={sp} element={<SomeFeelingView />} />)
           )}
 
           <Route path={"tips"} element={<div>Tips</div>}>

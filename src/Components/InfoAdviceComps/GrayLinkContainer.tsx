@@ -1,10 +1,10 @@
 import React from 'react';
 import {Link} from "react-router-dom";
-import {CategoryObject} from "../../Views/InfoAdviceView";
 import useWindowSize from "../../hooks/use.window.size";
 import friends from '../../assets/friends.png'
 import sad from '../../assets/boy_sad.png'
 import substance from '../../assets/addiction_boy.png'
+import {CategoryObject} from "../../hooks/useProvideData";
 
 type Props = {
   categoryObject: CategoryObject

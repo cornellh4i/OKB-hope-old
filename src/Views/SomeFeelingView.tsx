@@ -1,12 +1,12 @@
 import React, {useEffect, useState} from 'react';
-import useProvideData, {Article} from "../../hooks/useProvideData";
+import useProvideData, {Article} from "../hooks/useProvideData";
 import imageUrlBuilder from "@sanity/image-url";
-import sanity from "../../client";
+import sanity from "../client";
 import {SanityImageSource} from "@sanity/image-url/lib/types/types";
 import {useLocation} from "react-router-dom";
-import defineLastElementInLocation from "../../hooks/defineLastElementInLocation";
+import defineLastElementInLocation from "../hooks/defineLastElementInLocation";
 
-const SomeFeelingComp = () => {
+const SomeFeelingView = () => {
   const { articleTitles} = useProvideData()
   const [problem, setProblem] = useState<null | Article>(null);
 
@@ -50,4 +50,4 @@ const SomeFeelingComp = () => {
   );
 };
 
-export default SomeFeelingComp;
+export default SomeFeelingView;

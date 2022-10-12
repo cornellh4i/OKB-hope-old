@@ -9,13 +9,14 @@ type Props = {
   article: Article
 }
 
-const TeaserComp: React.FC<Props> = ({article}) => {
+const HorizontalTeaserComp: React.FC<Props> = ({article}) => {
 
   // sanity
   const builder = imageUrlBuilder(sanity);
   const urlFor = (source: SanityImageSource) => {
     return builder.image(source)
   }
+
   return (
     <div className={'my-6 grid gap-4 grid-cols-2 w-full lg:w-1/2 xl:w-full'}>
 
@@ -23,7 +24,7 @@ const TeaserComp: React.FC<Props> = ({article}) => {
         <img className={'rounded-xl'} src={urlFor(article.mainImage).url()} alt={article.title}/>
       </div>
       <div className={'leading-5'}>
-        <Link to={`${article.slug.current}`} className={'text-blue font-bold'}>{article.title}</Link>
+        <Link to={`${article.slug.current}`} className={'text-blue font-bold no-underline'}>{article.title}</Link>
         <p>
           {article.teaser}
         </p>
@@ -33,4 +34,4 @@ const TeaserComp: React.FC<Props> = ({article}) => {
   );
 };
 
-export default TeaserComp;
+export default HorizontalTeaserComp;
