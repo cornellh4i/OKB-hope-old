@@ -6,35 +6,37 @@ import SearchBarComp from "./Components/LayoutComps/SearchBarComp";
 import ScrollToTop from "react-scroll-to-top";
 import FooterComp from "./Components/LayoutComps/FooterComp";
 
-type Props={
+type Props = {
   children?: React.ReactNode
 }
-const Layout:React.FC<Props> = ({children}) => {
+const Layout: React.FC<Props> = ({children}) => {
   const {windowBig} = useWindowSize();
 
   return (
-    <>
-      <section className={"py-2 md:flex items-center md:w-10/12 mx-auto"}>
+    <div className={'w-screen bg-white'}>
+      <section className={"bg-white md:flex items-center md:w-10/12 mx-auto fixed top-0 left-0 right-0 z-50 pt-2"}>
         <Topbar/>
-        <NavbarComp />
-        {windowBig && <SearchBarComp />}
+        <NavbarComp/>
+        {windowBig && <SearchBarComp/>}
       </section>
 
-      <main>
+      <main className={'mt-24'}>
         {children}
       </main>
       <div className={'max-w-screen-xl mx-auto relative h-[72px]'}>
         <ScrollToTop smooth={true} color={'white'} height={'22'}
-                     style={{position:'absolute', right: windowBig? '0rem': '1rem', top:'1rem',
-                       width:'60px', background:'#2469A6', color:'white',
-                       borderRadius:'3rem', padding: '0 1rem'}}
+                     style={{
+                       position: 'absolute', right: windowBig ? '0rem' : '1rem', top: '1rem',
+                       width: '60px', background: '#2469A6', color: 'white',
+                       borderRadius: '3rem', padding: '0 1rem'
+                     }}
           // component={<span>back to top</span>}
         />
       </div>
       <footer className={'bg-blue'}>
-        <FooterComp />
+        <FooterComp/>
       </footer>
-    </>
+    </div>
   );
 };
 

@@ -31,16 +31,15 @@ const MainFeelingComp = () => {
       <h2 className={`text-left text-2xl md:text-5xl font-bold text-blue mx-auto`}>
         {categoryObject?.title}
       </h2>
-
-      {
-        categoryObject && pathLength===3 && categoryObject.articles && categoryObject.articles.map(
-          a =><div className={'lg:flex lg:flex-row w-full'} key={a.title}>
-           <div className={'lg:w-1/3'}>
-             <TeaserComp article={a} />
-           </div>
-          </div>
-        )
-      }
+      <div className={'xl:flex w-full'}>
+        {
+          categoryObject && pathLength===3 && categoryObject.articles && categoryObject.articles.map(
+            a =><div className={'w-full'} key={a.title}>
+              <TeaserComp article={a} />
+            </div>
+          )
+        }
+      </div>
     </div>
   );
 };

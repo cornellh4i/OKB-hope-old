@@ -48,8 +48,8 @@ export default {
       type: 'text'
     },
     // {
-    //   name: 'body',
-    //   title: 'Body',
+    //   name: 'body_one',
+    //   title: 'Body One',
     //   type: 'blockContent',
     // },
   ],
