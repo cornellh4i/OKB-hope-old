@@ -1,5 +1,5 @@
 import React from 'react';
-import RadiantCommunicationSection from "../Components/HomeViewComps/RadiantCommunicationSection";
+import GradientCommunicationSection from "../Components/HomeViewComps/GradientCommunicationSection";
 import GrayLinkContainer from "../Components/InfoAdviceComps/GrayLinkContainer";
 import useProvideData from "../hooks/useProvideData";
 
@@ -27,7 +27,7 @@ const InfoAdviceView = () => {
         })}
       </section>
       <section id={'topics'} className={'mt-16'}>
-        <RadiantCommunicationSection
+        <GradientCommunicationSection
           url={'/contact-us'} title={'Do you want to know about other topics?'}
           buttonText={'Send us suggestions!'}/>
       </section>

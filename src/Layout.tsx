@@ -13,14 +13,14 @@ const Layout: React.FC<Props> = ({children}) => {
   const {windowBig} = useWindowSize();
 
   return (
-    <div className={'w-screen bg-white'}>
-      <section className={"bg-white md:flex items-center md:w-10/12 mx-auto fixed top-0 left-0 right-0 z-50 pt-2"}>
+    <div className={'w-screen bg-white '}>
+      <section className={" bg-white md:flex items-center md:w-11/12 mx-auto md:px-14 fixed top-0 left-0 right-0 z-50 pt-2"}>
         <Topbar/>
         <NavbarComp/>
         {windowBig && <SearchBarComp/>}
       </section>
 
-      <main className={'mt-24'}>
+      <main className={'mt-[105px]'}>
         {children}
       </main>
       <div className={'max-w-screen-xl mx-auto relative h-[72px]'}>

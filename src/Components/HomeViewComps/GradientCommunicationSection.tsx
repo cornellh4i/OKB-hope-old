@@ -7,7 +7,7 @@ type Props = {
   buttonText: string
   url: string
 }
-const RadiantCommunicationSection:React.FC<Props> = ({title, buttonText, url}) => {
+const GradientCommunicationSection:React.FC<Props> = ({title, buttonText, url}) => {
   const navigate= useNavigate()
   return (
     <div className={`py-4 px-3 lg:py-10 bg-gradient-to-b from-[#E8FC97] to-[#9BFDF9]`}>
@@ -23,4 +23,4 @@ const RadiantCommunicationSection:React.FC<Props> = ({title, buttonText, url}) =
   );
 };
 
-export default RadiantCommunicationSection;
+export default GradientCommunicationSection;

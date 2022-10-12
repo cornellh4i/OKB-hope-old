@@ -18,10 +18,10 @@ const HorizontalTeaserComp: React.FC<Props> = ({article}) => {
   }
 
   return (
-    <div className={'my-6 grid gap-4 grid-cols-2 w-full lg:w-1/2 xl:w-full'}>
+    <div className={'grid grid-cols-2 lg:grid-cols-none lg:flex lg:flex-col gap-4 my-6'}>
 
-      <div>
-        <img className={'rounded-xl'} src={urlFor(article.mainImage).url()} alt={article.title}/>
+      <div className={'shrink self-center lg:self-auto'}>
+        <img className={'rounded-xl '} src={urlFor(article.mainImage).url()} alt={article.title}/>
       </div>
       <div className={'leading-5'}>
         <Link to={`${article.slug.current}`} className={'text-blue font-bold no-underline'}>{article.title}</Link>

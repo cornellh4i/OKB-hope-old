@@ -28,16 +28,17 @@ const MainFeelingView = () => {
     }
   }, [realLocation, categoryObjects, categoryObject])
 
-  console.log(mightInterestYou)
   return (
     <div className={'md:w-10/12 mx-auto '}>
-      <BreadCrumbs/>
-      <div className={'px-3'}>
+      <section className={'px-3'}>
+        <BreadCrumbs/>
+      </section>
+      <section className={'px-3'}>
         <h2 className={`text-left text-2xl md:text-5xl font-bold text-blue mx-auto`}>
           {categoryObject?.title}
         </h2>
-      </div>
-      <div className={'xl:flex xl:gap-6 w-full px-3'}>
+      </section>
+      <section className={'lg:flex w-full px-3 gap-6 justify-center my-2'}>
         {
           categoryObject && pathLength === 3 && categoryObject.articles && categoryObject.articles.map(
             a => <div className={'w-full'} key={a.title}>
@@ -45,12 +46,12 @@ const MainFeelingView = () => {
             </div>
           )
         }
-      </div>
-      <div>
+      </section>
+      <section>
         {mightInterestYou && mightInterestYou.map(o => <div key={o.title}>
           <MightInterestYouComp articles={o.articles}/>
         </div>)}
-      </div>
+      </section>
     </div>
   );
 };

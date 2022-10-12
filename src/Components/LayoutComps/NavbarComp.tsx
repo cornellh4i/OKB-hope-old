@@ -5,7 +5,7 @@ const NavbarComp = () => {
 
 
   return (
-    <nav className={`w-full z-50 md:text-lg `}>
+    <nav className={`w-full z-50 md:text-lg pb-2 `}>
       <ul className={"flex justify-between md:justify-end md:gap-6 px-3 items-center md:h-16 md:pr-6"}>
         <li>
           <NavLink className={modules.nav_links} to={"/"}

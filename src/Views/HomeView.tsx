@@ -5,7 +5,7 @@ import HeroComp from "../Components/HomeViewComps/HeroComp";
 import FeelingComp from "../Components/HomeViewComps/FeelingComp";
 import GetInspiredComp from "../Components/HomeViewComps/GetInspiredComp";
 import useWindowSize from "../hooks/use.window.size";
-import RadiantCommunicationSection from "../Components/HomeViewComps/RadiantCommunicationSection";
+import GradientCommunicationSection from "../Components/HomeViewComps/GradientCommunicationSection";
 
 type Herocontent = {
   title: string,
@@ -107,7 +107,7 @@ const HomeView = () => {
         <GetInspiredComp inspirations={inspirations}/>
       </section>
       <section id={'us'} className={'mt-16'}>
-        <RadiantCommunicationSection url={'/about-us'} title={'Get to know us!'} buttonText={'Learn more about us'} />
+        <GradientCommunicationSection url={'/about-us'} title={'Get to know us!'} buttonText={'Learn more about us'} />
       </section>
     </>
   );
