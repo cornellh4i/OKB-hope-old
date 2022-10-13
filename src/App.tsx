@@ -28,7 +28,7 @@ const App = () => {
 
   }, [categoryObjects])
 
-if (paths) {
+if (paths && categoryObjects) {
   return (
     <>
       <Layout>

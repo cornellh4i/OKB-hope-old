@@ -1,4 +1,4 @@
-import  {useEffect, useState} from 'react';
+import {useEffect, useState} from 'react';
 import categoryObjectFactory from "./categoryObjectFactory";
 import sanityClient from "../client";
 
@@ -39,7 +39,7 @@ const useProvideData = () => {
   const [categoryObjects, setCategoryObjects] = useState<null | CategoryObject[]>(null);
 
   useEffect(() => {
-    if (categories && articleTitles) {
+    if (categories && articleTitles && categories.length !== 0 && articleTitles.length !== 0) {
       setCategoryObjects(categoryObjectFactory(categories, articleTitles))
     }
     if (!categories || categories.length === 0) {
