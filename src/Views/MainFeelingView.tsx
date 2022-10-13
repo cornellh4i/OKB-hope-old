@@ -41,7 +41,7 @@ const MainFeelingView = () => {
       <section className={'lg:flex w-full px-3 gap-6 justify-center my-2'}>
         {
           categoryObject && pathLength === 3 && categoryObject.articles && categoryObject.articles.map(
-            a => <div className={'w-full'} key={a.title}>
+            a => <div className={'w-full md:w-1/3'} key={a.title}>
               <HorizontalTeaserComp article={a}/>
             </div>
           )
