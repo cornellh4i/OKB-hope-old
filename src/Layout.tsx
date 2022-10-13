@@ -24,12 +24,14 @@ const Layout: React.FC<Props> = ({children}) => {
 
   return (
     <div className={'w-screen bg-white relative'} >
-      <section className={" bg-white md:flex items-center md:w-11/12 mx-auto md:px-14 fixed top-0 left-0 right-0 z-50 pt-2"}>
+      <div className={'w-screen bg-white fixed z-40 top-0 left-0 right-0 h-[108px]'}>
+        <section className={" bg-white md:flex items-center md:w-11/12 mx-auto md:px-14 fixed top-0 left-0 right-0 z-50 pt-2"}>
           <Topbar/>
           <NavbarComp/>
 
-        {windowBig && <SearchBarComp/>}
-      </section>
+          {windowBig && <SearchBarComp/>}
+        </section>
+      </div>
 
       <main className={'mt-[108px]'} style={{minHeight:`${screenHeight}px`}}>
         {children}
