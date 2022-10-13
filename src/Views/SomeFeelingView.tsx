@@ -5,10 +5,12 @@ import sanity from "../client";
 import {SanityImageSource} from "@sanity/image-url/lib/types/types";
 import {useLocation} from "react-router-dom";
 import defineLastElementInLocation from "../hooks/defineLastElementInLocation";
+import useWindowSize from "../hooks/use.window.size";
 
 const SomeFeelingView = () => {
   const { articleTitles} = useProvideData()
   const [problem, setProblem] = useState<null | Article>(null);
+  const {windowBig} = useWindowSize()
 
   // sanity
   const builder = imageUrlBuilder(sanity);
@@ -29,15 +31,16 @@ const SomeFeelingView = () => {
     }
   },[articleTitles])
   return (
-    <div>
+    <div className={'w-screen relative'}>
       {problem  && <div className={'mt-4'}>
-        <div>
-          <img src={urlFor(problem.mainImage).url()} alt=""/>
+        <div className={'w-screen'}>
+          {!windowBig &&           <img className={'object-cover'} src={urlFor(problem.mainImage).width(400).url()} alt={problem.title}/>}
+          {windowBig &&           <img className={'object-cover max-h-[600px] w-screen 2xl:max-w-screen-xl mx-auto'} src={urlFor(problem.mainImage).width(1280).url()} alt={problem.title}/>}
         </div>
-        <div className={'p-3'}>
-          <div className={'bg-light-blue p-3 rounded-lg mt-3'}>
+        <div className={'p-3 w-screen'}>
+          <div className={'bg-light-blue p-3 rounded-lg mt-3 lg:absolute lg:top-6 2xl:left-1/4 lg:left-20 lg:right-1/3'}>
 
-            <h2 className={`text-left text-2xl md:text-5xl font-bold text-blue mx-auto`}>
+            <h2 className={`text-left text-2xl md:text-5xl font-bold text-blue mx-auto mb-3`}>
               {problem.title}
             </h2>
             <p style={{fontFamily: 'Roboto'}}>{problem.summary}</p>

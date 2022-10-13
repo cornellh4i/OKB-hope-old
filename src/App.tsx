@@ -28,6 +28,7 @@ const App = () => {
 
   }, [categoryObjects])
 
+if (paths) {
   return (
     <>
       <Layout>
@@ -39,8 +40,8 @@ const App = () => {
                                                               path={`info-advice/${c.url}`}>
           </Route>)}
 
-          {paths && paths.length>0 && paths.map(
-            p=> p.map(sp=><Route path={sp} element={<SomeFeelingView />} />)
+          {paths && paths.length > 0 && paths.map(
+            p => p.map(sp => <Route path={sp} element={<SomeFeelingView/>}/>)
           )}
 
           <Route path={"tips"} element={<div>Tips</div>}>
@@ -55,7 +56,10 @@ const App = () => {
       </Layout>
 
     </>
-  );
+  )
+} else {
+  return <div>Loading...</div>
+}
 };
 
 export default App;
