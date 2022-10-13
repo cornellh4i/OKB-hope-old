@@ -15,7 +15,6 @@ const MightInterestYouComp: React.FC<Props> = ({articles}) => {
       setHeightState(n)
     }
   }
-  console.log(heightState)
 
 
   useEffect(() => {

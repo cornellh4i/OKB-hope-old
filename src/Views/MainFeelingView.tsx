@@ -3,7 +3,7 @@ import {useLocation} from "react-router-dom";
 import defineLastElementInLocation from "../hooks/defineLastElementInLocation";
 import useProvideData, {CategoryObject} from "../hooks/useProvideData";
 import HorizontalTeaserComp from "../Components/InfoAdviceComps/HorizontalTeaserComp";
-import BreadCrumbs from "../Components/InfoAdviceComps/BreadCrumbs";
+import BreadCrumbs from "../Components/LayoutComps/BreadCrumbs";
 import MightInterestYouComp from "../Components/MainFeelingComps/MightInterestYouComp";
 
 const MainFeelingView = () => {
@@ -38,10 +38,10 @@ const MainFeelingView = () => {
           {categoryObject?.title}
         </h2>
       </section>
-      <section className={'lg:flex w-full px-3 gap-6 justify-center my-2'}>
+      <section className={'lg:flex w-full px-3 gap-6 justify-start my-2 lg:my-8'}>
         {
           categoryObject && pathLength === 3 && categoryObject.articles && categoryObject.articles.map(
-            a => <div className={'w-full md:w-1/3'} key={a.title}>
+            a => <div className={'w-full lg:w-1/3'} key={a.title}>
               <HorizontalTeaserComp article={a}/>
             </div>
           )
