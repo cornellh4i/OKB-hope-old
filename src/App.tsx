@@ -34,7 +34,7 @@ if (paths && categoryObjects) {
       <Layout>
         <Routes>
           <Route path={"/"} element={<HomeView/>}></Route>
-          <Route path={"info-advice"} element={<InfoAdviceView/>}></Route>
+          <Route path={"/info-advice"} element={<InfoAdviceView/>}></Route>
 
           {categoryObjects && categoryObjects.map(c => <Route key={c.title} element={<MainFeelingView/>}
                                                               path={`info-advice/${c.url}`}>
