@@ -28,7 +28,6 @@ const App = () => {
 
   }, [categoryObjects])
 
-  console.log(paths)
   return (
     <>
       <Layout>

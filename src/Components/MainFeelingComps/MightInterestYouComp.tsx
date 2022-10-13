@@ -8,6 +8,15 @@ type Props = {
 
 const MightInterestYouComp: React.FC<Props> = ({articles}) => {
   const [shortenedArticles, setShortenedArticles] = useState<null | Article[]>(null);
+  const [heightState, setHeightState] = useState(0);
+
+  const heightStateHandler = (n: number) => {
+    if (n) {
+      setHeightState(n)
+    }
+  }
+  console.log(heightState)
+
 
   useEffect(() => {
     if (articles && articles.length > 2) {
@@ -23,7 +32,8 @@ const MightInterestYouComp: React.FC<Props> = ({articles}) => {
         This might also interest you</h2>
       <div className={'flex gap-6 lg:gap-10 mt-4 lg:my-8 justify-center'}>
         {shortenedArticles && shortenedArticles.map(
-          a => <VerticalTeaserComp key={a.title} article={a}/>
+          a => <VerticalTeaserComp heightState={heightState} setHeightState={heightStateHandler} key={a.title}
+                                   article={a}/>
         )}
       </div>
     </div>
