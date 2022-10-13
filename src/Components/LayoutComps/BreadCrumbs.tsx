@@ -16,7 +16,6 @@ const BreadCrumbs = () => {
       setLastElementInPath(noDashesInPath[noDashesInPath.length - 1])
     }
   }, [location])
-  console.log(lastElementInPath)
 
   return (
     <div className={'py-0.5'}>

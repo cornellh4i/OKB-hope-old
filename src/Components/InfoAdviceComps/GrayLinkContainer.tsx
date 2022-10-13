@@ -22,7 +22,7 @@ const GrayLinkContainer: React.FC<Props> = ({categoryObject}) => {
           {categoryObject?.articles && categoryObject.articles.map((a, idx) => {
             return <div key={idx + a.title} className={'py-1'}>
               <Link className={'no-underline text-black'} style={{fontFamily: 'Roboto'}}
-                    to={a.slug.current}>{a.title}</Link>
+                    to={`/info-advice/${categoryObject.url}/${a.slug.current}`}>{a.title}</Link>
             </div>
           })}
         </div>
