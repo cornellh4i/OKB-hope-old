@@ -8,15 +8,12 @@ type Props = {
 
 const LinkObjectContainer: React.FC<Props> = ({scrollToHandler, linkObjects}) => {
   return (
-    <div className={'w-full lg:w-1/4'}>
-      <h3 className={'text-blue font-bold p-3 bg-gray-light rounded-xl'}>
+    <div className={'w-full lg:w-1/3'}>
+      <h3 className={'text-blue font-bold text-xl p-3 bg-gray-light rounded-xl'}>
         What you’ll find on this page
         <div className={'my-2'}>
-          {linkObjects && linkObjects.map(o => <div className={'py-0.5'} key={o.slug}>
-            {/*<Link className={'no-underline text-black'} to={`#${o.slug}`}>*/}
-            {/*  {o.title}*/}
-            {/*</Link>*/}
-            <h4 className={'no-underline text-black cursor-pointer'}
+          {linkObjects && linkObjects.map(o => <div className={'py-1'} key={o.slug}>
+            <h4 className={'no-underline text-black cursor-pointer text-sm lg:text-base'}
                 onClick={() => scrollToHandler(o.slug)}>
               {o.title}
             </h4>

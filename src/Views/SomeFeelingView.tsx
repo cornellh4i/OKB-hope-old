@@ -9,6 +9,8 @@ import {TypedObject} from "@portabletext/types";
 import sanityClient from "../client";
 import ParagraphComp from "../Components/SomeFeelingComps/ParagraphComp";
 import LinkObjectContainer from "../Components/SomeFeelingComps/LinkObjectContainer";
+import useMightInterestYouFactory from "../hooks/useMightInterestYouFactory";
+import MightInterestYouComp from "../Components/MainFeelingComps/MightInterestYouComp";
 
 
 export type Paragraph = {
@@ -36,7 +38,7 @@ const SomeFeelingView = () => {
   const [error, setError] = useState<null | string>(null);
   const [paragraphs, setParagraphs] = useState<null | Paragraph[]>(null);
   const [linkObjects, setLinkObjects] = useState<null | LinkObject[]>(null);
-  const {articleTitles} = useProvideData()
+  const {articleTitles, categoryObjects} = useProvideData()
   const [problem, setProblem] = useState<null | Article>(null);
   const {windowBig} = useWindowSize()
 
@@ -48,11 +50,12 @@ const SomeFeelingView = () => {
 
   // let location = useLocation();
 
+  let {problem: paramProblem, feeling} = useParams();
 
-  let {problem: paramProblem} = useParams();
-
+  const {mightInterestYou} = useMightInterestYouFactory(feeling, categoryObjects);
 
   useEffect(() => {
+
     if (!paragraphs && problem) {
       sanityClient
         .fetch(
@@ -62,7 +65,7 @@ const SomeFeelingView = () => {
           // console.log(data)
           const d: Paragraph[] = data.filter(((p: { article: ArticleRef[]; }) => p.article.find(a => a._ref === problem._id)))
           // console.log(d);
-          d.sort((d: Paragraph) => d.serial_num)
+          d.sort((a, b) => a.serial_num - b.serial_num);
           setParagraphs(d);
         })
         .catch((err) => {
@@ -80,7 +83,6 @@ const SomeFeelingView = () => {
     }
   }, [paragraphs, problem, linkObjects])
 
-
   useEffect(() => {
     if (articleTitles) {
       const foundArticle = articleTitles.find(a => a.slug.current === paramProblem)
@@ -90,12 +92,10 @@ const SomeFeelingView = () => {
     }
   }, [articleTitles])
 
-  const scrollToElementHandler = (s:string) => {
-    console.log(s)
+  const scrollToElementHandler = (s: string) => {
     const element = document.getElementById(s)
-    console.log(element)
-    if (element){
-      element.scrollIntoView({behavior: "smooth", block: "end", inline: "nearest"} )
+    if (element) {
+      element.scrollIntoView({behavior: "smooth", block: "end", inline: "nearest"})
     }
   }
 
@@ -131,17 +131,22 @@ const SomeFeelingView = () => {
 
         <div className={'col-span-2'}>
           <div>
-            {paragraphs && paragraphs.slice(0, 3).map(
+            {paragraphs && paragraphs.slice(0, 2).map(
               p => <ParagraphComp key={p.slug.current} paragraph={p}/>
             )}
           </div>
           <div></div>
           <div>
-            {paragraphs && paragraphs.slice(3,).map(
+            {paragraphs && paragraphs.slice(2,).map(
               p => <ParagraphComp key={p.slug.current} paragraph={p}/>
             )}
           </div>
 
+          <div>
+            {mightInterestYou && mightInterestYou.map(o => <div key={o.title}>
+              <MightInterestYouComp articles={o.articles}/>
+            </div>)}
+          </div>
         </div>
         <div></div>
       </div>

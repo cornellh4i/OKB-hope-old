@@ -1,3 +1,5 @@
+
+
 export default {
   name: 'article',
   title: 'Article',
@@ -42,6 +44,20 @@ export default {
       title: 'Summary',
       type: 'text'
     },
+    // {
+    //   title: 'Paragraph',
+    //   type: 'array',
+    //   name: 'paragraph',
+    //   of: [
+    //     {
+    //       type: 'reference',
+    //       to: [{
+    //         type:'paragraph',
+    //         id: 'paragraph'
+    //       }]
+    //     }
+    //   ]
+    // },
     {
       name: 'teaser',
       title: 'Teaser',
