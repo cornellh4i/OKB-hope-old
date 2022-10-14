@@ -9,7 +9,7 @@ type FeelingButton = {
 }
 type Props = {
   feelingButton: FeelingButton
-  onClick: (s:string) => void
+  onClick: (s: string) => void
   activeFeeling: string | null | undefined
 }
 const FeelingButton: React.FC<Props> = ({feelingButton, onClick, activeFeeling}) => {
@@ -21,8 +21,14 @@ const FeelingButton: React.FC<Props> = ({feelingButton, onClick, activeFeeling})
 
   const activeBackground = activeFeeling === feelingButton.text ? 'bg-light-blue' : ''
 
+  const clickHandler = () => {
+    onClick(feelingButton.text)
+
+  }
+
+
   return (
-    <button onClick={()=>onClick(feelingButton.text)} aria-label={feelingButton.text}
+    <button onClick={clickHandler} aria-label={feelingButton.text}
             className={`shadow-lg rounded-lg py-2 px-3 flex gap-2 ${activeBackground}
             border border-gray-light active:bg-gray-light`}>
       <img className={"h-6 w-6"} src={urlFor(feelingButton.icon).url()} alt={feelingButton.text}/>

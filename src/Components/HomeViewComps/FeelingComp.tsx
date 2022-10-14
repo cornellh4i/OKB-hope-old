@@ -32,7 +32,11 @@ const FeelingComp: React.FC<Props> = ({feelings}) => {
   }, [feelings, tag]);
 
   const buttonClickHandler = (s: string) => {
-    setTag(s);
+    if (s!==tag) {
+     setTag(s);
+   } else {
+     setTag('Good')
+   }
   }
 
   return (
