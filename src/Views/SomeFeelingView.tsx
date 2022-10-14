@@ -8,6 +8,8 @@ import useWindowSize from "../hooks/use.window.size";
 import {TypedObject} from "@portabletext/types";
 import sanityClient from "../client";
 import ParagraphComp from "../Components/SomeFeelingComps/ParagraphComp";
+import LinkObjectContainer from "../Components/SomeFeelingComps/LinkObjectContainer";
+
 
 export type Paragraph = {
   title: string
@@ -24,10 +26,16 @@ type ArticleRef = {
   _ref: string
   _type: 'reference'
 }
+export type LinkObject = {
+  title: string,
+  slug: string
+}
+
 
 const SomeFeelingView = () => {
   const [error, setError] = useState<null | string>(null);
   const [paragraphs, setParagraphs] = useState<null | Paragraph[]>(null);
+  const [linkObjects, setLinkObjects] = useState<null | LinkObject[]>(null);
   const {articleTitles} = useProvideData()
   const [problem, setProblem] = useState<null | Article>(null);
   const {windowBig} = useWindowSize()
@@ -42,7 +50,7 @@ const SomeFeelingView = () => {
 
 
   let {problem: paramProblem} = useParams();
-  console.log(paramProblem)
+
 
   useEffect(() => {
     if (!paragraphs && problem) {
@@ -51,7 +59,9 @@ const SomeFeelingView = () => {
           `*[_type == 'paragraph']`
         )
         .then((data) => {
+          // console.log(data)
           const d: Paragraph[] = data.filter(((p: { article: ArticleRef[]; }) => p.article.find(a => a._ref === problem._id)))
+          // console.log(d);
           d.sort((d: Paragraph) => d.serial_num)
           setParagraphs(d);
         })
@@ -60,7 +70,16 @@ const SomeFeelingView = () => {
           setError('error loading data')
         });
     }
-  }, [paragraphs, problem])
+    if (paragraphs && !linkObjects) {
+      setLinkObjects(paragraphs.map(p => {
+        return {
+          title: p.title,
+          slug: p.slug.current
+        }
+      }))
+    }
+  }, [paragraphs, problem, linkObjects])
+
 
   useEffect(() => {
     if (articleTitles) {
@@ -71,6 +90,14 @@ const SomeFeelingView = () => {
     }
   }, [articleTitles])
 
+  const scrollToElementHandler = (s:string) => {
+    console.log(s)
+    const element = document.getElementById(s)
+    console.log(element)
+    if (element){
+      element.scrollIntoView({behavior: "smooth", block: "end", inline: "nearest"} )
+    }
+  }
 
   return (
     <div className={'w-screen relative'}>
@@ -95,11 +122,26 @@ const SomeFeelingView = () => {
         </div>
       </div>}
 
+
+      <div className={'px-3 w-full lg:max-w-screen-xl mx-auto'}>
+        {linkObjects && <LinkObjectContainer scrollToHandler={scrollToElementHandler} linkObjects={linkObjects}/>}
+      </div>
+
       <div className={'lg:grid grid-cols-3'}>
-        <div className={'col-end-2'}>
-          {paragraphs && paragraphs.slice(0, 3).map(
-            p => <ParagraphComp key={p.slug.current} paragraph={p}/>
-          )}
+
+        <div className={'col-span-2'}>
+          <div>
+            {paragraphs && paragraphs.slice(0, 3).map(
+              p => <ParagraphComp key={p.slug.current} paragraph={p}/>
+            )}
+          </div>
+          <div></div>
+          <div>
+            {paragraphs && paragraphs.slice(3,).map(
+              p => <ParagraphComp key={p.slug.current} paragraph={p}/>
+            )}
+          </div>
+
         </div>
         <div></div>
       </div>

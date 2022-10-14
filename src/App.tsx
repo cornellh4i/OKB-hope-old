@@ -71,27 +71,6 @@ const App = () => {
 
       <RouterProvider router={router}/>
 
-
-      {/*<Routes>*/}
-      {/*  <Route path={"/"} element={<HomeView/>}></Route>*/}
-      {/*  <Route path={"info-advice"} element={<InfoAdviceView/>}>*/}
-      {/*  </Route>*/}
-      {/*  <Route path={"info-advice/:feeling"} element={<MainFeelingView/>}/>*/}
-      {/*  <Route path={"info-advice/:feeling/:problem"} element={<SomeFeelingView/>}/>*/}
-
-
-      {/*  <Route path={"/tips"} element={<div>Tips</div>}>*/}
-      {/*  </Route>*/}
-      {/*  <Route path={"/about-us"} element={<div>About us</div>}></Route>*/}
-      {/*  <Route path={"/contact-us"} element={<div>Contact us</div>}></Route>*/}
-
-      {/*  <Route path="*" element={<div>404</div>}>*/}
-
-      {/*  </Route>*/}
-
-      {/*</Routes>*/}
-
-
     </>
   )
 };
