@@ -36,6 +36,12 @@ if (paths && categoryObjects) {
           <Route path={"/"} element={<HomeView/>}></Route>
           <Route path={"/info-advice"} element={<InfoAdviceView/>}></Route>
 
+          <Route path={"/tips"} element={<div>Tips</div>}>
+          </Route>
+          <Route path={"/about-us"} element={<div>About us</div>}></Route>
+          <Route path={"/contact-us"} element={<div>Contact us</div>}></Route>
+
+
           {categoryObjects && categoryObjects.map(c => <Route key={c.title} element={<MainFeelingView/>}
                                                               path={`info-advice/${c.url}`}>
           </Route>)}
@@ -44,11 +50,8 @@ if (paths && categoryObjects) {
             p => p.map(sp => <Route path={sp} element={<SomeFeelingView/>}/>)
           )}
 
-          <Route path={"tips"} element={<div>Tips</div>}>
-          </Route>
-          <Route path={"about-us"} element={<div>About us</div>}></Route>
-          <Route path={"contact-us"} element={<div>Contact us</div>}></Route>
-          <Route path={'*'} element={<div>404</div>}>
+
+          <Route path="*" element={<div>404</div>}>
 
           </Route>
 

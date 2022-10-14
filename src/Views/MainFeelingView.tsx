@@ -10,12 +10,13 @@ const MainFeelingView = () => {
 
 
   const [pathLength, setPathLength] = useState(0);
-
   const [mightInterestYou, setMightInterestYou] = useState<null | CategoryObject[]>(null);
   const [categoryObject, setCategoryObject] = useState<null | CategoryObject>(null);
+  // data
+  const {categoryObjects} = useProvideData()
+  
   let location = useLocation();
   const realLocation = defineLastElementInLocation(location.pathname);
-  const {categoryObjects} = useProvideData()
   useEffect(() => {
     if (realLocation && categoryObjects) {
       const filtered = categoryObjects?.filter(c => c.url === realLocation)

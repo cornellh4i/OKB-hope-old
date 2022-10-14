@@ -7,7 +7,6 @@ export default {
       name: 'title',
       title: 'Title',
       type: 'string',
-      description: 'Categories articles may belong to'
     },
     {
       name: 'slug',
@@ -17,10 +16,11 @@ export default {
         source: 'title',
       },
     },
+    
     {
-      name: 'page',
-      title: 'Page',
-      type: 'string',
+      name: 'body',
+      title: 'Body',
+      type: 'blockContent',
     },
     {
       name: 'serial_num',
@@ -28,13 +28,18 @@ export default {
       type: 'number'
     },
     {
-      name: 'paragraph',
-      title: 'paragraph',
-      type: 'array',
+      name: 'article', title: 'article', type: "array",
       of: [
-        type
+        {
+          type: 'reference',
+          to: [
+            {
+              type: 'article',
+              id: 'article'
+            }
+          ]
+        }
       ]
-    },
-    { name: 'text', title: 'Paragraph', type: "string" }
+    }
   ],
 }

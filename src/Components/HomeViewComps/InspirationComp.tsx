@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, useRef} from 'react';
 import {Inspiration} from "../../Views/HomeView";
 import imageUrlBuilder from "@sanity/image-url";
 import sanity from "../../client";
@@ -8,13 +8,24 @@ import {PortableText} from "@portabletext/react";
 
 type Props = {
   inspiration: Inspiration | null
+  heightState:null|number
+  setHeightState:(n:number)=>void
 }
-const InspirationComp: React.FC<Props> = ({inspiration}) => {
+const InspirationComp: React.FC<Props> = ({inspiration, heightState, setHeightState}) => {
+  const heightRef = useRef<null | HTMLDivElement>(null)
+
   const builder = imageUrlBuilder(sanity);
   const urlFor = (source: SanityImageSource) => {
     return builder.image(source)
   }
+
   const {windowBig} = useWindowSize();
+
+  useEffect(() => {
+    if (heightRef  && heightRef.current!.offsetHeight > heightState!) {
+      setHeightState(heightRef.current!.offsetHeight)
+    }
+  }, [heightRef, heightState])
 
   return (
     <div className={'w-1/2 py-2 lg:w-1/4'}>
@@ -23,7 +34,7 @@ const InspirationComp: React.FC<Props> = ({inspiration}) => {
          :         <img className={'rounded mx-auto'} src={urlFor(inspiration?.mainImage).width(400).height(250).fit('scale').url()} alt=""/>
         }
       </div>
-      <div className={'w-full mx-auto '}>
+      <div ref={heightRef} className={'w-full mx-auto pt-2 rounded-b-xl bg-white'}  style={{minHeight:`${heightState}px`}}>
         <h4 className={'leading-5 text-lg md:text-2xl text-blue font-bold pb-0.5'}>{inspiration?.title}</h4>
         <PortableText value={inspiration!.text} />
       </div>

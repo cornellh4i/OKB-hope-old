@@ -47,11 +47,6 @@ export default {
       title: 'Teaser',
       type: 'text'
     },
-    // {
-    //   name: 'body_one',
-    //   title: 'Body One',
-    //   type: 'blockContent',
-    // },
   ],
   
   preview: {

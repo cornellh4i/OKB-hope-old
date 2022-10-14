@@ -9,7 +9,7 @@ type Props = {
 }
 
 const FeelingComp: React.FC<Props> = ({feelings}) => {
-  const [tag, setTag] = useState<string | null>(null);
+  const [tag, setTag] = useState<string | null>('Good');
 
   const buttonFeelings = useMemo(() => {
     if (feelings) {
@@ -55,7 +55,7 @@ const FeelingComp: React.FC<Props> = ({feelings}) => {
         </div>
 
 
-         <div className={" w-full mt-4 md:mt-0"}>
+         <div className={" w-full mt-6 md:mt-0"}>
            {chosenFeeling && <FeelingInfoHint feeling={chosenFeeling}/>}
           </div>
 

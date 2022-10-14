@@ -26,6 +26,7 @@ export type Article = {
   summary: string
   mainImage: any
   teaser: string
+  _id:string
 }
 export type CategoryObject = {
   title: string
