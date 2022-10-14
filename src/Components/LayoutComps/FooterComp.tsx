@@ -10,7 +10,7 @@ const FooterComp = () => {
           <Link className={'text-white no-underline text-sm'} to={'/about-us'}>About us</Link>
         </div>
         <div>
-          <Link className={'text-white no-underline  text-sm'} to={'#'}>Contact us</Link>
+          <Link className={'text-white no-underline  text-sm'} to={'/contact-us'}>Contact us</Link>
         </div>
         <div>
           <a className={'text-white  text-sm'}
