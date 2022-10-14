@@ -28,41 +28,35 @@ const App = () => {
 
   }, [categoryObjects])
 
-if (paths && categoryObjects) {
-  return (
-    <>
-      <Layout>
-        <Routes>
-          <Route path={"/"} element={<HomeView/>}></Route>
-          <Route path={"/info-advice"} element={<InfoAdviceView/>}></Route>
-
-          <Route path={"/tips"} element={<div>Tips</div>}>
-          </Route>
-          <Route path={"/about-us"} element={<div>About us</div>}></Route>
-          <Route path={"/contact-us"} element={<div>Contact us</div>}></Route>
+  if (paths && categoryObjects) {
+    return (
+      <>
+        <Layout>
+          <Routes>
+            <Route path={"/"} element={<HomeView/>}></Route>
+            <Route path={"info-advice"} element={<InfoAdviceView/>}>
+            </Route>
+            <Route path={"info-advice/:feeling"} element={<MainFeelingView/>}/>
+            <Route path={"info-advice/:feeling/:problem"} element={<SomeFeelingView/>}/>
 
 
-          {categoryObjects && categoryObjects.map(c => <Route key={c.title} element={<MainFeelingView/>}
-                                                              path={`info-advice/${c.url}`}>
-          </Route>)}
+            <Route path={"/tips"} element={<div>Tips</div>}>
+            </Route>
+            <Route path={"/about-us"} element={<div>About us</div>}></Route>
+            <Route path={"/contact-us"} element={<div>Contact us</div>}></Route>
 
-          {paths && paths.length > 0 && paths.map(
-            p => p.map(sp => <Route path={sp} element={<SomeFeelingView/>}/>)
-          )}
+            <Route path="*" element={<div>404</div>}>
 
+            </Route>
 
-          <Route path="*" element={<div>404</div>}>
+          </Routes>
+        </Layout>
 
-          </Route>
-
-        </Routes>
-      </Layout>
-
-    </>
-  )
-} else {
-  return <div>Loading...</div>
-}
+      </>
+    )
+  } else {
+    return <div>Loading...</div>
+  }
 };
 
 export default App;

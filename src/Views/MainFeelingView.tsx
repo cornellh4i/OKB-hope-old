@@ -1,6 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {useLocation} from "react-router-dom";
-import defineLastElementInLocation from "../hooks/defineLastElementInLocation";
+import {useLocation, useParams} from "react-router-dom";
 import useProvideData, {CategoryObject} from "../hooks/useProvideData";
 import HorizontalTeaserComp from "../Components/InfoAdviceComps/HorizontalTeaserComp";
 import BreadCrumbs from "../Components/LayoutComps/BreadCrumbs";
@@ -14,20 +13,22 @@ const MainFeelingView = () => {
   const [categoryObject, setCategoryObject] = useState<null | CategoryObject>(null);
   // data
   const {categoryObjects} = useProvideData()
-  
+
   let location = useLocation();
-  const realLocation = defineLastElementInLocation(location.pathname);
+  let {feeling} = useParams()
+
+
   useEffect(() => {
-    if (realLocation && categoryObjects) {
-      const filtered = categoryObjects?.filter(c => c.url === realLocation)
+    if (feeling && categoryObjects) {
+      const filtered = categoryObjects?.filter(c => c.url === feeling)
       setCategoryObject(filtered[0])
-      const otherFiltered = categoryObjects?.filter(c => c.url !== realLocation)
+      const otherFiltered = categoryObjects?.filter(c => c.url !== feeling)
       setMightInterestYou([otherFiltered[0]])
     }
     if (location) {
       setPathLength(location.pathname.split('/').length)
     }
-  }, [realLocation, categoryObjects, categoryObject])
+  }, [feeling, categoryObjects, categoryObject])
 
   return (
     <div className={'md:w-10/12 mx-auto '}>

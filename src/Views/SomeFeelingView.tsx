@@ -3,8 +3,7 @@ import useProvideData, {Article} from "../hooks/useProvideData";
 import imageUrlBuilder from "@sanity/image-url";
 import sanity from "../client";
 import {SanityImageSource} from "@sanity/image-url/lib/types/types";
-import {useLocation} from "react-router-dom";
-import defineLastElementInLocation from "../hooks/defineLastElementInLocation";
+import {useParams} from "react-router-dom";
 import useWindowSize from "../hooks/use.window.size";
 import {TypedObject} from "@portabletext/types";
 import sanityClient from "../client";
@@ -20,6 +19,11 @@ export type Paragraph = {
   serial_num: number
   article: any[]
 }
+type ArticleRef = {
+  _key: string
+  _ref: string
+  _type: 'reference'
+}
 
 const SomeFeelingView = () => {
   const [error, setError] = useState<null | string>(null);
@@ -34,8 +38,11 @@ const SomeFeelingView = () => {
     return builder.image(source)
   }
 
-  let location = useLocation();
-  const realLocation = defineLastElementInLocation(location.pathname);
+  // let location = useLocation();
+
+
+  let {problem: paramProblem} = useParams();
+  console.log(paramProblem)
 
   useEffect(() => {
     if (!paragraphs && problem) {
@@ -44,7 +51,8 @@ const SomeFeelingView = () => {
           `*[_type == 'paragraph']`
         )
         .then((data) => {
-          const d = data.filter(((p: { article: any[]; }) => p.article.filter(a => a._ref === problem._id)))
+          const d: Paragraph[] = data.filter(((p: { article: ArticleRef[]; }) => p.article.find(a => a._ref === problem._id)))
+          d.sort((d: Paragraph) => d.serial_num)
           setParagraphs(d);
         })
         .catch((err) => {
@@ -56,7 +64,7 @@ const SomeFeelingView = () => {
 
   useEffect(() => {
     if (articleTitles) {
-      const foundArticle = articleTitles.find(a => a.slug.current === realLocation)
+      const foundArticle = articleTitles.find(a => a.slug.current === paramProblem)
       if (foundArticle) {
         setProblem(foundArticle)
       }
@@ -89,7 +97,7 @@ const SomeFeelingView = () => {
 
       <div className={'lg:grid grid-cols-3'}>
         <div className={'col-end-2'}>
-          {paragraphs && paragraphs.slice(0,3).map(
+          {paragraphs && paragraphs.slice(0, 3).map(
             p => <ParagraphComp key={p.slug.current} paragraph={p}/>
           )}
         </div>
