@@ -7,8 +7,8 @@ type Props = {
 }
 const LinkTo: React.FC<Props> = ({children, url}) => {
   return (
-    <div className={'w-full mt-2 mb-4'}>
-      <Link to={url}>
+    <div className={'w-full'}>
+      <Link className={'lg:text-lg'} to={url}>
         {children}
       </Link>
     </div>

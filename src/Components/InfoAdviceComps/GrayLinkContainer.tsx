@@ -10,7 +10,7 @@ type Props = {
 }
 const GrayLinkContainer: React.FC<Props> = ({categoryObject}) => {
   return (
-    <div className={`w-full bg-gray-light p-3 mt-4 rounded md:w-1/3`}>
+    <div className={`w-full bg-[#EFEFEF] p-3 mt-4 rounded md:w-1/3`}>
       <div className={'py-1.5'}>
         <Link className={'no-underline text-blue text-xl md:text-2xl font-bold'}
               to={categoryObject.url}>{categoryObject.title}</Link>
@@ -19,7 +19,7 @@ const GrayLinkContainer: React.FC<Props> = ({categoryObject}) => {
         <div>
           {categoryObject?.articles && categoryObject.articles.map((a, idx) => {
             return <div key={idx + a.title} className={'py-1'}>
-              <Link className={'no-underline text-black'} style={{fontFamily: 'Roboto'}}
+              <Link className={'no-underline text-black text-lg'} style={{fontFamily: 'Roboto'}}
                     to={`/info-advice/${categoryObject.url}/${a.slug.current}`}>{a.title}</Link>
             </div>
           })}

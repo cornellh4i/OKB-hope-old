@@ -99,11 +99,11 @@ const HomeView = () => {
       <section id={'hero'} className={''}>
         <HeroComp homeViewContent={homeViewContent}/>
       </section>
-      <section id={'feelings'} className={'mt-2 lg:mt-6 max-w-screen-xl mx-auto'}>
+      <section id={'feelings'} className={'my-2 lg:my-8 max-w-screen-xl mx-auto'}>
         {feelings && <FeelingComp feelings={feelings}/>
         }
       </section>
-      <section id={'inspiration'} className={'max-w-screen-xl mx-auto lg:mt-6'}>
+      <section id={'inspiration'} className={'max-w-screen-xl mx-auto'}>
         <GetInspiredComp inspirations={inspirations}/>
       </section>
       <section id={'us'} className={'mt-16'}>
