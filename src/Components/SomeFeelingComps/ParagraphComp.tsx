@@ -3,6 +3,7 @@ import {Paragraph} from "../../Views/SomeFeelingView";
 import {PortableText} from "@portabletext/react";
 import CustomImageComp from "../UIComps/CustomImageComp";
 import CustomBulletPointComp from "../UIComps/CustomBulletPointComp";
+import useWindowSize from "../../hooks/use.window.size";
 
 type Props = {
   paragraph: Paragraph
@@ -19,9 +20,10 @@ export const paragraphComponents = {
   },
 }
 const ParagraphComp: React.FC<Props> = ({paragraph}) => {
+  const {windowBig}=useWindowSize()
   return (
-    <div id={`${paragraph.slug.current}`} className={`
-    w-full p-3 lg:max-w-screen-xl mx-auto lg:w-1/2 ${paragraph.colorKey ? paragraph.colorKey : 'bg-white'}`}>
+    <div id={`${paragraph.slug.current}`} className={` my-2 lg:my-4 rounded-md ${windowBig?'p-3':'p-1'}
+    ${paragraph.colorKey ? paragraph.colorKey : 'bg-white'} `}>
 
       <h3 className={'text-blue font-bold'}>{paragraph.title}</h3>
       <div>

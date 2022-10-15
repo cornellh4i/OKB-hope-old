@@ -8,7 +8,7 @@ type Props = {
 
 const LinkObjectContainer: React.FC<Props> = ({scrollToHandler, linkObjects}) => {
   return (
-    <div className={'w-full lg:w-1/3'}>
+    <div className={'w-full lg:w-2/3'}>
       <h3 className={'text-blue font-bold text-xl p-3 bg-gray-light rounded-xl'}>
         What you’ll find on this page
         <div className={'my-2'}>

@@ -37,7 +37,6 @@ const MainFeelingView = () => {
           `*[_type == "article" && "${category._id}" in categories[]._ref]`
         )
         .then((data) => {
-          console.log('article', data);
           setArticles(data);
         })
         .catch((err) => {
@@ -51,7 +50,6 @@ const MainFeelingView = () => {
           `*[_type == "article" && "${category._id}" != categories[]._ref][0...2]`
         )
         .then((data) => {
-          console.log('might', data);
           setMightInterestYou(data);
         })
         .catch((err) => {

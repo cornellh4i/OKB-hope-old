@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import useProvideData, {Article} from "../hooks/useProvideData";
+import {Article, Category} from "../hooks/useProvideData";
 import imageUrlBuilder from "@sanity/image-url";
 import sanity from "../client";
 import {SanityImageSource} from "@sanity/image-url/lib/types/types";
@@ -9,9 +9,9 @@ import {TypedObject} from "@portabletext/types";
 import sanityClient from "../client";
 import ParagraphComp from "../Components/SomeFeelingComps/ParagraphComp";
 import LinkObjectContainer from "../Components/SomeFeelingComps/LinkObjectContainer";
-import useMightInterestYouFactory from "../hooks/useMightInterestYouFactory";
 import MightInterestYouComp from "../Components/MainFeelingComps/MightInterestYouComp";
 import BlueContainerComp from "../Components/SomeFeelingComps/BlueContainerComp";
+import BreadCrumbs from "../Components/LayoutComps/BreadCrumbs";
 
 
 export type Paragraph = {
@@ -41,11 +41,12 @@ export type LinkObject = {
 
 
 const SomeFeelingView = () => {
+  const [category, setCategory] = useState<null | Category>(null);
+  const [mightInterestYou, setMightInterestYou] = useState<null | Article[]>(null);
   const [error, setError] = useState<null | string>(null);
   const [blueContainerContent, setBlueContainerContent] = useState<null | BlueContainerContent[]>(null);
   const [paragraphs, setParagraphs] = useState<null | Paragraph[]>(null);
   const [linkObjects, setLinkObjects] = useState<null | LinkObject[]>(null);
-  const {categoryObjects} = useProvideData()
   const [problem, setProblem] = useState<null | Article>(null);
   const {windowBig} = useWindowSize()
 
@@ -58,8 +59,6 @@ const SomeFeelingView = () => {
   // let location = useLocation();
 
   let {problem: paramProblem, feeling} = useParams();
-
-  const {mightInterestYou} = useMightInterestYouFactory(feeling, categoryObjects);
 
   useEffect(() => {
 
@@ -123,6 +122,35 @@ const SomeFeelingView = () => {
     }
   }, [problem, blueContainerContent])
 
+  useEffect(()=>{
+    if (feeling && !category) {
+      sanityClient
+        .fetch(
+          `*[_type == "category" && slug.current == "${feeling}"]{_id,page,title,slug,articles}`
+        )
+        .then((data) => {
+          setCategory(data[0]);
+        })
+        .catch((err) => {
+          console.log(err);
+          setError('error loading data')
+        });
+    }
+    if (feeling && category && !mightInterestYou) {
+      sanityClient
+        .fetch(
+          `*[_type == "article" && "${category._id}" != categories[]._ref][0...2]`
+        )
+        .then((data) => {
+          setMightInterestYou(data);
+        })
+        .catch((err) => {
+          console.log(err);
+          setError('error loading data')
+        });
+    }
+  },[feeling, category,mightInterestYou])
+
   const scrollToElementHandler = (s: string) => {
     const element = document.getElementById(s)
     if (element) {
@@ -133,6 +161,9 @@ const SomeFeelingView = () => {
   return (
     <div className={'w-screen relative'}>
       {error && <div>{error}</div>}
+      {!windowBig &&       <div className={'mx-3'}>
+        <BreadCrumbs />
+      </div>}
       {problem && <div className={'mt-4'}>
         <div className={'w-screen'}>
           {!windowBig &&
@@ -154,11 +185,14 @@ const SomeFeelingView = () => {
       </div>}
 
 
-      <div className={'px-3 w-full lg:max-w-screen-xl mx-auto'}>
+      <div className={'w-full p-3 lg:max-w-screen-lg mx-auto '}>
+        {windowBig &&       <div className={'mx-3'}>
+          <BreadCrumbs />
+        </div>}
         {linkObjects && <LinkObjectContainer scrollToHandler={scrollToElementHandler} linkObjects={linkObjects}/>}
       </div>
 
-      <div className={'lg:grid grid-cols-3'}>
+      <div className={'lg:grid grid-cols-3 w-full p-3 lg:max-w-screen-lg mx-auto'}>
 
         <div className={'col-span-2'}>
           <div>
@@ -180,14 +214,18 @@ const SomeFeelingView = () => {
           </div>
 
           <div>
-            {mightInterestYou && mightInterestYou.map(o => <div key={o.title}>
-              <MightInterestYouComp articles={o.articles}/>
-            </div>)}
+
           </div>
         </div>
-        <div></div>
+        <div>
+
+        </div>
       </div>
 
+      <div>
+        {mightInterestYou && mightInterestYou.length>0 && <MightInterestYouComp articles={mightInterestYou} />
+        }
+      </div>
     </div>
   );
 };
