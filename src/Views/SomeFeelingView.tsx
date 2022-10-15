@@ -185,14 +185,14 @@ const SomeFeelingView = () => {
       </div>}
 
 
-      <div className={'w-full p-3 lg:max-w-screen-lg mx-auto '}>
+      <div className={'w-full p-3 lg:max-w-screen-xl mx-auto '}>
         {windowBig &&       <div className={'mx-3'}>
           <BreadCrumbs />
         </div>}
         {linkObjects && <LinkObjectContainer scrollToHandler={scrollToElementHandler} linkObjects={linkObjects}/>}
       </div>
 
-      <div className={'lg:grid grid-cols-3 w-full p-3 lg:max-w-screen-lg mx-auto'}>
+      <div className={'lg:grid grid-cols-3 w-full p-3 lg:max-w-screen-xl mx-auto lg:gap-10'}>
 
         <div className={'col-span-2'}>
           <div>
@@ -201,7 +201,7 @@ const SomeFeelingView = () => {
             )}
           </div>
           <div>
-            {problem && problem.blueContainerContent && blueContainerContent && blueContainerContent.map(
+            {!windowBig && problem && problem.blueContainerContent && blueContainerContent && blueContainerContent.map(
               b=> <div key={b.slug.current} className={'px-3'}>
                 <BlueContainerComp blueContainerContent={b} />
               </div>
@@ -218,7 +218,11 @@ const SomeFeelingView = () => {
           </div>
         </div>
         <div>
-
+          {windowBig && problem && problem.blueContainerContent && blueContainerContent && blueContainerContent.map(
+            b=> <div key={b.slug.current} className={'px-3'}>
+              <BlueContainerComp blueContainerContent={b} />
+            </div>
+          )}
         </div>
       </div>
 
