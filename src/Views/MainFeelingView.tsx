@@ -50,7 +50,6 @@ const MainFeelingView = () => {
           `*[_type == "article" && "${category._id}" != categories[]._ref]`
         )
         .then((data) => {
-
           const d:Article[] = data.filter((da: { categories: { _ref: string; }[]; })=>da.categories[0]._ref !== category._id).slice(0,2)
           setMightInterestYou(d);
         })

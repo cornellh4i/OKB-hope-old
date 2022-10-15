@@ -139,10 +139,11 @@ const SomeFeelingView = () => {
     if (feeling && category && !mightInterestYou) {
       sanityClient
         .fetch(
-          `*[_type == "article" && "${category._id}" != categories[]._ref][0...2]`
+          `*[_type == "article" && "${category._id}" != categories[]._ref]`
         )
         .then((data) => {
-          setMightInterestYou(data);
+          const d:Article[] = data.filter((da: { categories: { _ref: string; }[]; })=>da.categories[0]._ref !== category._id).slice(2,4)
+          setMightInterestYou(d);
         })
         .catch((err) => {
           console.log(err);
