@@ -23,6 +23,7 @@ export type Paragraph = {
   body: TypedObject
   serial_num: number
   article: any[]
+  colorKey?:string
 }
 export type BlueContainerContent = {
   title: string
@@ -32,11 +33,7 @@ export type BlueContainerContent = {
     current: string
   }
 }
-type ArticleRef = {
-  _key: string
-  _ref: string
-  _type: 'reference'
-}
+
 export type LinkObject = {
   title: string,
   slug: string
@@ -48,7 +45,7 @@ const SomeFeelingView = () => {
   const [blueContainerContent, setBlueContainerContent] = useState<null | BlueContainerContent[]>(null);
   const [paragraphs, setParagraphs] = useState<null | Paragraph[]>(null);
   const [linkObjects, setLinkObjects] = useState<null | LinkObject[]>(null);
-  const {articleTitles, categoryObjects} = useProvideData()
+  const {categoryObjects} = useProvideData()
   const [problem, setProblem] = useState<null | Article>(null);
   const {windowBig} = useWindowSize()
 
@@ -69,13 +66,11 @@ const SomeFeelingView = () => {
     if (!paragraphs && problem) {
       sanityClient
         .fetch(
-          `*[_type == 'paragraph']`
+          `*[_type=="paragraph" && "${problem._id}" in article[]._ref]`
         )
         .then((data) => {
           // console.log(data)
-          const d: Paragraph[] = data.filter(((p: { article: ArticleRef[]; }) => p.article.find(a => a._ref === problem._id)))
-          // console.log(d);
-          d.sort((a, b) => a.serial_num - b.serial_num);
+          const d:Paragraph[] = data.sort((a: { serial_num: number; }, b: { serial_num: number; }) => a.serial_num - b.serial_num);
           setParagraphs(d);
         })
         .catch((err) => {
@@ -94,22 +89,31 @@ const SomeFeelingView = () => {
   }, [paragraphs, problem, linkObjects])
 
   useEffect(() => {
-    if (articleTitles) {
-      const foundArticle = articleTitles.find(a => a.slug.current === paramProblem)
-      if (foundArticle) {
-        setProblem(foundArticle)
-      }
+    if (!problem && paramProblem) {
+      sanityClient
+        .fetch(
+          `*[_type == 'article' && slug.current == '${paramProblem}']`
+        )
+        .then((data) => {
+          // console.log(data)
+          setProblem(data[0])
+        })
+        .catch((err) => {
+          console.log(err);
+          setError('error loading data')
+        });
     }
-  }, [articleTitles])
+  }, [problem,paramProblem])
 
   useEffect(() => {
     if (!blueContainerContent && problem && problem.blueContainerContent && problem.blueContainerContent.length>0) {
+      const refList = problem?.blueContainerContent.map(b=>b._ref)
       sanityClient
         .fetch(
-          `*[_id == '${problem.blueContainerContent[0]._ref}']`
+          `*[_type=='blueContainerContent' && _id in ["${refList[0]}", "${refList[1]}"]]`
         )
         .then((data) => {
-          console.log(data)
+          // console.log(data)
           setBlueContainerContent(data)
         })
         .catch((err) => {
@@ -118,7 +122,6 @@ const SomeFeelingView = () => {
         });
     }
   }, [problem, blueContainerContent])
-
 
   const scrollToElementHandler = (s: string) => {
     const element = document.getElementById(s)

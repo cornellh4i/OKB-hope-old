@@ -11,7 +11,7 @@ const categoryObjectFactory = (categories: Category[], articleTitles: Article[])
       }
     )
   } else {
-    return []
+    return null
   }
 }
 

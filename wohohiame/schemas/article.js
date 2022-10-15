@@ -50,6 +50,17 @@ export default {
           id: 'blueContainerContent'
         }]
       }]
+    },    {
+      name: 'paragraph',
+      title: 'Paragraphs',
+      type: 'array',
+      of: [{
+        type: 'reference',
+        to: [{
+          type: 'paragraph',
+          id: 'paragraph'
+        }]
+      }]
     },
     {
       name: 'summary',

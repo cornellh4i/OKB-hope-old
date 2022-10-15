@@ -40,6 +40,7 @@ export type CategoryObject = {
   articles: Article[]
   url: string
 }
+
 const useProvideData = () => {
   const [categories, setCategories] = useState<null | Category[]>(null);
   const [articleTitles, setArticleTitles] = useState<null | Article[]>(null);

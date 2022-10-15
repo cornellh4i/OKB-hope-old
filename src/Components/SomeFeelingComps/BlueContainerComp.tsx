@@ -1,29 +1,20 @@
 import React from 'react';
 import {BlueContainerContent} from "../../Views/SomeFeelingView";
-import CustomImageComp from "../UIComps/CustomImageComp";
 import {PortableText} from "@portabletext/react";
 import modules from './BlueContainerComp.module.css'
+import {paragraphComponents} from "./ParagraphComp";
 type Props={
   blueContainerContent: BlueContainerContent
 }
-const components = {
-  listItem: {
-    bullet: (props:any) => <li style={{listStyleType: 'disc', margin:'0 1rem', fontSize: '.9rem'}}>{props.children}</li>,
-  },
-  types: {
-    image: CustomImageComp,
-    // Any other custom types you have in your content
-    // Examples: mapLocation, contactForm, code, featuredProjects, latestNews, etc.
-  },
-}
+
 const BlueContainerComp:React.FC<Props> = ({blueContainerContent}) => {
   return (
-    <div className={'bg-greenish-blue p-3 rounded'}>
+    <div className={'bg-greenish-blue my-2 rounded w-full p-3 lg:max-w-screen-xl mx-auto lg:w-1/2'}>
       <div>
         <h3>{blueContainerContent.title}</h3>
       </div>
       <div className={modules.custom_bullet}>
-        <PortableText value={blueContainerContent.body} components={components} />
+        <PortableText value={blueContainerContent.body} components={paragraphComponents} />
       </div>
     </div>
   );

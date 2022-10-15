@@ -28,6 +28,11 @@ export default {
       type: 'number'
     },
     {
+      name: 'colorKey',
+      title: 'Background color',
+      type: 'string'
+    },
+    {
       name: 'article', title: 'article', type: "array",
       of: [
         {
