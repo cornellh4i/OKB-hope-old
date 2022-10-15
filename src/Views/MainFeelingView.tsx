@@ -47,10 +47,12 @@ const MainFeelingView = () => {
     if (feeling && category && !mightInterestYou) {
       sanityClient
         .fetch(
-          `*[_type == "article" && "${category._id}" != categories[]._ref][0...2]`
+          `*[_type == "article" && "${category._id}" != categories[]._ref]`
         )
         .then((data) => {
-          setMightInterestYou(data);
+
+          const d:Article[] = data.filter((da: { categories: { _ref: string; }[]; })=>da.categories[0]._ref !== category._id).slice(0,2)
+          setMightInterestYou(d);
         })
         .catch((err) => {
           console.log(err);
@@ -60,7 +62,7 @@ const MainFeelingView = () => {
   }, [feeling, category, articles])
 
   return (
-    <div className={'md:w-10/12 mx-auto '}>
+    <div className={'lg:max-w-screen-xl mx-auto '}>
       <section className={'px-3'}>
         {error && <div>{error}</div>}
         <BreadCrumbs/>

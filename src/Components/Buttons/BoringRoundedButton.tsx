@@ -8,7 +8,7 @@ type Props = {
 const BoringRoundedButton: React.FC<Props> = ({children, onClick}) => {
   return (
     <button onClick={onClick}
-            className={'bg-blue rounded-full py-2 px-6 text-lg lg:text-xl text-white'} style={{fontFamily: 'Roboto'}}>
+            className={'bg-blue rounded-full py-2 px-6 text-lg lg:text-xl text-white'} >
       {children}
     </button>
   );
