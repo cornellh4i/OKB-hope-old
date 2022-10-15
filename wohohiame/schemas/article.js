@@ -40,6 +40,18 @@ export default {
       }]
     },
     {
+      name: 'blueContainerContent',
+      title: 'Blue Container Content',
+      type: 'array',
+      of: [{
+        type: 'reference',
+        to: [{
+          type: 'blueContainerContent',
+          id: 'blueContainerContent'
+        }]
+      }]
+    },
+    {
       name: 'summary',
       title: 'Summary',
       type: 'text'

@@ -3,6 +3,7 @@ import categoryObjectFactory from "./categoryObjectFactory";
 import sanityClient from "../client";
 
 
+
 export type Category = {
   _id: string
   page: string,
@@ -16,8 +17,14 @@ type Categories = {
   _key: string
   _type: string
 }
+type BlueContentRef = {
+  _key: string
+  _ref: string
+  _type: 'reference'
+}
 export type Article = {
   categories: Categories[]
+  blueContainerContent: BlueContentRef[]
   slug: {
     _type: string
     current: string
@@ -26,7 +33,7 @@ export type Article = {
   summary: string
   mainImage: any
   teaser: string
-  _id:string
+  _id: string
 }
 export type CategoryObject = {
   title: string

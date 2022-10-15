@@ -8,6 +8,9 @@ type Props = {
 }
 
 const components = {
+  listItem: {
+    bullet: (props:any) => <li style={{listStyleType: 'disc', margin:'0 1rem', fontSize: '.9rem'}}>{props.children}</li>,
+  },
   types: {
     image: CustomImageComp,
     // Any other custom types you have in your content

@@ -11,6 +11,7 @@ import ParagraphComp from "../Components/SomeFeelingComps/ParagraphComp";
 import LinkObjectContainer from "../Components/SomeFeelingComps/LinkObjectContainer";
 import useMightInterestYouFactory from "../hooks/useMightInterestYouFactory";
 import MightInterestYouComp from "../Components/MainFeelingComps/MightInterestYouComp";
+import BlueContainerComp from "../Components/SomeFeelingComps/BlueContainerComp";
 
 
 export type Paragraph = {
@@ -22,6 +23,14 @@ export type Paragraph = {
   body: TypedObject
   serial_num: number
   article: any[]
+}
+export type BlueContainerContent = {
+  title: string
+  body: TypedObject
+  slug: {
+    _type: string
+    current: string
+  }
 }
 type ArticleRef = {
   _key: string
@@ -36,6 +45,7 @@ export type LinkObject = {
 
 const SomeFeelingView = () => {
   const [error, setError] = useState<null | string>(null);
+  const [blueContainerContent, setBlueContainerContent] = useState<null | BlueContainerContent[]>(null);
   const [paragraphs, setParagraphs] = useState<null | Paragraph[]>(null);
   const [linkObjects, setLinkObjects] = useState<null | LinkObject[]>(null);
   const {articleTitles, categoryObjects} = useProvideData()
@@ -92,6 +102,24 @@ const SomeFeelingView = () => {
     }
   }, [articleTitles])
 
+  useEffect(() => {
+    if (!blueContainerContent && problem && problem.blueContainerContent && problem.blueContainerContent.length>0) {
+      sanityClient
+        .fetch(
+          `*[_id == '${problem.blueContainerContent[0]._ref}']`
+        )
+        .then((data) => {
+          console.log(data)
+          setBlueContainerContent(data)
+        })
+        .catch((err) => {
+          console.log(err);
+          setError('error loading data')
+        });
+    }
+  }, [problem, blueContainerContent])
+
+
   const scrollToElementHandler = (s: string) => {
     const element = document.getElementById(s)
     if (element) {
@@ -135,7 +163,13 @@ const SomeFeelingView = () => {
               p => <ParagraphComp key={p.slug.current} paragraph={p}/>
             )}
           </div>
-          <div></div>
+          <div>
+            {problem && problem.blueContainerContent && blueContainerContent && blueContainerContent.map(
+              b=> <div key={b.slug.current} className={'px-3'}>
+                <BlueContainerComp blueContainerContent={b} />
+              </div>
+            )}
+          </div>
           <div>
             {paragraphs && paragraphs.slice(2,).map(
               p => <ParagraphComp key={p.slug.current} paragraph={p}/>
