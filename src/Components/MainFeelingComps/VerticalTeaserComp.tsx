@@ -28,7 +28,7 @@ const VerticalTeaserComp: React.FC<Props> = ({article, heightState, setHeightSta
   return (
     <div className={'flex flex-col gap-0 w-full lg:w-1/4'}>
       <div>
-        <img className={'rounded-t-xl'} src={urlFor(article.mainImage).url()} alt={article.title}/>
+        <img className={'rounded-t-xl'} src={urlFor(article.mainImage).url()} loading="lazy" alt={article.title}/>
 
       </div>
       <div ref={heightRef} className={`bg-white p-3`} style={{minHeight:`${heightState}px`}}>

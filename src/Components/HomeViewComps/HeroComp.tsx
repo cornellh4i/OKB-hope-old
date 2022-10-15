@@ -24,6 +24,7 @@ const HeroComp: React.FC<Props> = ({homeViewContent}) => {
         homeViewContent && !windowBig &&
         <img className={"object-cover w-full"}
              src={urlFor(homeViewContent.heroContent.mainImage).width(445).height(300).url()}
+             loading="lazy"
              alt="hero image"/>
       }
       {

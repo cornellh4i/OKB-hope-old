@@ -167,8 +167,8 @@ const SomeFeelingView = () => {
       {problem && <div className={'mt-4'}>
         <div className={'w-screen'}>
           {!windowBig &&
-            <img className={'object-cover'} src={urlFor(problem.mainImage).width(400).url()} alt={problem.title}/>}
-          {windowBig && <img className={'object-cover max-h-[600px] w-screen 2xl:max-w-screen-xl mx-auto'}
+            <img className={'object-cover'} loading="lazy" src={urlFor(problem.mainImage).width(400).url()} alt={problem.title}/>}
+          {windowBig && <img loading="lazy" className={'object-cover max-h-[600px] w-screen 2xl:max-w-screen-xl mx-auto'}
                              src={urlFor(problem.mainImage).width(1280).url()} alt={problem.title}/>}
         </div>
         <div className={'p-3 w-screen'}>

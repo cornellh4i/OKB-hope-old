@@ -31,7 +31,7 @@ const InspirationComp: React.FC<Props> = ({inspiration, heightState, setHeightSt
   return (
     <div className={'w-1/2 py-2 lg:w-1/4'}>
       <div className={'w-full'}>
-        {!windowBig ?         <img className={'mx-auto'} src={urlFor(inspiration?.mainImage).width(184).height(123).fit('scale').url()} alt=""/>
+        {!windowBig ?         <img className={'mx-auto'} loading="lazy" src={urlFor(inspiration?.mainImage).width(184).height(123).fit('scale').url()} alt=""/>
          :         <img className={'rounded-t-md mx-auto'} src={urlFor(inspiration?.mainImage).width(400).height(250).fit('scale').url()} alt=""/>
         }
       </div>
