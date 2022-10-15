@@ -1,4 +1,4 @@
-import React, { useState, useEffect} from 'react';
+import React, {useState, useEffect} from 'react';
 import Topbar from "./Components/LayoutComps/Topbar";
 import NavbarComp from "./Components/LayoutComps/NavbarComp";
 import useWindowSize from "./hooks/use.window.size";
@@ -13,19 +13,20 @@ const Layout: React.FC<Props> = ({children}) => {
   const [screenHeight, setScreenHeight] = useState(0);
   const {windowBig} = useWindowSize();
 
-  useEffect(()=>{
+  useEffect(() => {
     if (windowBig) {
-      setScreenHeight(window.innerHeight-310)
+      setScreenHeight(window.innerHeight - 310)
     } else {
-      setScreenHeight(window.innerHeight-310)
+      setScreenHeight(window.innerHeight - 310)
 
     }
-  },[])
+  }, [])
 
   return (
-    <div className={'w-screen bg-white relative'} >
+    <div className={'w-screen bg-white relative'}>
       <div className={'w-screen bg-white fixed z-40 top-0 left-0 right-0 h-[108px]'}>
-        <section className={" bg-white md:flex items-center md:w-11/12 mx-auto md:px-14 fixed top-0 left-0 right-0 z-50 pt-2"}>
+        <section
+          className={" bg-white md:flex items-center md:w-11/12 mx-auto md:px-14 fixed top-0 left-0 right-0 z-50 pt-2"}>
           <Topbar/>
           <NavbarComp/>
 
@@ -33,7 +34,7 @@ const Layout: React.FC<Props> = ({children}) => {
         </section>
       </div>
 
-      <main className={'mt-[108px]'} style={{minHeight:`${screenHeight}px`}}>
+      <main className={'mt-[108px]'} style={{minHeight: `${screenHeight}px`}}>
         {children}
       </main>
       <div className={'max-w-screen-xl mx-auto relative h-[72px]'}>
@@ -41,7 +42,7 @@ const Layout: React.FC<Props> = ({children}) => {
                      style={{
                        position: 'absolute', right: windowBig ? '0rem' : '1rem', top: '1rem',
                        width: '60px', background: '#2469A6', color: 'white',
-                       borderRadius: '3rem', padding: '0 1rem'
+                       borderRadius: '3rem', padding: '0 1rem', filter: 'drop-shadow(0 4px 2px rgb(0 0 0 / 0.10))',
                      }}
           // component={<span>back to top</span>}
         />

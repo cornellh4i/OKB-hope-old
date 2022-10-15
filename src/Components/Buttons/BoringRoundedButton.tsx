@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 
 type Props = {
   children: React.ReactNode
@@ -6,9 +6,15 @@ type Props = {
 }
 
 const BoringRoundedButton: React.FC<Props> = ({children, onClick}) => {
+  const [active, setActive] = useState<string>('drop-shadow-lg');
+  const clickHandler = () => {
+    setActive('')
+    onClick
+  }
   return (
-    <button onClick={onClick}
-            className={'bg-blue rounded-full py-2 px-6 text-lg lg:text-xl text-white'} >
+    <button onClick={clickHandler}
+            className={`bg-blue rounded-full py-2 ${active} hover:drop-shadow-xl transition
+             px-6 text-lg lg:text-xl text-white`} >
       {children}
     </button>
   );
