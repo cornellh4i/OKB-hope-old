@@ -21,8 +21,8 @@ const YellowContainerComp:React.FC<Props> = ({paragraph,  heightState, setHeight
   return (
     <div ref={heightRef} id={`${paragraph.slug.current}`}
          style={{minHeight:`${heightState}px`}}
-         className={` my-2 lg:my-4 rounded-md ${windowBig ? 'p-3' : 'p-1'} 
-    ${paragraph.colorKey ? paragraph.colorKey : 'bg-white'} `}>
+         className={` my-2 lg:my-4 rounded-md ${windowBig ? 'p-4' : 'p-2'} 
+    ${paragraph.colorKey ? 'bg-[#F0FFB1]': 'bg-white'} `}>
 
       <h3 className={'text-blue font-bold'}>{paragraph.title}</h3>
       <div className={paragraph.colorKey ? 'p-1' : 'p-0'}>

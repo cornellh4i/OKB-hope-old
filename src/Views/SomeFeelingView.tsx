@@ -29,6 +29,7 @@ export type Paragraph = {
 export type BlueContainerContent = {
   title: string
   body: TypedObject
+  warning: TypedObject
   slug: {
     _type: string
     current: string
@@ -220,15 +221,12 @@ const SomeFeelingView = () => {
               </div>
             )}
           </div>
-          <div>
+          <div className={''}>
             {paragraphs && paragraphs.slice(2,).map(
               p => <ParagraphComp key={p.slug.current} paragraph={p}/>
             )}
           </div>
 
-          <div>
-
-          </div>
         </div>
         <div>
           {windowBig && problem && problem.blueContainerContent && blueContainerContent && blueContainerContent.map(
@@ -248,7 +246,7 @@ const SomeFeelingView = () => {
           </div>)}
         </div>}
 
-      <div>
+      <div className={'mt-8 lg:mt-12'}>
         {mightInterestYou && mightInterestYou.length > 0 && <MightInterestYouComp articles={mightInterestYou}/>
         }
       </div>

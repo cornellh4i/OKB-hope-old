@@ -21,6 +21,11 @@ export default {
       title: 'Body',
       type: 'blockContent',
     },
+    {
+      name: 'warning',
+      title: 'warning',
+      type: 'blockContent',
+    },
     // {
     //   name: 'article', title: 'article', type: "array",
     //   of: [
