@@ -241,7 +241,7 @@ const SomeFeelingView = () => {
         </div>
       </div>
 
-      {problem && problem.yellowContainerContent.length > 0 &&
+      {problem && problem.yellowContainerContent?.length > 0 &&
         <div className={'w-full px-3 lg:max-w-screen-xl mx-auto lg:grid lg:grid-cols-3 lg:gap-4'}>
           {problem.yellowContainerContent.map(y => <div key={y.serial_num}>
             <YellowContainerComp heightState={heightState} setHeightState={heightStateHandler} paragraph={y}/>
