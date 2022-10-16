@@ -1,6 +1,7 @@
 import {useEffect, useState} from 'react';
 import categoryObjectFactory from "./categoryObjectFactory";
 import sanityClient from "../client";
+import {Paragraph} from "../Views/SomeFeelingView";
 
 
 
@@ -17,14 +18,15 @@ type Categories = {
   _key: string
   _type: string
 }
-type BlueContentRef = {
+type SanityRef = {
   _key: string
   _ref: string
   _type: 'reference'
 }
 export type Article = {
   categories: Categories[]
-  blueContainerContent: BlueContentRef[]
+  blueContainerContent: SanityRef[]
+  yellowContainerContent: Paragraph[]
   slug: {
     _type: string
     current: string
@@ -34,6 +36,7 @@ export type Article = {
   mainImage: any
   teaser: string
   _id: string
+  paragraph: SanityRef[]
 }
 export type CategoryObject = {
   title: string

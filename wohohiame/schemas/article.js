@@ -1,5 +1,3 @@
-
-
 export default {
   name: 'article',
   title: 'Article',
@@ -50,7 +48,16 @@ export default {
           id: 'blueContainerContent'
         }]
       }]
-    },    {
+    },
+    {
+      name: 'yellowContainerContent',
+      title: 'Yellow Container Content',
+      type: 'array',
+      of: [{
+        type: 'paragraph',
+      }]
+    },
+    {
       name: 'paragraph',
       title: 'Paragraphs',
       type: 'array',

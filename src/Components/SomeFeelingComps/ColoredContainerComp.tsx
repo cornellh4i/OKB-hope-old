@@ -6,11 +6,11 @@ type Props={
   blueContainerContent: BlueContainerContent
 }
 
-const BlueContainerComp:React.FC<Props> = ({blueContainerContent}) => {
+const ColoredContainerComp:React.FC<Props> = ({blueContainerContent}) => {
   return (
     <div className={'bg-greenish-blue my-2 rounded w-full p-3 lg:max-w-screen-xl mx-auto '}>
       <div>
-        <h3>{blueContainerContent.title}</h3>
+        <h3 className={'font-bold'}>{blueContainerContent.title}</h3>
       </div>
       <div>
         <PortableText value={blueContainerContent.body} components={paragraphComponents} />
@@ -19,4 +19,4 @@ const BlueContainerComp:React.FC<Props> = ({blueContainerContent}) => {
   );
 };
 
-export default BlueContainerComp;
+export default ColoredContainerComp;

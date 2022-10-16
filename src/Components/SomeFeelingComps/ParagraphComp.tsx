@@ -20,14 +20,15 @@ export const paragraphComponents = {
   },
 }
 const ParagraphComp: React.FC<Props> = ({paragraph}) => {
-  const {windowBig}=useWindowSize()
+  const {windowBig} = useWindowSize()
+
   return (
-    <div id={`${paragraph.slug.current}`} className={` my-2 lg:my-4 rounded-md ${windowBig?'p-3':'p-1'}
+    <div id={`${paragraph.slug.current}`} className={` my-2 lg:my-4 rounded-md ${windowBig ? 'p-3' : 'p-1'} 
     ${paragraph.colorKey ? paragraph.colorKey : 'bg-white'} `}>
 
       <h3 className={'text-blue font-bold'}>{paragraph.title}</h3>
-      <div>
-        <PortableText value={paragraph.body} components={paragraphComponents} />
+      <div className={paragraph.colorKey ? 'p-1' : 'p-0'}>
+        <PortableText value={paragraph.body} components={paragraphComponents}/>
       </div>
     </div>
   );

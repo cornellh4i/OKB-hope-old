@@ -10,8 +10,9 @@ import sanityClient from "../client";
 import ParagraphComp from "../Components/SomeFeelingComps/ParagraphComp";
 import LinkObjectContainer from "../Components/SomeFeelingComps/LinkObjectContainer";
 import MightInterestYouComp from "../Components/MainFeelingComps/MightInterestYouComp";
-import BlueContainerComp from "../Components/SomeFeelingComps/BlueContainerComp";
+import ColoredContainerComp from "../Components/SomeFeelingComps/ColoredContainerComp";
 import BreadCrumbs from "../Components/LayoutComps/BreadCrumbs";
+import YellowContainerComp from "../Components/SomeFeelingComps/YellowContainerComp";
 
 
 export type Paragraph = {
@@ -23,7 +24,7 @@ export type Paragraph = {
   body: TypedObject
   serial_num: number
   article: any[]
-  colorKey?:string
+  colorKey?: string
 }
 export type BlueContainerContent = {
   title: string
@@ -40,7 +41,9 @@ export type LinkObject = {
 }
 
 
+
 const SomeFeelingView = () => {
+  const [heightState, setHeightState] = useState(0);
   const [category, setCategory] = useState<null | Category>(null);
   const [mightInterestYou, setMightInterestYou] = useState<null | Article[]>(null);
   const [error, setError] = useState<null | string>(null);
@@ -50,6 +53,7 @@ const SomeFeelingView = () => {
   const [problem, setProblem] = useState<null | Article>(null);
   const {windowBig} = useWindowSize()
 
+  const {windowHeight} = useWindowSize()
   // sanity
   const builder = imageUrlBuilder(sanity);
   const urlFor = (source: SanityImageSource) => {
@@ -69,7 +73,7 @@ const SomeFeelingView = () => {
         )
         .then((data) => {
           // console.log(data)
-          const d:Paragraph[] = data.sort((a: { serial_num: number; }, b: { serial_num: number; }) => a.serial_num - b.serial_num);
+          const d: Paragraph[] = data.sort((a: { serial_num: number; }, b: { serial_num: number; }) => a.serial_num - b.serial_num);
           setParagraphs(d);
         })
         .catch((err) => {
@@ -102,11 +106,11 @@ const SomeFeelingView = () => {
           setError('error loading data')
         });
     }
-  }, [problem,paramProblem])
+  }, [problem, paramProblem])
 
   useEffect(() => {
-    if (!blueContainerContent && problem && problem.blueContainerContent && problem.blueContainerContent.length>0) {
-      const refList = problem?.blueContainerContent.map(b=>b._ref)
+    if (!blueContainerContent && problem && problem.blueContainerContent && problem.blueContainerContent.length > 0) {
+      const refList = problem?.blueContainerContent.map(b => b._ref)
       sanityClient
         .fetch(
           `*[_type=='blueContainerContent' && _id in ["${refList[0]}", "${refList[1]}"]]`
@@ -122,7 +126,7 @@ const SomeFeelingView = () => {
     }
   }, [problem, blueContainerContent])
 
-  useEffect(()=>{
+  useEffect(() => {
     if (feeling && !category) {
       sanityClient
         .fetch(
@@ -142,7 +146,7 @@ const SomeFeelingView = () => {
           `*[_type == "article" && "${category._id}" != categories[]._ref]`
         )
         .then((data) => {
-          const d:Article[] = data.filter((da: { categories: { _ref: string; }[]; })=>da.categories[0]._ref !== category._id).slice(2,4)
+          const d: Article[] = data.filter((da: { categories: { _ref: string; }[]; }) => da.categories[0]._ref !== category._id).slice(2, 4)
           setMightInterestYou(d);
         })
         .catch((err) => {
@@ -150,7 +154,7 @@ const SomeFeelingView = () => {
           setError('error loading data')
         });
     }
-  },[feeling, category,mightInterestYou])
+  }, [feeling, category, mightInterestYou])
 
   const scrollToElementHandler = (s: string) => {
     const element = document.getElementById(s)
@@ -159,18 +163,26 @@ const SomeFeelingView = () => {
     }
   }
 
+  const heightStateHandler = (n: number) => {
+    if (n) {
+      setHeightState(n)
+    }
+  }
+
   return (
     <div className={'w-screen relative'}>
       {error && <div>{error}</div>}
-      {!windowBig &&       <div className={'mx-3'}>
-        <BreadCrumbs />
+      {!windowBig && <div className={'mx-3'}>
+        <BreadCrumbs/>
       </div>}
       {problem && <div className={'mt-4'}>
         <div className={'w-screen'}>
           {!windowBig &&
-            <img className={'object-cover'} loading="lazy" src={urlFor(problem.mainImage).width(400).url()} alt={problem.title}/>}
-          {windowBig && <img loading="lazy" className={'object-cover max-h-[600px] w-screen 2xl:max-w-screen-xl mx-auto'}
-                             src={urlFor(problem.mainImage).width(1280).url()} alt={problem.title}/>}
+            <img className={'object-cover'} loading="lazy" src={urlFor(problem.mainImage).width(400).url()}
+                 alt={problem.title}/>}
+          {windowBig &&
+            <img loading="lazy" className={'object-cover max-h-[600px] w-screen 2xl:max-w-screen-xl mx-auto'}
+                 src={urlFor(problem.mainImage).width(1280).url()} alt={problem.title}/>}
         </div>
         <div className={'p-3 w-screen'}>
           <div
@@ -186,16 +198,16 @@ const SomeFeelingView = () => {
       </div>}
 
 
-      <div className={'w-full p-3 lg:max-w-screen-xl mx-auto '}>
-        {windowBig &&       <div className={'mx-3'}>
-          <BreadCrumbs />
+      <div className={'w-full px-3 lg:max-w-screen-xl mx-auto '}>
+        {windowBig && <div className={'mb-3'}>
+          <BreadCrumbs/>
         </div>}
         {linkObjects && <LinkObjectContainer scrollToHandler={scrollToElementHandler} linkObjects={linkObjects}/>}
       </div>
 
       <div className={'lg:grid grid-cols-3 w-full p-3 lg:max-w-screen-xl mx-auto lg:gap-10'}>
 
-        <div className={'col-span-2'}>
+        <div className={!blueContainerContent ? 'col-span-3' : 'col-span-2'}>
           <div>
             {paragraphs && paragraphs.slice(0, 2).map(
               p => <ParagraphComp key={p.slug.current} paragraph={p}/>
@@ -203,8 +215,8 @@ const SomeFeelingView = () => {
           </div>
           <div>
             {!windowBig && problem && problem.blueContainerContent && blueContainerContent && blueContainerContent.map(
-              b=> <div key={b.slug.current} className={'px-3'}>
-                <BlueContainerComp blueContainerContent={b} />
+              b => <div key={b.slug.current} className={'px-3 my-3'}>
+                <ColoredContainerComp blueContainerContent={b}/>
               </div>
             )}
           </div>
@@ -220,15 +232,24 @@ const SomeFeelingView = () => {
         </div>
         <div>
           {windowBig && problem && problem.blueContainerContent && blueContainerContent && blueContainerContent.map(
-            b=> <div key={b.slug.current} className={'px-3'}>
-              <BlueContainerComp blueContainerContent={b} />
+            b => <div key={b.slug.current}
+                      style={{minHeight:`${windowHeight/3*2}px`}}
+                      className={`flex flex-col justify-between`}>
+              <ColoredContainerComp blueContainerContent={b}/>
             </div>
           )}
         </div>
       </div>
 
+      {problem && problem.yellowContainerContent.length > 0 &&
+        <div className={'w-full px-3 lg:max-w-screen-xl mx-auto lg:grid lg:grid-cols-3 lg:gap-4'}>
+          {problem.yellowContainerContent.map(y => <div key={y.serial_num}>
+            <YellowContainerComp heightState={heightState} setHeightState={heightStateHandler} paragraph={y}/>
+          </div>)}
+        </div>}
+
       <div>
-        {mightInterestYou && mightInterestYou.length>0 && <MightInterestYouComp articles={mightInterestYou} />
+        {mightInterestYou && mightInterestYou.length > 0 && <MightInterestYouComp articles={mightInterestYou}/>
         }
       </div>
     </div>
