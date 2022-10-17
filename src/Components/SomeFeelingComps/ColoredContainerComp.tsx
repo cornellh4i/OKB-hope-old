@@ -8,7 +8,7 @@ type Props = {
 }
 
 const ColoredContainerComp: React.FC<Props> = ({blueContainerContent}) => {
-  console.log(blueContainerContent)
+
   return (
     <div className={'bg-greenish-blue my-2 rounded w-full p-3 lg:max-w-screen-xl mx-auto '}>
       <div>

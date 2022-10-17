@@ -81,7 +81,7 @@ const MainFeelingView = () => {
         }
       </div>
       <section>
-        {mightInterestYou && mightInterestYou.length>0 && <MightInterestYouComp articles={mightInterestYou} />
+        {mightInterestYou && mightInterestYou.length>0 && <MightInterestYouComp  />
         }
       </section>
     </div>

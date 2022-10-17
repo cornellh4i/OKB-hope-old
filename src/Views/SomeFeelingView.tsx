@@ -42,7 +42,6 @@ export type LinkObject = {
 }
 
 
-
 const SomeFeelingView = () => {
   const [heightState, setHeightState] = useState(0);
   const [category, setCategory] = useState<null | Category>(null);
@@ -60,8 +59,6 @@ const SomeFeelingView = () => {
   const urlFor = (source: SanityImageSource) => {
     return builder.image(source)
   }
-
-  // let location = useLocation();
 
   let {problem: paramProblem, feeling} = useParams();
 
@@ -93,7 +90,7 @@ const SomeFeelingView = () => {
   }, [paragraphs, problem, linkObjects])
 
   useEffect(() => {
-    if (!problem && paramProblem) {
+    if ((!problem && paramProblem) || (problem && paramProblem !== problem.slug.current)) {
       sanityClient
         .fetch(
           `*[_type == 'article' && slug.current == '${paramProblem}']`
@@ -141,10 +138,10 @@ const SomeFeelingView = () => {
           setError('error loading data')
         });
     }
-    if (feeling && category && !mightInterestYou) {
+    if ((feeling && category && !mightInterestYou)) {
       sanityClient
         .fetch(
-          `*[_type == "article" && "${category._id}" != categories[]._ref]`
+          `*[_type == "article" && "${category!._id}" != categories[]._ref]`
         )
         .then((data) => {
           const d: Article[] = data.filter((da: { categories: { _ref: string; }[]; }) => da.categories[0]._ref !== category._id).slice(2, 4)
@@ -231,7 +228,7 @@ const SomeFeelingView = () => {
         <div>
           {windowBig && problem && problem.blueContainerContent && blueContainerContent && blueContainerContent.map(
             b => <div key={b.slug.current}
-                      style={{minHeight:`${windowHeight/3*2}px`}}
+                      style={{minHeight: `${windowHeight / 3 * 2}px`}}
                       className={`flex flex-col justify-between`}>
               <ColoredContainerComp blueContainerContent={b}/>
             </div>
@@ -247,7 +244,7 @@ const SomeFeelingView = () => {
         </div>}
 
       <div className={'mt-8 lg:mt-12'}>
-        {mightInterestYou && mightInterestYou.length > 0 && <MightInterestYouComp articles={mightInterestYou}/>
+        {mightInterestYou && mightInterestYou.length > 0 && <MightInterestYouComp/>
         }
       </div>
     </div>
