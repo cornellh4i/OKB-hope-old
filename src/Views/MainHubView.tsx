@@ -60,10 +60,10 @@ const MainHubView = () => {
   const equality = page === firstElementInPath
 
 
-  if (articleTitles) {
-    console.log(articleTitles[0])
-
-  }
+  // if (articleTitles) {
+  //   console.log(articleTitles[0])
+  //
+  // }
 
   useEffect(() => {
     if (!equality && articleTitles) {

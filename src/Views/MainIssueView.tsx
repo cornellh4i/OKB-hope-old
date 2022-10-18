@@ -1,23 +1,20 @@
 import React, {useEffect, useState} from 'react';
-import {useLocation, useParams} from "react-router-dom";
-import {Article,Category} from "./MainHubView";
+import {useParams} from "react-router-dom";
+import {Article, Category} from "./MainHubView";
 import HorizontalTeaserComp from "../Components/InfoAdviceComps/HorizontalTeaserComp";
 import BreadCrumbs from "../Components/LayoutComps/BreadCrumbs";
 import MightInterestYouComp from "../Components/MainFeelingComps/MightInterestYouComp";
 import sanityClient from "../client";
 
-const MainFeelingView = () => {
+const MainIssueView = () => {
   const [category, setCategory] = useState<null | Category>(null);
-  const [mightInterestYou, setMightInterestYou] = useState<null | Article[]>(null);
+
   const [error, setError] = useState<null | string>(null);
   const [articles, setArticles] = useState<null | Article[]>(null);
   // data
 
-  let {feeling} = useParams()
-  let {pathname} = useLocation()
-  const firstElementInPath = pathname.split('/')[1]
-  console.log(firstElementInPath)
-
+  let {feeling, tipCategory} = useParams()
+  console.log(tipCategory)
 
 
   useEffect(() => {
@@ -25,6 +22,19 @@ const MainFeelingView = () => {
       sanityClient
         .fetch(
           `*[_type == "category" && slug.current == "${feeling}"]{_id,page,title,slug,articles}`
+        )
+        .then((data) => {
+          setCategory(data[0]);
+        })
+        .catch((err) => {
+          console.log(err);
+          setError('error loading data')
+        });
+    }
+    if (tipCategory && !category) {
+      sanityClient
+        .fetch(
+          `*[_type == "tipCategory" && slug.current == "${tipCategory}"]{_id,page,title,slug,articles}`
         )
         .then((data) => {
           setCategory(data[0]);
@@ -47,14 +57,13 @@ const MainFeelingView = () => {
           setError('error loading data')
         });
     }
-    if (feeling && category && !mightInterestYou) {
+    if (tipCategory && category && !articles) {
       sanityClient
         .fetch(
-          `*[_type == "article" && "${category._id}" != categories[]._ref]`
+          `*[_type == "tipArticle" && "${category._id}" in categories[]._ref]`
         )
         .then((data) => {
-          const d:Article[] = data.filter((da: { categories: { _ref: string; }[]; })=>da.categories[0]._ref !== category._id).slice(0,2)
-          setMightInterestYou(d);
+          setArticles(data);
         })
         .catch((err) => {
           console.log(err);
@@ -74,7 +83,7 @@ const MainFeelingView = () => {
           {category?.title}
         </h2>
       </div>
-      <div className={'lg:flex w-full px-3 gap-6 justify-start my-2 lg:my-8'}>
+      <div className={'lg:grid w-full px-3 gap-6 grid-cols-3 justify-start my-2 lg:my-8'} style={{minHeight:'150px'}}>
         {
           articles && articles.map(
             a => <div key={a.slug.current}>
@@ -84,11 +93,11 @@ const MainFeelingView = () => {
         }
       </div>
       <section>
-        {mightInterestYou && mightInterestYou.length>0 && category && <MightInterestYouComp category={category} />
+        {category && <MightInterestYouComp category={category}/>
         }
       </section>
     </div>
   );
 };
 
-export default MainFeelingView;
+export default MainIssueView;

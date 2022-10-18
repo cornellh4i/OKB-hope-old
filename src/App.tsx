@@ -3,7 +3,7 @@ import {RouterProvider, createBrowserRouter} from "react-router-dom";
 import HomeView from "./Views/HomeView";
 import NotFoundError from "./NotFoundError";
 import MainHubView from "./Views/MainHubView";
-import MainFeelingView from "./Views/MainFeelingView";
+import MainIssueView from "./Views/MainIssueView";
 import SomeFeelingView from "./Views/SomeFeelingView";
 import AboutUs from "./Views/AboutUs";
 import ContactUs from "./Views/ContactUs";
@@ -45,9 +45,16 @@ const router = createBrowserRouter([
     errorElement: <NotFoundError/>,
   },
   {
+    path: 'tips/:tipCategory',
+    element: <Layout>
+      <MainIssueView/>
+    </Layout>,
+    errorElement: <NotFoundError/>,
+  },
+  {
     path: 'info-advice/:feeling',
     element: <Layout>
-      <MainFeelingView/>
+      <MainIssueView/>
     </Layout>,
     errorElement: <NotFoundError/>,
 

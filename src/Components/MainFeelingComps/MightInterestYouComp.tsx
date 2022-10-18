@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import {Article, Category} from "../../Views/MainHubView";
 import VerticalTeaserComp from "./VerticalTeaserComp";
 import sanityClient from "../../client";
-import {useParams} from "react-router-dom";
+import {useLocation, useParams} from "react-router-dom";
 
 type Props = {
   category: Category
@@ -14,23 +14,18 @@ const MightInterestYouComp: React.FC<Props> = ({category}) => {
   const [error, setError] = useState<null | string>(null);
   const [problemArticle, setProblemArticle] = useState< Article[] | undefined>(undefined);
   let {problem: paramProblem} = useParams();
+  let {pathname} = useLocation()
 
-  // console.log('category',category.slug.current)
-  // if (problemArticle){
-  //   console.log('problemArticle',problemArticle[0].slug.current)
-  //
-  // }
-  // console.log('feeling',feeling)
-  // console.log('paramProblem', paramProblem)
+  const firstElementInPath = pathname.split('/')[1]
+  console.log(firstElementInPath)
 
   const pathIncludesProblem = (param: string | undefined, problem: Article[]|undefined) => {
     return problem?.find(a => a.slug.current === param)
   }
-  const sameProblem = pathIncludesProblem(paramProblem,problemArticle
-  )
+  const sameProblem = pathIncludesProblem(paramProblem,problemArticle)
   useEffect(() => {
 
-    if (!problemArticle) {
+    if (!problemArticle && firstElementInPath === 'info-advice') {
       sanityClient
         .fetch(
           `*[_type == 'article' && !("${category._id}" in categories[]._ref)][0..1]`
@@ -44,7 +39,21 @@ const MightInterestYouComp: React.FC<Props> = ({category}) => {
           setError('error loading data')
         });
     }
-  }, [problemArticle, category])
+    if (!problemArticle && firstElementInPath === 'tips') {
+      sanityClient
+        .fetch(
+          `*[_type == 'tipArticle' && !("${category._id}" in categories[]._ref)][0..1]`
+        )
+        .then((data) => {
+          // console.log(data)
+          setProblemArticle(data)
+        })
+        .catch((err) => {
+          console.log(err);
+          setError('error loading data')
+        });
+    }
+  }, [problemArticle, category, firstElementInPath])
 
   useEffect(() => {
     if (sameProblem && problemArticle) {

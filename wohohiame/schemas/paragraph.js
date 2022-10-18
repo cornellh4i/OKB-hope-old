@@ -45,6 +45,20 @@ export default {
           ]
         }
       ]
+    },
+    {
+      name: 'tipArticle', title: 'Tip article', type: "array",
+      of: [
+        {
+          type: 'reference',
+          to: [
+            {
+              type: 'tipArticle',
+              id: 'tipArticle'
+            }
+          ]
+        }
+      ]
     }
   ],
 }

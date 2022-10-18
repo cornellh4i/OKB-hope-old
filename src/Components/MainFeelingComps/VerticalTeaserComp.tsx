@@ -53,7 +53,7 @@ const VerticalTeaserComp: React.FC<Props> = ({article, heightState, setHeightSta
     <div className={'flex flex-col gap-0 w-full lg:w-1/4'}>
       {error && <div>{error}</div>}
       <div>
-        <img className={'rounded-t-lg'} src={urlFor(article.mainImage).url()} loading="lazy" alt={article.title}/>
+        <img className={'rounded-t-lg'} src={urlFor(article.mainImage).height(200).width(400).url()} loading="lazy" alt={article.title}/>
       </div>
       <div ref={heightRef} className={`bg-white p-3 rounded-b-lg`} style={{minHeight: `${heightState}px`}}>
         <Link
