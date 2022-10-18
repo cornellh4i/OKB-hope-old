@@ -1,28 +1,39 @@
 import React, {useEffect, useState} from 'react';
-import {Article} from "../../hooks/useProvideData";
+import {Article, Category} from "../../hooks/useProvideData";
 import VerticalTeaserComp from "./VerticalTeaserComp";
 import sanityClient from "../../client";
 import {useParams} from "react-router-dom";
 
-type Props = {}
+type Props = {
+  category: Category
+}
 
 
-const MightInterestYouComp: React.FC<Props> = () => {
-  const [heightState, setHeightState] = useState(0);
+const MightInterestYouComp: React.FC<Props> = ({category}) => {
+  const [heightState, setHeightState] = useState(100);
   const [error, setError] = useState<null | string>(null);
-  const [problemArticle, setProblemArticle] = useState<null | Article[]>(null);
+  const [problemArticle, setProblemArticle] = useState< Article[] | undefined>(undefined);
   let {problem: paramProblem} = useParams();
 
+  // console.log('category',category.slug.current)
+  // if (problemArticle){
+  //   console.log('problemArticle',problemArticle[0].slug.current)
+  //
+  // }
+  // console.log('feeling',feeling)
+  // console.log('paramProblem', paramProblem)
+
+  const pathIncludesProblem = (param: string | undefined, problem: Article[]|undefined) => {
+    return problem?.find(a => a.slug.current === param)
+  }
+  const sameProblem = pathIncludesProblem(paramProblem,problemArticle
+  )
   useEffect(() => {
-    const pathIncludesProblem = (param: string | undefined, problem: Article[]) => {
-      return problem.find(a => a.slug.current === param)
-    }
-    if ((!problemArticle && paramProblem) || (problemArticle && pathIncludesProblem(paramProblem, problemArticle))) {
-      const randStart = Math.ceil(Math.random() * 5)
-      const randEnd = randStart + 1
+
+    if (!problemArticle) {
       sanityClient
         .fetch(
-          `*[_type == 'article' && slug.current != '${paramProblem}'][${randStart}..${randEnd}]`
+          `*[_type == 'article' && !("${category._id}" in categories[]._ref)][0..1]`
         )
         .then((data) => {
           // console.log(data)
@@ -33,15 +44,14 @@ const MightInterestYouComp: React.FC<Props> = () => {
           setError('error loading data')
         });
     }
-  }, [problemArticle, paramProblem])
+  }, [problemArticle, category])
 
   useEffect(() => {
-    if (!paramProblem) {
-      const randStart = Math.ceil(Math.random() * 5)
-      const randEnd = randStart + 1
+    if (sameProblem && problemArticle) {
+      const articleIds = problemArticle.map(a=> a._id)
       sanityClient
         .fetch(
-          `*[_type == 'article'][${randStart}..${randEnd}]`
+          `*[_type == 'article' && !(_id in ["${articleIds[0]}", "${articleIds[1]}"])][0..1]`
         )
         .then((data) => {
           // console.log(data)
@@ -52,7 +62,7 @@ const MightInterestYouComp: React.FC<Props> = () => {
           setError('error loading data')
         });
     }
-  }, [])
+  }, [sameProblem, problemArticle])
 
 
   const heightStateHandler = (n: number) => {

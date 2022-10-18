@@ -244,7 +244,7 @@ const SomeFeelingView = () => {
         </div>}
 
       <div className={'mt-8 lg:mt-12'}>
-        {mightInterestYou && mightInterestYou.length > 0 && <MightInterestYouComp/>
+        {mightInterestYou && mightInterestYou.length > 0 && category && <MightInterestYouComp category={category}/>
         }
       </div>
     </div>

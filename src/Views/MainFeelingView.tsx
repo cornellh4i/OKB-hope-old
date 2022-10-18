@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {useParams} from "react-router-dom";
+import {useLocation, useParams} from "react-router-dom";
 import  {Article, Category,} from "../hooks/useProvideData";
 import HorizontalTeaserComp from "../Components/InfoAdviceComps/HorizontalTeaserComp";
 import BreadCrumbs from "../Components/LayoutComps/BreadCrumbs";
@@ -13,8 +13,11 @@ const MainFeelingView = () => {
   const [articles, setArticles] = useState<null | Article[]>(null);
   // data
 
-
   let {feeling} = useParams()
+  let {pathname} = useLocation()
+  const firstElementInPath = pathname.split('/')[1]
+  console.log(firstElementInPath)
+
 
 
   useEffect(() => {
@@ -81,7 +84,7 @@ const MainFeelingView = () => {
         }
       </div>
       <section>
-        {mightInterestYou && mightInterestYou.length>0 && <MightInterestYouComp  />
+        {mightInterestYou && mightInterestYou.length>0 && category && <MightInterestYouComp category={category} />
         }
       </section>
     </div>
