@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {useLocation, useParams} from "react-router-dom";
-import  {Article, Category,} from "../hooks/useProvideData";
+import {Article,Category} from "./MainHubView";
 import HorizontalTeaserComp from "../Components/InfoAdviceComps/HorizontalTeaserComp";
 import BreadCrumbs from "../Components/LayoutComps/BreadCrumbs";
 import MightInterestYouComp from "../Components/MainFeelingComps/MightInterestYouComp";

@@ -2,10 +2,9 @@ import Layout from "./Layout";
 import {RouterProvider, createBrowserRouter} from "react-router-dom";
 import HomeView from "./Views/HomeView";
 import NotFoundError from "./NotFoundError";
-import InfoAdviceView from "./Views/InfoAdviceView";
+import MainHubView from "./Views/MainHubView";
 import MainFeelingView from "./Views/MainFeelingView";
 import SomeFeelingView from "./Views/SomeFeelingView";
-import TipsView from "./Views/TipsView";
 import AboutUs from "./Views/AboutUs";
 import ContactUs from "./Views/ContactUs";
 
@@ -20,14 +19,14 @@ const router = createBrowserRouter([
   {
     path: 'info-advice',
     element: <Layout>
-      <InfoAdviceView/>
+      <MainHubView/>
     </Layout>,
     errorElement: <NotFoundError/>,
   },
   {
     path: 'tips',
     element: <Layout>
-      <TipsView/>
+      <MainHubView/>
     </Layout>,
     errorElement: <NotFoundError/>,
   },

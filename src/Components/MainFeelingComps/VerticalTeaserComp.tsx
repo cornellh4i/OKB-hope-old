@@ -1,5 +1,5 @@
 import React, {useEffect, useRef, useState} from 'react';
-import {Article} from "../../hooks/useProvideData";
+import {Article} from "../../Views/MainHubView";
 import {Link} from "react-router-dom";
 import imageUrlBuilder from "@sanity/image-url";
 import sanity from "../../client";

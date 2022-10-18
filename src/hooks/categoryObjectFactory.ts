@@ -1,6 +1,7 @@
-import {Article, Category} from "./useProvideData";
+import {Article,Category} from "../Views/MainHubView";
 
 const categoryObjectFactory = (categories: Category[], articleTitles: Article[]) => {
+  console.log(categories)
   if (categories && articleTitles) {
     return categories!.map(c => {
         return {

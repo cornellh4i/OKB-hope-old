@@ -1,5 +1,5 @@
 import React from 'react';
-import {Article} from "../../hooks/useProvideData";
+import {Article} from "../../Views/MainHubView";
 import imageUrlBuilder from "@sanity/image-url";
 import sanity from "../../client";
 import {SanityImageSource} from "@sanity/image-url/lib/types/types";

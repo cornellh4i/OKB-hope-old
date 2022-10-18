@@ -1,5 +1,5 @@
 import {useEffect, useState} from 'react';
-import {CategoryObject} from "./useProvideData";
+import {CategoryObject} from "../Views/MainHubView";
 
 const useMightInterestYouFactory = (feeling: string|undefined, categoryObjects:CategoryObject[]|null) => {
   const [mightInterestYou, setMightInterestYou] = useState<null | CategoryObject[]>(null);

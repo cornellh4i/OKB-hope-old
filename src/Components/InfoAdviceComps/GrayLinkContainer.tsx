@@ -3,7 +3,7 @@ import {Link} from "react-router-dom";
 import friends from '../../assets/friends.png'
 import sad from '../../assets/boy_sad.png'
 import substance from '../../assets/addiction_boy.png'
-import {CategoryObject} from "../../hooks/useProvideData";
+import {CategoryObject} from "../../Views/MainHubView";
 
 type Props = {
   categoryObject: CategoryObject

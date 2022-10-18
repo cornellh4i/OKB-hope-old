@@ -1,6 +1,6 @@
 export default {
-  name: 'article',
-  title: 'Article',
+  name: 'tipArticle',
+  title: 'Tips Article',
   type: 'document',
   fields: [
     {
@@ -27,36 +27,37 @@ export default {
     },
     {
       name: 'categories',
-      title: 'Categories',
+      title: 'Tip Categories',
       type: 'array',
       of: [{
         type: 'reference',
         to: [{
-          type: 'category',
-          id: 'category'
+          type: 'tipCategory',
+          id: 'tipCategory'
         }]
       }]
+
     },
-    {
-      name: 'blueContainerContent',
-      title: 'Blue Container Content',
-      type: 'array',
-      of: [{
-        type: 'reference',
-        to: [{
-          type: 'blueContainerContent',
-          id: 'blueContainerContent'
-        }]
-      }]
-    },
-    {
-      name: 'yellowContainerContent',
-      title: 'Yellow Container Content',
-      type: 'array',
-      of: [{
-        type: 'paragraph',
-      }]
-    },
+    // {
+    //   name: 'blueContainerContent',
+    //   title: 'Blue Container Content',
+    //   type: 'array',
+    //   of: [{
+    //     type: 'reference',
+    //     to: [{
+    //       type: 'blueContainerContent',
+    //       id: 'blueContainerContent'
+    //     }]
+    //   }]
+    // },
+    // {
+    //   name: 'yellowContainerContent',
+    //   title: 'Yellow Container Content',
+    //   type: 'array',
+    //   of: [{
+    //     type: 'paragraph',
+    //   }]
+    // },
     {
       name: 'paragraph',
       title: 'Paragraphs',
@@ -97,7 +98,7 @@ export default {
       name: 'page',
       title: 'Page',
       type: 'string',
-      initialValue: 'info-advice',
+      initialValue: 'tips',
     },
   ],
   

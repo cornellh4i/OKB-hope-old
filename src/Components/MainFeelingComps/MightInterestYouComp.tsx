@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {Article, Category} from "../../hooks/useProvideData";
+import {Article, Category} from "../../Views/MainHubView";
 import VerticalTeaserComp from "./VerticalTeaserComp";
 import sanityClient from "../../client";
 import {useParams} from "react-router-dom";

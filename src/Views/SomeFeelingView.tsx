@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {Article, Category} from "../hooks/useProvideData";
+import {Article,Category} from "./MainHubView";
 import imageUrlBuilder from "@sanity/image-url";
 import sanity from "../client";
 import {SanityImageSource} from "@sanity/image-url/lib/types/types";
@@ -63,7 +63,6 @@ const SomeFeelingView = () => {
   let {problem: paramProblem, feeling} = useParams();
 
   useEffect(() => {
-
     if (!paragraphs && problem) {
       sanityClient
         .fetch(
