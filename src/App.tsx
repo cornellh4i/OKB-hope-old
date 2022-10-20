@@ -5,7 +5,6 @@ import NotFoundError from "./NotFoundError";
 import MainHubView from "./Views/MainHubView";
 import MainIssueView from "./Views/MainIssueView";
 import SpecificIssueView from "./Views/SpecificIssueView";
-import AboutUs from "./Views/AboutUs";
 import ContactUs from "./Views/ContactUs";
 
 const router = createBrowserRouter([
@@ -33,7 +32,7 @@ const router = createBrowserRouter([
   {
     path: 'about-us',
     element: <Layout>
-      <AboutUs/>
+      <SpecificIssueView/>
     </Layout>,
     errorElement: <NotFoundError/>,
   },

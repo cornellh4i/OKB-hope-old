@@ -3,7 +3,7 @@ import {Article, Category} from "./MainHubView";
 import imageUrlBuilder from "@sanity/image-url";
 import sanity from "../client";
 import {SanityImageSource} from "@sanity/image-url/lib/types/types";
-import {useParams} from "react-router-dom";
+import {useLocation, useParams} from "react-router-dom";
 import useWindowSize from "../hooks/use.window.size";
 import {TypedObject} from "@portabletext/types";
 import sanityClient from "../client";
@@ -13,6 +13,7 @@ import MightInterestYouComp from "../Components/MainFeelingComps/MightInterestYo
 import ColoredContainerComp from "../Components/SomeFeelingComps/ColoredContainerComp";
 import BreadCrumbs from "../Components/LayoutComps/BreadCrumbs";
 import BottomBlueContainerComp from "../Components/SomeFeelingComps/BottomBlueContainerComp";
+import GradientCommunicationSection from "../Components/HomeViewComps/GradientCommunicationSection";
 
 
 export type Paragraph = {
@@ -24,6 +25,8 @@ export type Paragraph = {
   body: TypedObject
   serial_num: number
   article: any[]
+  tipArticle: any
+  aboutUs: any
   colorKey?: string
 }
 export type BlueContainerContent = {
@@ -59,67 +62,121 @@ const SpecificIssueView = () => {
     return builder.image(source)
   }
 
+  let {pathname} = useLocation()
+
+  const firstElementInPath = pathname.split('/')[1]
+
   let {problem: paramProblem, feeling, tipCategory, tip} = useParams();
   // console.log('tipCategory', tipCategory)
   // console.log('tip', tip)
-  // console.log('paragraphs', paragraphs)
+  console.log('paragraphs', paragraphs)
   // console.log('problem', problem)
   // console.log(category)
+  // console.log(feeling)
+  // console.log(firstElementInPath)
+
+  // about us request
+  useEffect(() => {
+    if (firstElementInPath === 'about-us') {
+      if ((!problem) || problem.slug.current !== 'about-us') {
+        sanityClient
+          .fetch(
+            `*[_type == 'aboutUs']`
+          )
+          .then((data) => {
+            // console.log(data)
+            setProblem(data[0])
+          })
+          .catch((err) => {
+            console.log(err);
+            setError('error loading data')
+          });
+      }
+      if ((problem && !paragraphs) || (problem && paragraphs && !paragraphs[0]?.aboutUs)) {
+        sanityClient
+          .fetch(
+            `*[_type=="paragraph" && "${problem._id}" in aboutUs[]._ref]`
+          )
+          .then((data) => {
+            console.log(data)
+            const d: Paragraph[] = data.sort((a: { serial_num: number; }, b: { serial_num: number; }) => a.serial_num - b.serial_num);
+            setParagraphs(d);
+          })
+          .catch((err) => {
+            console.log(err);
+            setError('error loading data')
+          });
+      }
+      if ((paragraphs && !linkObjects) || (paragraphs && linkObjects && !paragraphs[0]?.aboutUs)) {
+        setLinkObjects(paragraphs.map(p => {
+          return {
+            title: p.title,
+            slug: p.slug.current
+          }
+        }))
+      }
+
+    }
+
+  }, [firstElementInPath, problem, paragraphs, linkObjects])
 
   useEffect(() => {
-    if (paramProblem) {
-      if (!paragraphs && problem) {
-        sanityClient
-          .fetch(
-            `*[_type=="paragraph" && "${problem._id}" in article[]._ref]`
-          )
-          .then((data) => {
-            // console.log(data)
-            const d: Paragraph[] = data.sort((a: { serial_num: number; }, b: { serial_num: number; }) => a.serial_num - b.serial_num);
-            setParagraphs(d);
-          })
-          .catch((err) => {
-            console.log(err);
-            setError('error loading data')
-          });
+    if (firstElementInPath !== 'about-us') {
+      if (paramProblem) {
+        if (!paragraphs && problem) {
+          sanityClient
+            .fetch(
+              `*[_type=="paragraph" && "${problem._id}" in article[]._ref]`
+            )
+            .then((data) => {
+              // console.log(data)
+              const d: Paragraph[] = data.sort((a: { serial_num: number; }, b: { serial_num: number; }) => a.serial_num - b.serial_num);
+              setParagraphs(d);
+            })
+            .catch((err) => {
+              console.log(err);
+              setError('error loading data')
+            });
+        }
+        if (paragraphs && !linkObjects) {
+          setLinkObjects(paragraphs.map(p => {
+            return {
+              title: p.title,
+              slug: p.slug.current
+            }
+          }))
+        }
       }
-      if (paragraphs && !linkObjects) {
-        setLinkObjects(paragraphs.map(p => {
-          return {
-            title: p.title,
-            slug: p.slug.current
-          }
-        }))
+      if (tip) {
+        if (!paragraphs && problem) {
+          sanityClient
+            .fetch(
+              `*[_type=="paragraph" && "${problem._id}" in tipArticle[]._ref]`
+            )
+            .then((data) => {
+              // console.log(data)
+              const d: Paragraph[] = data.sort((a: { serial_num: number; }, b: { serial_num: number; }) => a.serial_num - b.serial_num);
+              setParagraphs(d);
+            })
+            .catch((err) => {
+              console.log(err);
+              setError('error loading data')
+            });
+        }
+        if (paragraphs && !linkObjects) {
+          setLinkObjects(paragraphs.map(p => {
+            return {
+              title: p.title,
+              slug: p.slug.current
+            }
+          }))
+        }
       }
-    }
-    if (tip) {
-      if (!paragraphs && problem) {
-        sanityClient
-          .fetch(
-            `*[_type=="paragraph" && "${problem._id}" in tipArticle[]._ref]`
-          )
-          .then((data) => {
-            // console.log(data)
-            const d: Paragraph[] = data.sort((a: { serial_num: number; }, b: { serial_num: number; }) => a.serial_num - b.serial_num);
-            setParagraphs(d);
-          })
-          .catch((err) => {
-            console.log(err);
-            setError('error loading data')
-          });
-      }
-      if (paragraphs && !linkObjects) {
-        setLinkObjects(paragraphs.map(p => {
-          return {
-            title: p.title,
-            slug: p.slug.current
-          }
-        }))
-      }
-    }
 
-  }, [paragraphs, problem, linkObjects, tip])
+    }
+  }, [paragraphs, problem, linkObjects, tip, firstElementInPath])
 
+  //article
   useEffect(() => {
     if (paramProblem && feeling) {
       if ((!problem && paramProblem) || (problem && paramProblem !== problem.slug.current)) {
@@ -155,6 +212,7 @@ const SpecificIssueView = () => {
     }
   }, [problem, paramProblem])
 
+  //blue container
   useEffect(() => {
     if (!blueContainerContent && problem && problem.blueContainerContent && problem.blueContainerContent.length > 0) {
       const refList = problem?.blueContainerContent.map(b => b._ref)
@@ -175,6 +233,7 @@ const SpecificIssueView = () => {
 
   useEffect(() => {
     if (feeling) {
+
       if (feeling && !category) {
         sanityClient
           .fetch(
@@ -251,16 +310,17 @@ const SpecificIssueView = () => {
       </div>}
 
 
-      <div className={'w-full px-3 lg:max-w-screen-xl mx-auto '}>
-        {windowBig && <div className={'mb-3'}>
+      <section className={'w-full px-3 lg:max-w-screen-xl mx-auto '}>
+        {windowBig && firstElementInPath !== 'about-us'  && <div className={'mb-3'}>
           <BreadCrumbs/>
         </div>}
-        {linkObjects && <LinkObjectContainer scrollToHandler={scrollToElementHandler} linkObjects={linkObjects}/>}
-      </div>
+        {linkObjects && firstElementInPath !== 'about-us' &&
+          <LinkObjectContainer scrollToHandler={scrollToElementHandler} linkObjects={linkObjects}/>}
+      </section>
 
       <div className={'lg:grid grid-cols-3 w-full p-3 lg:max-w-screen-xl mx-auto lg:gap-10'}>
 
-        <div className={!blueContainerContent ? 'col-span-3' : 'col-span-2'}>
+        <div className={!blueContainerContent ? 'col-span-2' : 'col-span-2'}>
           <div>
             {paragraphs && paragraphs.slice(0, 2).map(
               p => <ParagraphComp key={p.slug.current} paragraph={p}/>
@@ -303,6 +363,11 @@ const SpecificIssueView = () => {
           category && <MightInterestYouComp category={category}/>
         }
       </div>
+      <section id={'contact-us'} className={'mt-16'}>
+        <GradientCommunicationSection
+          url={'/contact-us'} title={'Do you want to know about other topics?'}
+          buttonText={'Send us suggestions!'}/>
+      </section>
     </div>
   );
 };

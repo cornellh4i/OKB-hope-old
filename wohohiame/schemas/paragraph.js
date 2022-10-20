@@ -59,6 +59,20 @@ export default {
           ]
         }
       ]
+    },
+    {
+      name: 'aboutUs', title: 'About Us', type: "array",
+      of: [
+        {
+          type: 'reference',
+          to: [
+            {
+              type: 'aboutUs',
+              id: 'aboutUs'
+            }
+          ]
+        }
+      ]
     }
   ],
 }

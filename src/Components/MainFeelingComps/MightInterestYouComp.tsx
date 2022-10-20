@@ -13,12 +13,10 @@ const MightInterestYouComp: React.FC<Props> = ({category}) => {
   const [heightState, setHeightState] = useState(100);
   const [error, setError] = useState<null | string>(null);
   const [problemArticle, setProblemArticle] = useState< Article[] | undefined>(undefined);
-  let {problem: paramProblem, tip, tipCategory} = useParams();
+  let {problem: paramProblem} = useParams();
   let {pathname} = useLocation()
 
   const firstElementInPath = pathname.split('/')[1]
-
-  console.log(tip, tipCategory)
 
 
   const pathIncludesProblem = (param: string | undefined, problem: Article[]|undefined) => {
