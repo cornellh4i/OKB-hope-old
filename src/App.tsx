@@ -4,7 +4,7 @@ import HomeView from "./Views/HomeView";
 import NotFoundError from "./NotFoundError";
 import MainHubView from "./Views/MainHubView";
 import MainIssueView from "./Views/MainIssueView";
-import SomeFeelingView from "./Views/SomeFeelingView";
+import SpecificIssueView from "./Views/SpecificIssueView";
 import AboutUs from "./Views/AboutUs";
 import ContactUs from "./Views/ContactUs";
 
@@ -62,7 +62,14 @@ const router = createBrowserRouter([
   {
     path: 'info-advice/:feeling/:problem',
     element: <Layout>
-      <SomeFeelingView/>
+      <SpecificIssueView/>
+    </Layout>,
+    errorElement: <NotFoundError/>,
+  },
+  {
+    path: 'tips/:tipCategory/:tip',
+    element: <Layout>
+      <SpecificIssueView/>
     </Layout>,
     errorElement: <NotFoundError/>,
   }

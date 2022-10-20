@@ -13,11 +13,13 @@ const MightInterestYouComp: React.FC<Props> = ({category}) => {
   const [heightState, setHeightState] = useState(100);
   const [error, setError] = useState<null | string>(null);
   const [problemArticle, setProblemArticle] = useState< Article[] | undefined>(undefined);
-  let {problem: paramProblem} = useParams();
+  let {problem: paramProblem, tip, tipCategory} = useParams();
   let {pathname} = useLocation()
 
   const firstElementInPath = pathname.split('/')[1]
-  console.log(firstElementInPath)
+
+  console.log(tip, tipCategory)
+
 
   const pathIncludesProblem = (param: string | undefined, problem: Article[]|undefined) => {
     return problem?.find(a => a.slug.current === param)
@@ -40,12 +42,13 @@ const MightInterestYouComp: React.FC<Props> = ({category}) => {
         });
     }
     if (!problemArticle && firstElementInPath === 'tips') {
+      console.log('runs')
       sanityClient
         .fetch(
           `*[_type == 'tipArticle' && !("${category._id}" in categories[]._ref)][0..1]`
         )
         .then((data) => {
-          // console.log(data)
+          console.log(data)
           setProblemArticle(data)
         })
         .catch((err) => {

@@ -51,7 +51,7 @@ export default {
     },
     {
       name: 'yellowContainerContent',
-      title: 'Yellow Container Content',
+      title: 'Bottom Container Content',
       type: 'array',
       of: [{
         type: 'paragraph',

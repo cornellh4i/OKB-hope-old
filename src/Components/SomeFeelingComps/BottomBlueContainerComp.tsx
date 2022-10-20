@@ -1,5 +1,5 @@
 import React, {useEffect, useRef} from 'react';
-import {Paragraph} from "../../Views/SomeFeelingView";
+import {Paragraph} from "../../Views/SpecificIssueView";
 import useWindowSize from "../../hooks/use.window.size";
 import {PortableText} from "@portabletext/react";
 import {paragraphComponents} from "./ParagraphComp";
@@ -8,7 +8,7 @@ type Props = {
   heightState:null|number
   setHeightState:(n:number)=>void
 }
-const YellowContainerComp:React.FC<Props> = ({paragraph,  heightState, setHeightState}) => {
+const BottomBlueContainerComp:React.FC<Props> = ({paragraph,  heightState, setHeightState}) => {
   const {windowBig} = useWindowSize()
   const heightRef = useRef<null | HTMLDivElement>(null)
 
@@ -21,8 +21,7 @@ const YellowContainerComp:React.FC<Props> = ({paragraph,  heightState, setHeight
   return (
     <div ref={heightRef} id={`${paragraph.slug.current}`}
          style={{minHeight:`${heightState}px`}}
-         className={` my-2 lg:my-4 rounded-md ${windowBig ? 'p-4' : 'p-2'} 
-    ${paragraph.colorKey ? 'bg-[#F0FFB1]': 'bg-white'} `}>
+         className={` my-2 lg:my-4 rounded-md ${windowBig ? 'p-4' : 'p-2'} bg-greenish-blue `}>
 
       <h3 className={'text-blue font-bold'}>{paragraph.title}</h3>
       <div className={paragraph.colorKey ? 'p-1' : 'p-0'}>
@@ -32,4 +31,4 @@ const YellowContainerComp:React.FC<Props> = ({paragraph,  heightState, setHeight
   );
 };
 
-export default YellowContainerComp;
+export default BottomBlueContainerComp;

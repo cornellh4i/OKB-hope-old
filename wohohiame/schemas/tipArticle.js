@@ -50,14 +50,14 @@ export default {
         }]
       }]
     },
-    // {
-    //   name: 'yellowContainerContent',
-    //   title: 'Yellow Container Content',
-    //   type: 'array',
-    //   of: [{
-    //     type: 'paragraph',
-    //   }]
-    // },
+    {
+      name: 'yellowContainerContent',
+      title: 'Bottom Container Content',
+      type: 'array',
+      of: [{
+        type: 'paragraph',
+      }]
+    },
     {
       name: 'paragraph',
       title: 'Paragraphs',

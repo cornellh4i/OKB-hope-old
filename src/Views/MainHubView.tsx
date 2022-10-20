@@ -4,7 +4,7 @@ import GrayLinkContainer from "../Components/InfoAdviceComps/GrayLinkContainer";
 import {useLocation} from "react-router-dom";
 import categoryObjectFactory from "../hooks/categoryObjectFactory";
 import sanityClient from "../client";
-import {Paragraph} from "./SomeFeelingView";
+import {Paragraph} from "./SpecificIssueView";
 
 export type Category = {
   _id: string

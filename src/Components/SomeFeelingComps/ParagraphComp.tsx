@@ -1,5 +1,5 @@
 import React from 'react';
-import {Paragraph} from "../../Views/SomeFeelingView";
+import {Paragraph} from "../../Views/SpecificIssueView";
 import {PortableText} from "@portabletext/react";
 import CustomImageComp from "../UIComps/CustomImageComp";
 import CustomBulletPointComp from "../UIComps/CustomBulletPointComp";

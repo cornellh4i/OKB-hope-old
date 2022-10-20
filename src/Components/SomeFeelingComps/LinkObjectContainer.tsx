@@ -1,5 +1,5 @@
 import React from 'react';
-import {LinkObject} from "../../Views/SomeFeelingView";
+import {LinkObject} from "../../Views/SpecificIssueView";
 
 type Props = {
   linkObjects: LinkObject[]

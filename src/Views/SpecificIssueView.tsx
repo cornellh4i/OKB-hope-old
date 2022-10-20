@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {Article,Category} from "./MainHubView";
+import {Article, Category} from "./MainHubView";
 import imageUrlBuilder from "@sanity/image-url";
 import sanity from "../client";
 import {SanityImageSource} from "@sanity/image-url/lib/types/types";
@@ -12,7 +12,7 @@ import LinkObjectContainer from "../Components/SomeFeelingComps/LinkObjectContai
 import MightInterestYouComp from "../Components/MainFeelingComps/MightInterestYouComp";
 import ColoredContainerComp from "../Components/SomeFeelingComps/ColoredContainerComp";
 import BreadCrumbs from "../Components/LayoutComps/BreadCrumbs";
-import YellowContainerComp from "../Components/SomeFeelingComps/YellowContainerComp";
+import BottomBlueContainerComp from "../Components/SomeFeelingComps/BottomBlueContainerComp";
 
 
 export type Paragraph = {
@@ -42,10 +42,9 @@ export type LinkObject = {
 }
 
 
-const SomeFeelingView = () => {
+const SpecificIssueView = () => {
   const [heightState, setHeightState] = useState(0);
   const [category, setCategory] = useState<null | Category>(null);
-  const [mightInterestYou, setMightInterestYou] = useState<null | Article[]>(null);
   const [error, setError] = useState<null | string>(null);
   const [blueContainerContent, setBlueContainerContent] = useState<null | BlueContainerContent[]>(null);
   const [paragraphs, setParagraphs] = useState<null | Paragraph[]>(null);
@@ -60,48 +59,99 @@ const SomeFeelingView = () => {
     return builder.image(source)
   }
 
-  let {problem: paramProblem, feeling} = useParams();
+  let {problem: paramProblem, feeling, tipCategory, tip} = useParams();
+  // console.log('tipCategory', tipCategory)
+  // console.log('tip', tip)
+  // console.log('paragraphs', paragraphs)
+  // console.log('problem', problem)
+  // console.log(category)
 
   useEffect(() => {
-    if (!paragraphs && problem) {
-      sanityClient
-        .fetch(
-          `*[_type=="paragraph" && "${problem._id}" in article[]._ref]`
-        )
-        .then((data) => {
-          // console.log(data)
-          const d: Paragraph[] = data.sort((a: { serial_num: number; }, b: { serial_num: number; }) => a.serial_num - b.serial_num);
-          setParagraphs(d);
-        })
-        .catch((err) => {
-          console.log(err);
-          setError('error loading data')
-        });
+    if (paramProblem) {
+      if (!paragraphs && problem) {
+        sanityClient
+          .fetch(
+            `*[_type=="paragraph" && "${problem._id}" in article[]._ref]`
+          )
+          .then((data) => {
+            // console.log(data)
+            const d: Paragraph[] = data.sort((a: { serial_num: number; }, b: { serial_num: number; }) => a.serial_num - b.serial_num);
+            setParagraphs(d);
+          })
+          .catch((err) => {
+            console.log(err);
+            setError('error loading data')
+          });
+      }
+      if (paragraphs && !linkObjects) {
+        setLinkObjects(paragraphs.map(p => {
+          return {
+            title: p.title,
+            slug: p.slug.current
+          }
+        }))
+      }
     }
-    if (paragraphs && !linkObjects) {
-      setLinkObjects(paragraphs.map(p => {
-        return {
-          title: p.title,
-          slug: p.slug.current
-        }
-      }))
+    if (tip) {
+      if (!paragraphs && problem) {
+        sanityClient
+          .fetch(
+            `*[_type=="paragraph" && "${problem._id}" in tipArticle[]._ref]`
+          )
+          .then((data) => {
+            // console.log(data)
+            const d: Paragraph[] = data.sort((a: { serial_num: number; }, b: { serial_num: number; }) => a.serial_num - b.serial_num);
+            setParagraphs(d);
+          })
+          .catch((err) => {
+            console.log(err);
+            setError('error loading data')
+          });
+      }
+      if (paragraphs && !linkObjects) {
+        setLinkObjects(paragraphs.map(p => {
+          return {
+            title: p.title,
+            slug: p.slug.current
+          }
+        }))
+      }
     }
-  }, [paragraphs, problem, linkObjects])
+
+  }, [paragraphs, problem, linkObjects, tip])
 
   useEffect(() => {
-    if ((!problem && paramProblem) || (problem && paramProblem !== problem.slug.current)) {
-      sanityClient
-        .fetch(
-          `*[_type == 'article' && slug.current == '${paramProblem}']`
-        )
-        .then((data) => {
-          // console.log(data)
-          setProblem(data[0])
-        })
-        .catch((err) => {
-          console.log(err);
-          setError('error loading data')
-        });
+    if (paramProblem && feeling) {
+      if ((!problem && paramProblem) || (problem && paramProblem !== problem.slug.current)) {
+        sanityClient
+          .fetch(
+            `*[_type == 'article' && slug.current == '${paramProblem}']`
+          )
+          .then((data) => {
+            // console.log(data)
+            setProblem(data[0])
+          })
+          .catch((err) => {
+            console.log(err);
+            setError('error loading data')
+          });
+      }
+    }
+    if (tipCategory && tip) {
+      if ((!problem && tip) || (problem && tip !== problem.slug.current)) {
+        sanityClient
+          .fetch(
+            `*[_type == 'tipArticle' && slug.current == '${tip}']`
+          )
+          .then((data) => {
+            // console.log(data)
+            setProblem(data[0])
+          })
+          .catch((err) => {
+            console.log(err);
+            setError('error loading data')
+          });
+      }
     }
   }, [problem, paramProblem])
 
@@ -124,34 +174,40 @@ const SomeFeelingView = () => {
   }, [problem, blueContainerContent])
 
   useEffect(() => {
-    if (feeling && !category) {
-      sanityClient
-        .fetch(
-          `*[_type == "category" && slug.current == "${feeling}"]{_id,page,title,slug,articles}`
-        )
-        .then((data) => {
-          setCategory(data[0]);
-        })
-        .catch((err) => {
-          console.log(err);
-          setError('error loading data')
-        });
+    if (feeling) {
+      if (feeling && !category) {
+        sanityClient
+          .fetch(
+            `*[_type == "category" && slug.current == "${feeling}"]{_id,page,title,slug,articles}`
+          )
+          .then((data) => {
+            setCategory(data[0]);
+          })
+          .catch((err) => {
+            console.log(err);
+            setError('error loading data')
+          });
+      }
+
     }
-    if ((feeling && category && !mightInterestYou)) {
-      sanityClient
-        .fetch(
-          `*[_type == "article" && "${category!._id}" != categories[]._ref]`
-        )
-        .then((data) => {
-          const d: Article[] = data.filter((da: { categories: { _ref: string; }[]; }) => da.categories[0]._ref !== category._id).slice(2, 4)
-          setMightInterestYou(d);
-        })
-        .catch((err) => {
-          console.log(err);
-          setError('error loading data')
-        });
+    if (tipCategory) {
+      if (tipCategory && !category) {
+        sanityClient
+          .fetch(
+            `*[_type == "tipCategory" && slug.current == "${tipCategory}"]{_id,page,title,slug,articles}`
+          )
+          .then((data) => {
+            // console.log(data)
+            setCategory(data[0]);
+          })
+          .catch((err) => {
+            console.log(err);
+            setError('error loading data')
+          });
+      }
+
     }
-  }, [feeling, category, mightInterestYou])
+  }, [feeling, category, tipCategory])
 
   const scrollToElementHandler = (s: string) => {
     const element = document.getElementById(s)
@@ -238,16 +294,17 @@ const SomeFeelingView = () => {
       {problem && problem.yellowContainerContent?.length > 0 &&
         <div className={'w-full px-3 lg:max-w-screen-xl mx-auto lg:grid lg:grid-cols-3 lg:gap-4'}>
           {problem.yellowContainerContent.map(y => <div key={y.serial_num}>
-            <YellowContainerComp heightState={heightState} setHeightState={heightStateHandler} paragraph={y}/>
+            <BottomBlueContainerComp heightState={heightState} setHeightState={heightStateHandler} paragraph={y}/>
           </div>)}
         </div>}
 
       <div className={'mt-8 lg:mt-12'}>
-        {mightInterestYou && mightInterestYou.length > 0 && category && <MightInterestYouComp category={category}/>
+        {
+          category && <MightInterestYouComp category={category}/>
         }
       </div>
     </div>
   );
 };
 
-export default SomeFeelingView;
+export default SpecificIssueView;

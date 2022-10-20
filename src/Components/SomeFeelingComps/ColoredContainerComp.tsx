@@ -1,5 +1,5 @@
 import React from 'react';
-import {BlueContainerContent} from "../../Views/SomeFeelingView";
+import {BlueContainerContent} from "../../Views/SpecificIssueView";
 import {PortableText} from "@portabletext/react";
 import {paragraphComponents} from "./ParagraphComp";
 
