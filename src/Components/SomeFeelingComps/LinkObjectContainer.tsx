@@ -12,8 +12,8 @@ const LinkObjectContainer: React.FC<Props> = ({scrollToHandler, linkObjects}) =>
       <h3 className={'text-blue font-bold text-xl p-3 bg-gray-light rounded-xl'}>
         What you’ll find on this page
         <div className={'my-2'}>
-          {linkObjects && linkObjects.map(o => <div className={'py-1'} key={o.slug}>
-            <h4 className={'no-underline text-black cursor-pointer text-sm lg:text-base'}
+          {linkObjects && linkObjects.map(o => <div className={'py-2'} key={o.slug}>
+            <h4 className={'no-underline text-black font-light cursor-pointer text-sm lg:text-base'}
                 onClick={() => scrollToHandler(o.slug)}>
               {o.title}
             </h4>
