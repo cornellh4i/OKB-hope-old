@@ -56,7 +56,7 @@ const VerticalTeaserComp: React.FC<Props> = ({article, heightState, setHeightSta
   }
   return (
     <div onClick={()=>handleNavigation(`/info-advice/${categoryPath?.slug.current}/${article.slug.current}`)}
-      className={'flex flex-col gap-0 w-full lg:w-[400px] hover:underline cursor-pointer'}>
+      className={'flex flex-col gap-0 w-full lg:w-[400px] hover:underline cursor-pointer focus:border'}>
       {error && <div>{error}</div>}
       <div>
         <img className={'rounded-t-lg'} src={urlFor(article.mainImage).height(200).width(400).url()} loading="lazy" alt={article.title}/>
