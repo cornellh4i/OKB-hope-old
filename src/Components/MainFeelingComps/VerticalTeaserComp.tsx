@@ -1,6 +1,6 @@
 import React, {useEffect, useRef, useState} from 'react';
 import {Article} from "../../Views/MainHubView";
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import imageUrlBuilder from "@sanity/image-url";
 import sanity from "../../client";
 import {SanityImageSource} from "@sanity/image-url/lib/types/types";
@@ -46,11 +46,17 @@ const VerticalTeaserComp: React.FC<Props> = ({article, heightState, setHeightSta
     }
   }, [categoryPath, article])
 
+  const navigate = useNavigate()
+  const handleNavigation = (url: string) => {
+    navigate(url)
+    scroller()
+  }
   const scroller = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
   return (
-    <div className={'flex flex-col gap-0 w-full lg:w-1/4'}>
+    <div onClick={()=>handleNavigation(`/info-advice/${categoryPath?.slug.current}/${article.slug.current}`)}
+      className={'flex flex-col gap-0 w-full lg:w-[400px] hover:underline cursor-pointer'}>
       {error && <div>{error}</div>}
       <div>
         <img className={'rounded-t-lg'} src={urlFor(article.mainImage).height(200).width(400).url()} loading="lazy" alt={article.title}/>
