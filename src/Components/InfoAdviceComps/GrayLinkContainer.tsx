@@ -15,7 +15,7 @@ const GrayLinkContainer: React.FC<Props> = ({categoryObject}) => {
   console.log(categoryObject.url);
   let {pathname} = useLocation()
   const firstElementInPath = pathname.split('/')[1]
-  console.log(firstElementInPath)
+
 
   return (
     <div className={`w-full bg-[#EFEFEF] p-3 mt-4 rounded md:w-1/3`}>
@@ -27,7 +27,7 @@ const GrayLinkContainer: React.FC<Props> = ({categoryObject}) => {
         <div>
           {categoryObject?.articles && categoryObject.articles.map((a, idx) => {
             return <div key={idx + a.title} className={'py-1 w-full col-span-1'}>
-              <Link className={'no-underline text-black text-lg'} style={{fontFamily: 'Roboto'}}
+              <Link className={'no-underline text-[#000000] text-lg'} style={{fontFamily: 'Roboto', fontWeight:'400'}}
                     to={`/${firstElementInPath}/${categoryObject.url}/${a.slug.current}`}>{a.title}</Link>
             </div>
           })}

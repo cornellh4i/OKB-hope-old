@@ -14,9 +14,8 @@ const BoringRoundedButton: React.FC<Props> = ({children, onClick}) => {
     }
   }
   return (
-    <button onClick={clickHandler}
-            className={`bg-blue rounded-full py-2 ${active} hover:drop-shadow-xl transition
-             px-6 text-lg lg:text-xl text-white`} >
+    <button onClick={clickHandler} style={{fontFamily: 'Roboto', fontWeight:'400'}}
+            className={`bg-blue rounded-full py-2 ${active} transition focus:bg-[#004888] hover:bg-[#004888] focus:border focus:border-[#5DADEC] px-6 text-base lg:text-xl text-white`} >
       {children}
     </button>
   );

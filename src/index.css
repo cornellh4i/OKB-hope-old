@@ -40,13 +40,13 @@ body {
 }
 
 h1, h2, h3, h4, h5, h6 {
-    font-family: Futura, sans-serif;
+    font-family: Futura, Muli, sans-serif;
     color: #2469A6;
 
 }
 
 p {
-    font-family: Roboto, sans-serif;
+    font-family: Roboto,Montserrat, sans-serif;
 }
 
 ul{
