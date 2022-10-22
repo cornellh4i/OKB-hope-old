@@ -69,7 +69,7 @@ const SpecificIssueView = () => {
   let {problem: paramProblem, feeling, tipCategory, tip} = useParams();
   // console.log('tipCategory', tipCategory)
   // console.log('tip', tip)
-  console.log('paragraphs', paragraphs)
+  // console.log('paragraphs', paragraphs)
   // console.log('problem', problem)
   // console.log(category)
   // console.log(feeling)
