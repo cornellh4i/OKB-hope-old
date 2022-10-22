@@ -271,7 +271,7 @@ const SpecificIssueView = () => {
   const scrollToElementHandler = (s: string) => {
     const element = document.getElementById(s)
     if (element) {
-      element.scrollIntoView({behavior: "smooth", block: "end", inline: "nearest"})
+      element.scrollIntoView({behavior: "smooth", block: "start", inline: "nearest"})
     }
   }
 
@@ -311,7 +311,7 @@ const SpecificIssueView = () => {
 
 
       <section className={'w-full px-3 lg:max-w-screen-xl mx-auto '}>
-        {windowBig && firstElementInPath !== 'about-us'  && <div className={'mb-3'}>
+        {windowBig && firstElementInPath !== 'about-us' && <div className={'mb-3'}>
           <BreadCrumbs/>
         </div>}
         {linkObjects && firstElementInPath !== 'about-us' &&

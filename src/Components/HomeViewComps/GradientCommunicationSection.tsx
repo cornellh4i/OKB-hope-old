@@ -15,7 +15,10 @@ const GradientCommunicationSection:React.FC<Props> = ({title, buttonText, url}) 
         {title}
       </h3>
       <div className={'w-full flex justify-center mt-6 lg:mt-12'}>
-        <BoringRoundedButton onClick={()=>{navigate(url)}}>
+        <BoringRoundedButton onClick={()=>{
+          console.log(url);
+          navigate(url);
+        }}>
           {buttonText}
         </BoringRoundedButton>
       </div>

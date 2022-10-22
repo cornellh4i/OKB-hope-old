@@ -9,7 +9,9 @@ const BoringRoundedButton: React.FC<Props> = ({children, onClick}) => {
   const [active, setActive] = useState<string>('drop-shadow-lg');
   const clickHandler = () => {
     setActive('')
-    onClick
+    if (onClick) {
+      onClick()
+    }
   }
   return (
     <button onClick={clickHandler}

@@ -13,9 +13,10 @@ const FooterComp = () => {
           <Link className={'text-white no-underline  text-sm'} to={'/contact-us'}>Contact us</Link>
         </div>
         <div>
-          <a className={'text-white  text-sm'}
+          <a className={'text-white no-underline text-sm'}
              href='mailto:emailaddress@xxx.com?subject=Mail from Wohohiame'>emailaddress@xxx.com</a>
         </div>
+
       </div>
 
 
@@ -59,6 +60,10 @@ const FooterComp = () => {
         </div>
       </div>
 
+      <div className={'w-full'}>
+        <a className={'text-white no-underline text-sm'}
+           href='https://www.sanity.io'>Structured content powered by Sanity.io</a>
+      </div>
     </div>
   );
 };
