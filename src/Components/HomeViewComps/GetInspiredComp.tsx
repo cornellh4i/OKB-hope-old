@@ -20,8 +20,10 @@ const GetInspiredComp: React.FC<Props> = ({inspirations}) => {
       <h3 className={"text-center text-xl md:text-4xl font-bold text-blue my-4"}>Get inspired</h3>
       <div className={'flex gap-4 lg:justify-evenly lg:gap-0'}>
         {inspirations && inspirations
-          .map(i => <InspirationComp setHeightState={heightStateHandler} heightState={heightState} inspiration={i}
-                                     key={i.tag}/>)}
+          .map(i =>
+            <InspirationComp setHeightState={heightStateHandler} heightState={heightState} inspiration={i}
+                             key={i.tag}/>
+          )}
       </div>
       <div className={'my-3 lg:my-8'}>
         <LinkTo url={'/tips'}>

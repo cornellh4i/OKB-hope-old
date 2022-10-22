@@ -5,7 +5,7 @@ import sanity from "../../client";
 import {SanityImageSource} from "@sanity/image-url/lib/types/types";
 import useWindowSize from "../../hooks/use.window.size";
 import {PortableText} from "@portabletext/react";
-import {Link} from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 
 type Props = {
   inspiration: Inspiration | null
@@ -20,6 +20,11 @@ const InspirationComp: React.FC<Props> = ({inspiration, heightState, setHeightSt
     return builder.image(source)
   }
 
+  const navigate = useNavigate()
+  const handleNavigation = (url: string) => {
+    navigate(url)
+  }
+
   const {windowBig} = useWindowSize();
 
   useEffect(() => {
@@ -29,7 +34,7 @@ const InspirationComp: React.FC<Props> = ({inspiration, heightState, setHeightSt
   }, [heightRef, heightState])
 
   return (
-    <div className={'w-1/2 py-2 lg:w-1/4'}>
+    <div className={'w-1/2 py-2 lg:w-1/4 cursor-pointer hover:underline focus:border'} onClick={() => handleNavigation(inspiration!.url)}>
       <div className={'w-full rounded-t-md'}>
         {!windowBig ? <img className={'mx-auto rounded-t-md'} loading="lazy"
                            src={urlFor(inspiration?.mainImage).width(184).height(123).fit('scale').url()}
@@ -40,8 +45,8 @@ const InspirationComp: React.FC<Props> = ({inspiration, heightState, setHeightSt
       </div>
       <div ref={heightRef} className={'w-full mx-auto p-2 lg:p-3 rounded-b-md bg-white'}
            style={{minHeight: `${heightState}px`}}>
-        <Link to={'#'}
-              className={'leading-5 text-lg md:text-2xl text-blue font-bold pb-0.5 no-underline'}>{inspiration?.title}</Link>
+        <span
+          className={'leading-5 text-lg md:text-2xl text-blue font-bold pb-0.5 no-underline'}>{inspiration?.title}</span>
         <PortableText value={inspiration!.text}/>
       </div>
     </div>

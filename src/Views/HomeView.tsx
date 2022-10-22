@@ -39,6 +39,7 @@ export type Inspiration = {
   tag: string
   text: TypedObject
   title: string
+  url:string
 }
 
 const HomeView = () => {
