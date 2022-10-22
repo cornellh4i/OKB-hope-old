@@ -2,3 +2,19 @@
     text-decoration: none !important;
     color: black;
 }
+
+.nav_links:hover {
+    text-decoration: none !important;
+    color: #2469A6;
+}
+.nav_links:focus {
+    text-decoration: none !important;
+    color: #2469A6;
+    border: 2px black;
+}
+.nav_links:focus {
+    text-decoration: underline !important;
+    color: #2469A6;
+    border: 2px black;
+}
+

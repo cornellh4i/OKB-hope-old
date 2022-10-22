@@ -7,20 +7,20 @@ const NavbarComp = () => {
   return (
     <nav className={`w-full z-50 md:text-lg pb-2 `}>
       <ul className={"flex justify-between md:justify-end md:gap-6 px-3 items-center md:h-16 md:pr-6"}>
-        <li>
+        <li className={''}>
           <NavLink className={modules.nav_links} to={"/"}
           >
             <span className={"flex md:items-center"}>
               <span>
             <svg width="21" height="21" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M3.95833 9.5H2.375L9.5 2.375L16.625 9.5H15.0417" stroke="#2469A6" strokeWidth="1.5" strokeLinecap="round"
+<path d="M3.95833 9.5H2.375L9.5 2.375L16.625 9.5H15.0417" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"
       strokeLinejoin="round"/>
 <path
   d="M3.95898 9.5V15.0417C3.95898 15.4616 4.1258 15.8643 4.42273 16.1613C4.71966 16.4582 5.12239 16.625 5.54232 16.625H13.459C13.8789 16.625 14.2816 16.4582 14.5786 16.1613C14.8755 15.8643 15.0423 15.4616 15.0423 15.0417V9.5"
-  stroke="#2469A6" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+  stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
 <path
   d="M7.125 16.6248V11.8748C7.125 11.4549 7.29182 11.0522 7.58875 10.7553C7.88568 10.4583 8.28841 10.2915 8.70833 10.2915H10.2917C10.7116 10.2915 11.1143 10.4583 11.4113 10.7553C11.7082 11.0522 11.875 11.4549 11.875 11.8748V16.6248"
-  stroke="#2469A6" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+  stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
 </svg>
 
           </span>

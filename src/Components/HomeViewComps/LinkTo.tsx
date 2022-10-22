@@ -6,9 +6,11 @@ type Props = {
   url: string
 }
 const LinkTo: React.FC<Props> = ({children, url}) => {
+  const linkStyles = {fontFamily:'Roboto', fontWeight: '400'}
+
   return (
     <div className={'w-full'}>
-      <Link className={'lg:text-lg'} to={url}>
+      <Link className={''} style={linkStyles} to={url}>
         {children}
       </Link>
     </div>

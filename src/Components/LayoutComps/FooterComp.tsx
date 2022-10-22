@@ -2,18 +2,22 @@ import React from 'react';
 import {Link} from "react-router-dom";
 
 const FooterComp = () => {
+  const linkClasses = `text-white no-underline text-sm hover:bg-white hover:text-blue focus:border-[#5DADEC] focus:border`
+  const linkStyles = {fontFamily:'Roboto', fontWeight: '400'}
   return (
-    <div className={'grid grid-cols-2 gap-2 w-full bg-blue text-white py-6 px-3 max-w-screen-xl mx-auto'}>
+    <div className={'grid grid-cols-2 gap-2 w-full bg-blue text-white py-6 px-3 max-w-screen-xl mx-auto '}
+
+    >
 
       <div className={'flex flex-col gap-2 '}>
         <div>
-          <Link className={'text-white no-underline text-sm'} to={'/about-us'}>About us</Link>
+          <Link className={linkClasses} style={linkStyles} to={'/about-us'}>About us</Link>
         </div>
         <div>
-          <Link className={'text-white no-underline  text-sm'} to={'/contact-us'}>Contact us</Link>
+          <Link className={linkClasses} style={linkStyles} to={'/contact-us'}>Contact us</Link>
         </div>
         <div>
-          <a className={'text-white no-underline text-sm'}
+          <a className={linkClasses} style={linkStyles}
              href='mailto:emailaddress@xxx.com?subject=Mail from Wohohiame'>emailaddress@xxx.com</a>
         </div>
 
@@ -21,7 +25,7 @@ const FooterComp = () => {
 
 
       <div className={'flex flex-col gap-2 lg:gap-4  text-sm font-bold items-end text-end'}>
-        <span>
+        <span className={linkClasses} style={linkStyles}>
           Follow us on social media
         </span>
         <div className={'flex gap-4'}>
@@ -61,7 +65,7 @@ const FooterComp = () => {
       </div>
 
       <div className={'w-full'}>
-        <a className={'text-white no-underline text-sm'}
+        <a className={linkClasses} style={linkStyles}
            href='https://www.sanity.io'>Structured content powered by Sanity.io</a>
       </div>
     </div>

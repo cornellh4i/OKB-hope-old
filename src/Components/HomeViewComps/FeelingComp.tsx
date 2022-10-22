@@ -58,7 +58,7 @@ const FeelingComp: React.FC<Props> = ({feelings}) => {
                                                                     feelingButton={f}/>)}
         </div>
 
-        <div className={" w-full mt-6 md:mt-0"}>
+        <div className={" w-full mt-6"}>
           {chosenFeeling && <FeelingInfoHint feeling={chosenFeeling}/>}
         </div>
 

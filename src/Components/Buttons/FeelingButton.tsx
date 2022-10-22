@@ -30,8 +30,8 @@ const FeelingButton: React.FC<Props> = ({feelingButton, onClick, activeFeeling})
 
   return (
     <button onClick={clickHandler} aria-label={feelingButton.text}
-            className={`${activeShadow} ${activeSize} rounded-lg py-2 px-3 flex gap-2 ${activeBackground} transition-all
-            border border-gray-light active:bg-gray-light`}>
+            className={`${activeShadow} ${activeSize} rounded py-2 focus:border px-3 flex gap-2 ${activeBackground} transition-all
+            `}>
       <img className={"h-6 w-6"} src={urlFor(feelingButton.icon).url()} alt={feelingButton.text}/>
       <span>{feelingButton.text}</span>
     </button>
