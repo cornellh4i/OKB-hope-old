@@ -1,11 +1,12 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useContext} from 'react';
 import Topbar from "./Components/LayoutComps/Topbar";
 import NavbarComp from "./Components/LayoutComps/NavbarComp";
 import useWindowSize from "./hooks/use.window.size";
-import SearchBarComp from "./Components/LayoutComps/SearchBarComp";
 import ScrollToTop from "react-scroll-to-top";
 import FooterComp from "./Components/LayoutComps/FooterComp";
 import useScrollDirection from "./hooks/useScrollDirection";
+import SearchComp from "./Components/LayoutComps/SearchComp";
+import {ShowSearchCtx} from "./ctx/showSearchCtx";
 
 
 type Props = {
@@ -15,16 +16,17 @@ const Layout: React.FC<Props> = ({children}) => {
   const [screenHeight, setScreenHeight] = useState(0);
   const {windowBig} = useWindowSize();
 
-
   const direction = useScrollDirection()
+  const {showSearch} = useContext(ShowSearchCtx);
+
 
   useEffect(() => {
     const transformValuesOff = [
       {transform: 'translateY(0)'},
-      {transform: 'translateY(-8rem)'},
+      {transform: 'translateY(-6.6rem)'},
     ]
     const transformValuesOn = [
-      {transform: 'translateY(-8rem)'},
+      {transform: 'translateY(-6.6rem)'},
       {transform: 'translateY(0)'},
     ]
     const optionsOn = {
@@ -62,11 +64,18 @@ const Layout: React.FC<Props> = ({children}) => {
           <Topbar/>
           <NavbarComp/>
 
-          {windowBig && <SearchBarComp/>}
+          {/*{windowBig && <SearchBarComp/>}*/}
+          <div className={'fixed top-26 left-0 right-0 z-40'}>
+            {showSearch &&           <SearchComp />
+            }
+          </div>
         </section>
       </div>
 
+
+
       <main className={'mt-[108px]'} style={{minHeight: `${screenHeight}px`}}>
+
         {children}
       </main>
       <div className={'max-w-screen-xl mx-auto relative h-[72px]'}>

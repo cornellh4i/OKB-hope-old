@@ -6,6 +6,8 @@ import MainHubView from "./Views/MainHubView";
 import MainIssueView from "./Views/MainIssueView";
 import SpecificIssueView from "./Views/SpecificIssueView";
 import ContactUs from "./Views/ContactUs";
+import ShowSearchCtxProvider from "./ctx/showSearchCtx";
+import SearchResultsView from "./Views/SearchResultsView";
 
 const router = createBrowserRouter([
   {
@@ -19,6 +21,13 @@ const router = createBrowserRouter([
     path: 'info-advice',
     element: <Layout>
       <MainHubView/>
+    </Layout>,
+    errorElement: <NotFoundError/>,
+  },
+  {
+    path: 'search',
+    element: <Layout>
+     <SearchResultsView />
     </Layout>,
     errorElement: <NotFoundError/>,
   },
@@ -80,8 +89,9 @@ const App = () => {
 
   return (
     <>
-
-      <RouterProvider router={router}/>
+      <ShowSearchCtxProvider>
+        <RouterProvider router={router}/>
+      </ShowSearchCtxProvider>
 
     </>
   )

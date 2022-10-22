@@ -24,7 +24,7 @@ const NavbarComp = () => {
 </svg>
 
           </span>
-              <span  >Home</span>
+              <span>Home</span>
             </span>
           </NavLink>
         </li>
@@ -51,7 +51,7 @@ const NavbarComp = () => {
 </svg>
 
               </span>
-              <span >
+              <span>
                 Info & Advice
               </span>
             </span>
@@ -73,7 +73,7 @@ const NavbarComp = () => {
 </svg>
 
               </span>
-              <span >
+              <span>
                 Tips
               </span>
             </span>

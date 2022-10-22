@@ -19,7 +19,7 @@ type Categories = {
   _key: string
   _type: string
 }
-type SanityRef = {
+export type SanityRef = {
   _key: string
   _ref: string
   _type: 'reference'

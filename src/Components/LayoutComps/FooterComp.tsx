@@ -14,11 +14,8 @@ const FooterComp = () => {
           <Link className={linkClasses} style={linkStyles} to={'/about-us'}>About us</Link>
         </div>
         <div>
-          <Link className={linkClasses} style={linkStyles} to={'/contact-us'}>Contact us</Link>
-        </div>
-        <div>
-          <a className={linkClasses} style={linkStyles}
-             href='mailto:emailaddress@xxx.com?subject=Mail from Wohohiame'>emailaddress@xxx.com</a>
+          <a href="mailto:wohohiame@okbfoundation.org" className={linkClasses} style={linkStyles}>wohohiame@okbfoundation.org</a>
+
         </div>
 
       </div>
