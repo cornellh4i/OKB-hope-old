@@ -36,14 +36,14 @@ const Layout: React.FC<Props> = ({children}) => {
     }
 
     const element = document.getElementById('topbar')
-    if ( direction && direction === 'down' && element) {
+    if (direction && direction === 'down' && element) {
       // @ts-ignore
       element.animate(transformValuesOff, optionsOn)
-    } else if (  element && direction && direction === 'up') {
+    } else if (element && direction && direction === 'up') {
       // @ts-ignore
       element.animate(transformValuesOn, optionsOn)
     }
-  }, [direction, ])
+  }, [direction,])
 
 
   useEffect(() => {
@@ -58,18 +58,20 @@ const Layout: React.FC<Props> = ({children}) => {
 
   return (
     <div className={'w-screen bg-white relative leading-5'}>
-      <div id={'topbar'} className={`w-screen bg-white fixed z-40 top-0 left-0 right-0 h-[108px] drop-shadow`}>
+      <div id={'topbar'} className={`w-screen bg-white fixed z-30 top-0 left-0 right-0 h-[108px] drop-shadow`}>
         <section
-          className={" bg-white md:flex items-center md:w-11/12 mx-auto md:px-14 fixed top-0 left-0 right-0 z-50 pt-2"}>
+          className={" bg-white md:flex items-center md:w-11/12 mx-auto md:px-14 fixed top-0 left-0 right-0 z-40 pt-2"}>
           <Topbar/>
           <NavbarComp/>
-
-          {/*{windowBig && <SearchBarComp/>}*/}
-          <div className={'fixed top-26 left-0 right-0 z-40'}>
-            {showSearch &&           <SearchComp />
+          {!windowBig && <div className={'fixed top-26  right-0 left-0 z-50'}>
+            {showSearch && <SearchComp/>
             }
-          </div>
+          </div>}
         </section>
+        {windowBig && <div className={'relative w-full top-[106px]  right-0 left-0 z-50'}>
+          {showSearch && <SearchComp/>
+          }
+        </div>}
       </div>
 
 

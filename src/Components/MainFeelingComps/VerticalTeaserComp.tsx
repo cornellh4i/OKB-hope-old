@@ -22,6 +22,7 @@ const VerticalTeaserComp: React.FC<Props> = ({article, heightState, setHeightSta
   const urlFor = (source: SanityImageSource) => {
     return builder.image(source)
   }
+
   useEffect(() => {
     if (heightRef && heightRef.current!.offsetHeight > heightState!) {
       setHeightState(heightRef.current!.offsetHeight)

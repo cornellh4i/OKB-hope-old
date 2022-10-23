@@ -6,7 +6,7 @@ const SearchBarComp = () => {
   const {showSearchHandler} = useContext(ShowSearchCtx);
 
   const searchHandler = () => {
-    showSearchHandler(true)
+   showSearchHandler(true)
 
   }
   // const microphoneHandler = () => {
