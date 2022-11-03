@@ -7,6 +7,7 @@ import useWindowSize from "../../hooks/use.window.size";
 import {PortableText} from "@portabletext/react";
 import {useNavigate} from "react-router-dom";
 
+
 type Props = {
   inspiration: Inspiration | null
   heightState: null | number
@@ -45,9 +46,11 @@ const InspirationComp: React.FC<Props> = ({inspiration, heightState, setHeightSt
       </div>
       <div ref={heightRef} className={'w-full mx-auto p-2 lg:p-3 rounded-b-md bg-white'}
            style={{minHeight: `${heightState}px`}}>
-        <span
-          className={'leading-5 text-lg md:text-2xl text-blue font-bold pb-0.5 no-underline'}>{inspiration?.title}</span>
-        <PortableText value={inspiration!.text}/>
+        <h3
+          className={'no-underline'}>{inspiration?.title}</h3>
+        <div className={'text-xs'}>
+          <PortableText value={inspiration!.text}/>
+        </div>
       </div>
     </div>
   );

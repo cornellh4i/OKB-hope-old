@@ -1,5 +1,5 @@
-import React, {useMemo, useState} from 'react';
-import {Feeling} from "../../Views/HomeView";
+import React, { useMemo, useState } from 'react';
+import { Feeling } from "../../Views/HomeView";
 import FeelingButton from "../Buttons/FeelingButton";
 import FeelingInfoHint from "./FeelingInfoHint";
 import LinkTo from "./LinkTo";
@@ -8,7 +8,7 @@ type Props = {
   feelings: Feeling[]
 }
 
-const FeelingComp: React.FC<Props> = ({feelings}) => {
+const FeelingComp: React.FC<Props> = ({ feelings }) => {
   const [tag, setTag] = useState<string | null>('');
 
   const buttonFeelings = useMemo(() => {
@@ -40,31 +40,39 @@ const FeelingComp: React.FC<Props> = ({feelings}) => {
   }
 
   return (
-    <div className={" py-2 px-4"}>
+    <div className={" "}>
       <div className={'flex flex-col w-full'}>
-        <h3 className={"text-center text-2xl md:text-5xl font-bold text-blue"}>How are you doing?</h3>
-        <p className={"text-center text-base my-2"}>
-          We may have some useful tips for you! Simply tell us how you are feeling.
+        <h2 className={`text-center 
+        mt-[15px] md:mt-[30px]
+         font-bold text-blue`}>Hey, how are you doing?</h2>
+        <p className={"text-center md:hidden"}>
+          We may have some useful tips for you.
+          Just tell us how you are feeling, and we will try to help you :-)
         </p>
       </div>
 
 
-      <div className={'lg:flex lg:justify-center lg:gap-4 my-3 lg:my-6'}>
-        <div className={'flex flex-wrap justify-center items-start md:w-2/3 mx-auto h-fit gap-2'}>
+      <div className={`
+      md:flex lg:justify-center mt-[15px] md:mt-[30px] md:w-10/12 md:mx-auto
+      `}>
+        <div className={'flex flex-wrap justify-center items-start h-fit gap-[15px]'}>
 
           {buttonFeelings && buttonFeelings.map(f => <FeelingButton onClick={buttonClickHandler}
-                                                                    key={f.text}
-                                                                    activeFeeling={chosenFeeling ? chosenFeeling.tag : null}
-                                                                    feelingButton={f}/>)}
+            key={f.text}
+            activeFeeling={chosenFeeling ? chosenFeeling.tag : null}
+            feelingButton={f} />)}
         </div>
 
-        <div className={" w-full mt-6"}>
-          {chosenFeeling && <FeelingInfoHint feeling={chosenFeeling}/>}
+        <div className={" w-full "}>
+          {chosenFeeling ? <FeelingInfoHint feeling={chosenFeeling} /> : <p className={"hidden md:block "}>
+            We may have some useful tips for you.
+            Just tell us how you are feeling, and we will try to help you :-)
+          </p>}
         </div>
 
       </div>
 
-      <div className={'my-3'}>
+      <div className={'md:w-10/12 md:mx-auto md:pl-10 mt-[15px] mb-[20px]'}>
         <LinkTo url={'/info-advice'}>
           Browse specific topics
         </LinkTo>

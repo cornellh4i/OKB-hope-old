@@ -19,7 +19,7 @@ const HeroComp: React.FC<Props> = ({homeViewContent}) => {
 
   const {windowBig} = useWindowSize();
   return (
-    <div className={"w-full relative bg-light-purple min-h-20"}>
+    <div className={"w-full relative min-h-20"}>
       {
         homeViewContent && !windowBig &&
         <img className={"object-cover w-full"}
@@ -32,22 +32,35 @@ const HeroComp: React.FC<Props> = ({homeViewContent}) => {
         <img className={"object-cover w-full"} src={urlFor(homeViewContent.heroContent.mainImage).url()}
              alt="hero image"/>
       }
-      <div
-        className={"mx-auto w-11/12  md:w-fit md:px-6 absolute bottom-3 left-0 right-0 md:bottom-10 p-2 border-2 border-gray-light"}
-        style={{background: 'white'}}>
-        {
-          homeViewContent && <h1 className={`text-left text-3xl md:text-6xl font-bold text-blue mx-auto`}>
-            {homeViewContent.heroContent.title}
-          </h1>
-        }
-        {
-          homeViewContent &&
-          <span className={"text-left lg:text-2xl"}>
+
+      <div className={`absolute bottom-[25px] 
+         left-0 right-0 
+         md:right-1/3`}>
+        <div
+          className={` p-4
+        mx-4
+        md:mx-auto md:w-fit
+        `}
+          style={{background: 'white',}}>
+
+          {
+            homeViewContent && <h1
+              className={`mb-[10px]
+            text-left  text-blue mx-auto
+             font-[900]
+             `}>
+              {homeViewContent.heroContent.title}
+            </h1>
+          }
+          {
+            homeViewContent &&
+            <span className={"text-left"}>
                 <PortableText value={homeViewContent.heroContent.text}/>
              </span>
-
-        }
+          }
+        </div>
       </div>
+
     </div>
   );
 };

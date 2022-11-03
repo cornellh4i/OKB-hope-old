@@ -1,6 +1,6 @@
-import {useEffect, useState} from "react";
+import { useEffect, useState } from "react";
 import sanityClient from "../client.js";
-import {TypedObject} from "@portabletext/types";
+import { TypedObject } from "@portabletext/types";
 import HeroComp from "../Components/HomeViewComps/HeroComp";
 import FeelingComp from "../Components/HomeViewComps/FeelingComp";
 import GetInspiredComp from "../Components/HomeViewComps/GetInspiredComp";
@@ -39,7 +39,7 @@ export type Inspiration = {
   tag: string
   text: TypedObject
   title: string
-  url:string
+  url: string
 }
 
 const HomeView = () => {
@@ -47,7 +47,7 @@ const HomeView = () => {
   const [homeViewContent, setHomeViewContent] = useState<null | HomeViewContent>(null);
   const [feelings, setFeelings] = useState<null | Feeling[]>(null);
   const [inspirations, setInspirations] = useState<null | Inspiration[]>(null);
-  const {windowBig} = useWindowSize();
+  const { windowBig } = useWindowSize();
 
 
   useEffect(() => {
@@ -93,21 +93,23 @@ const HomeView = () => {
     }
   }, [windowBig, inspirations])
 
-
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
   return (
     <>
       {error && <div>{error}</div>}
       <section id={'hero'} className={''}>
-        <HeroComp homeViewContent={homeViewContent}/>
+        <HeroComp homeViewContent={homeViewContent} />
       </section>
-      <section id={'feelings'} className={'my-2 lg:my-8 max-w-screen-xl mx-auto'}>
-        {feelings && <FeelingComp feelings={feelings}/>
+      <section id={'feelings'} className={'mx-4'}>
+        {feelings && <FeelingComp feelings={feelings} />
         }
       </section>
-      <section id={'inspiration'} className={'max-w-screen-xl mx-auto'}>
-        <GetInspiredComp inspirations={inspirations}/>
+      <section id={'inspiration'} className={'mx-auto'}>
+        <GetInspiredComp inspirations={inspirations} />
       </section>
-      <section id={'us'} className={'mt-16'}>
+      <section id={'us'} className={'mt-[25px]'}>
         <GradientCommunicationSection url={'/about-us'} title={'Get to know us!'} buttonText={'Learn more about us'} />
       </section>
     </>

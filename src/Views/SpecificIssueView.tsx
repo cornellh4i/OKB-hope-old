@@ -300,7 +300,7 @@ const SpecificIssueView = () => {
           <div
             className={'bg-light-blue p-3 rounded-lg mt-3 lg:absolute lg:top-6 2xl:left-1/4 lg:left-20 lg:right-1/3'}>
 
-            <h1 className={`text-left text-2xl md:text-5xl font-bold text-blue mx-auto mb-3`}>
+            <h1 className={`text-left  font-bold mx-auto mb-3`}>
               {problem.title}
             </h1>
             <p style={{fontFamily: 'Roboto'}}>{problem.summary}</p>

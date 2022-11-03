@@ -3,7 +3,8 @@ import {Paragraph} from "../../Views/SpecificIssueView";
 import {PortableText} from "@portabletext/react";
 import CustomImageComp from "../UIComps/CustomImageComp";
 import CustomBulletPointComp from "../UIComps/CustomBulletPointComp";
-import CustomHeadingComp from "../UIComps/CustomHeadingComp";
+import CustomHeadingComp from "../UIComps/CustomParagraphComp";
+import CustomParagraphComp from "../UIComps/CustomParagraphComp";
 
 
 type Props = {
@@ -16,8 +17,10 @@ export const paragraphComponents = {
   },
   block: {
     paragraph: CustomHeadingComp,
-    p: CustomHeadingComp,
+    p: CustomParagraphComp,
     h4: CustomHeadingComp,
+    heading: CustomHeadingComp,
+    headers: CustomHeadingComp
   },
   types: {
     image: CustomImageComp,

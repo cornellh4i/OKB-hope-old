@@ -7,7 +7,7 @@ type Props = {
 }
 const FeelingInfoHint: React.FC<Props> = ({feeling}) => {
   return (
-    <div className={"p-4 bg-light-blue rounded-md"}>
+    <div className={"p-4 bg-light-blue rounded-md mt-[20px] md:mt-0"}>
       <h3 className={"text-left text-base md:text-3xl font-bold"}>{feeling?.title}</h3>
       <br/>
         {feeling &&  <PortableText value={feeling.body} />}

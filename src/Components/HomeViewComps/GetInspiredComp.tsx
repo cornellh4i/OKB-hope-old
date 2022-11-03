@@ -1,13 +1,15 @@
-import React, {useState} from 'react';
-import {Inspiration} from "../../Views/HomeView";
+import React, { useState } from 'react';
+import { Inspiration } from "../../Views/HomeView";
 import InspirationComp from "./InspirationComp";
 import LinkTo from "./LinkTo";
 
 type Props = {
   inspirations: Inspiration[] | null
 }
-const GetInspiredComp: React.FC<Props> = ({inspirations}) => {
+const GetInspiredComp: React.FC<Props> = ({ inspirations }) => {
   const [heightState, setHeightState] = useState(0);
+
+
 
   const heightStateHandler = (n: number) => {
     if (n) {
@@ -16,13 +18,13 @@ const GetInspiredComp: React.FC<Props> = ({inspirations}) => {
   }
 
   return (
-    <div className={"py-2 lg:py-4 px-4 w-full bg-greenish-blue"}>
-      <h3 className={"text-center text-xl md:text-4xl font-bold text-blue my-4"}>Get inspired</h3>
-      <div className={'flex gap-4 lg:justify-evenly lg:gap-0'}>
+    <div className={"w-full p-4 bg-greenish-blue"}>
+      <h2 className={"text-center font-bold text-blue"}>Get inspired</h2>
+      <div className={'flex gap-4 md:justify-evenly md:gap-0 md:w-11/12 md:mx-auto'}>
         {inspirations && inspirations
           .map(i =>
             <InspirationComp setHeightState={heightStateHandler} heightState={heightState} inspiration={i}
-                             key={i.tag}/>
+              key={i.tag} />
           )}
       </div>
       <div className={'my-3 lg:my-8'}>
