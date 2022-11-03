@@ -38,7 +38,7 @@ export type Article = {
   teaser: string
   _id: string
   paragraph: SanityRef[]
-  page:string
+  page: string
 }
 export type CategoryObject = {
   title: string
@@ -47,7 +47,7 @@ export type CategoryObject = {
 }
 
 const MainHubView = () => {
-  const [page, setPage] = useState<null|string>(null);
+  const [page, setPage] = useState<null | string>(null);
   const [categories, setCategories] = useState<null | Category[]>(null);
   const [articleTitles, setArticleTitles] = useState<null | Article[]>(null);
   const [error, setError] = useState<null | string>(null);
@@ -85,7 +85,7 @@ const MainHubView = () => {
             setError('error loading data')
           });
       }
-      if (!equality ) {
+      if (!equality) {
         sanityClient
           .fetch(
             `*[_type == 'article']`
@@ -131,18 +131,22 @@ const MainHubView = () => {
     }
   }, [categories, articleTitles, firstElementInPath, page,])
 
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
+
   return (
-    <div className={'max-w-screen-xl mx-auto'}>
-      <section className={'px-3'}>
-        <h2 className={`text-left text-3xl md:text-6xl font-bold text-blue mx-auto mb-3`}>
+    <div className={'px-4 md:px-0 pt-[15px] mx-auto'}>
+      <section className={' md:w-10/12 mx-auto'}>
+        <h1 className={`text-left mx-auto mb-[5px] `}>
           {firstElementInPath === 'info-advice' && 'Info & Advice'}
           {firstElementInPath === 'tips' && 'Tips'}
-        </h2>
+        </h1>
         <p>
           All the information and support you need in one place.
         </p>
       </section>
-      <section className={'p-3 md:flex gap-4'}>
+      <section className={'mt-2 md:flex gap-4 md:w-10/12 mx-auto'}>
 
         {error ? <div>{error}</div> : null}
         {categoryObjects && categoryObjects.map((c, idx) => {
@@ -150,7 +154,7 @@ const MainHubView = () => {
 
         })}
       </section>
-      <section id={'topics'} className={'mt-16'}>
+      <section id={'topics'} className={'mt-[25px]'}>
         <GradientCommunicationSection
           url={'/contact-us'} title={'Do you want to know about other topics?'}
           buttonText={'Send us suggestions!'}/>

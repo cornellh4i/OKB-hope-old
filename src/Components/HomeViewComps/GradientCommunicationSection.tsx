@@ -13,7 +13,7 @@ const GradientCommunicationSection: React.FC<Props> = ({title, buttonText, url})
 
   return (
     <div className={`bg-gradient-to-b from-[#E8FC97] to-[#9BFDF9] w-full pb-[25px] pt-[15px]`}>
-      <h2 className={"text-center"}>
+      <h2 className={"text-center w-2/3 mx-auto"}>
         {title}
       </h2>
       <div className={'w-full flex justify-center mt-[15px]'}>

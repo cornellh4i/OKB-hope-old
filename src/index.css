@@ -49,7 +49,7 @@ body {
 
 
 h1, h2, h3, h4, h5, h6 {
-    font-family:  "Futura PT Cond", "Futura-CondensedExtraBold", "Futura C", Futura, Muli, sans-serif;
+    font-family: "Futura PT Cond", "Futura-CondensedExtraBold", "Futura C", Futura, Muli, sans-serif;
     color: #2469A6;
     font-weight: bolder;
 
@@ -64,7 +64,8 @@ h2 {
     font-size: 20px;
     line-height: 26px;
 }
-h3{
+
+h3 {
     font-size: 16px;
     line-height: 21px;
 }
@@ -96,7 +97,8 @@ ul {
         line-height: 33px;
         font-size: 25px;
     }
-    h3{
+
+    h3 {
         font-size: 18px;
         line-height: 23px;
     }

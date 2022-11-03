@@ -18,25 +18,27 @@ const GrayLinkContainer: React.FC<Props> = ({categoryObject}) => {
 
 
   return (
-    <div className={`w-full bg-[#EFEFEF] p-3 mt-4 rounded md:w-1/3`}>
-      <div className={'py-1.5'}>
-        <Link className={'no-underline text-blue text-xl md:text-2xl font-bold'}
+    <div className={`w-full bg-[#EFEFEF] p-3 mt-5 rounded md:w-1/3`}>
+      <div className={''}>
+        <Link style={{fontFamily: "Futura PT Cond", lineHeight: '33px',}}
+              className={'no-underline text-[18px] md:text-[25px] font-bold'}
               to={categoryObject.url}>{categoryObject.title}</Link>
       </div>
-      <div className={'grid grid-cols-2'}>
+      <div className={'grid grid-cols-2 '}>
         <div>
           {categoryObject?.articles && categoryObject.articles.map((a, idx) => {
-            return <div key={idx + a.title} className={'py-1 w-full col-span-1'}>
-              <Link className={'no-underline text-[#000000] text-lg'} style={{fontFamily: 'Roboto', fontWeight:'400'}}
+            return <div key={idx + a.title} className={'w-full col-span-1'}>
+              <Link className={'no-underline text-[#000000] text-[16px] md:text-[18px]'}
+                    style={{fontFamily: 'Roboto', fontWeight: '400'}}
                     to={`/${firstElementInPath}/${categoryObject.url}/${a.slug.current}`}>{a.title}</Link>
             </div>
           })}
         </div>
-      <div className={'justify-self-end'}>
+        <div className={'justify-self-end w-fit h-fit '}>
           <img className={'max-h-20 md:max-h-24'}
                src={categoryObject.url === 'you-and-others' ? friends : categoryObject.url === 'feelings-and-emotions'
                  ? sad : categoryObject.url === 'substance-abuse' ? substance
-                   : categoryObject.url==='taking-care-of-yourself'? careYourself:
+                   : categoryObject.url === 'taking-care-of-yourself' ? careYourself :
                      categoryObject.url === 'finding-your-inner-calm' ? innerCalm : categoryObject.url === 'inspiring-stories' ? heroInspiration : undefined}
                alt={categoryObject.title}/>
         </div>
