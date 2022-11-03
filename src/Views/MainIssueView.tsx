@@ -73,20 +73,22 @@ const MainIssueView = () => {
   }, [feeling, category, articles])
 
   return (
-    <div className={' mx-auto '}>
+    <div className={' mx-auto w-full '}>
       <section className={'px-4 md:mx-auto w-11/12'}>
         {error && <div>{error}</div>}
         <BreadCrumbs/>
       </section>
-      <div className={'px-4  md:mx-auto w-11/12'}>
+      <div className={'px-4 w-full md:mx-auto md:w-11/12'}>
         <h1 className={`text-left mx-auto`}>
           {category?.title}
         </h1>
       </div>
-      <div className={'lg:grid w-full px-3 gap-6 grid-cols-3 justify-center my-2 lg:my-8  md:mx-auto w-10/12'} style={{minHeight:'200px'}}>
+      <div className={`
+      w-full px-4 justify-center my-2 md:flex md:mx-auto md:w-10/12 
+      `} style={{minHeight:'200px'}}>
         {
           articles && articles.map(
-            a => <div key={a.slug.current}>
+            a => <div className={'w-full '} key={a.slug.current}>
               <HorizontalTeaserComp article={a}/>
             </div>
           )

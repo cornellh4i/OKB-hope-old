@@ -27,13 +27,15 @@ const HorizontalTeaserComp: React.FC<Props> = ({article}) => {
 
   if (startComp) {
     return (
-      <div className={'grid grid-cols-2 md:grid-cols-none md:flex md:flex-col md:justify-center gap-4 my-6 w-full md:items-center'}>
+      <div className={`
+      flex md:flex md:flex-col md:justify-center gap-4 my-6 w-full md:items-center h-fit
+      `}>
 
-        <div className={' md:w-[400px] self-center lg:self-auto col-span-1 w-full'}>
+        <div className={' md:w-[400px] h-fit self-center md:self-auto col-span-1 w-full'}>
           {windowBig ? <img className={'rounded-t-xl object-cover'} loading="lazy"
                             src={urlFor(article.mainImage).height(200).width(400).url()} alt={article.title}/>
-            : <img className={'rounded-xl object-fill'} loading="lazy"
-                   src={urlFor(article.mainImage).height(Math.ceil(windowWidth / 3)).width(Math.ceil(windowWidth / 2)).url()}
+            : <img className={'rounded-xl h-fit object-fill'} loading="lazy"
+                   src={urlFor(article.mainImage).height(Math.ceil(windowWidth/2.9)).width(Math.ceil(windowWidth / 2)).url()}
                    alt={article.title}/>
           }
         </div>
