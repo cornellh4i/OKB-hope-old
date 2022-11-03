@@ -14,15 +14,6 @@ type Props = {
   setHeightState: (n: number) => void
 }
 
-const components = {
-  block: {
-    unknownBlockStyle: (props: any) => (
-
-      <span style={{fontSize: '10px'}}>{props.node.paragraph}</span>
-
-    )
-  },
-}
 
 const InspirationComp: React.FC<Props> = ({inspiration, heightState, setHeightState}) => {
   const heightRef = useRef<null | HTMLDivElement>(null)
@@ -56,12 +47,12 @@ const InspirationComp: React.FC<Props> = ({inspiration, heightState, setHeightSt
                  src={urlFor(inspiration?.mainImage).width(400).height(250).fit('scale').url()} alt=""/>
         }
       </div>
-      <div ref={heightRef} className={'w-full mx-auto p-2 md:p-3 rounded-b-md bg-white w-[400px]'}
+      <div ref={heightRef} className={'w-full mx-auto p-2 md:p-3 rounded-b-md bg-white lg:w-[400px]'}
            style={{minHeight: `${heightState}px`}}>
         <h3
           className={'no-underline'}>{inspiration?.title}</h3>
-        <div className={'text-xs '}>
-          <PortableText value={inspiration!.text} components={components}/>
+        <div className={'text-xs'} style={{fontSize: '14px'}}>
+          <PortableText value={inspiration!.text} />
         </div>
       </div>
     </div>
