@@ -18,11 +18,12 @@ const BreadCrumbs = () => {
   }, [location])
 
   return (
-    <div className={'py-0.5'}>
+    <div className={'py-0.5'} style={{fontFamily: "Futura PT Cond", fontWeight: 'normal'}}>
       <span>
               {locationStrings && <Link className={'no-underline text-black'} to={`/${locationStrings!.join('/')}`}>
-                {locationStrings!.map(s => s.split('-').join(' ')).join(' > ') + ' > '}
+                {locationStrings!.map(s => s.split('-').join(' ')).join(' > ')}
               </Link>}
+        <span>{" > "}</span>
         <span>{lastElementInPath}</span>
       </span>
     </div>

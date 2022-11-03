@@ -33,7 +33,7 @@ const HeroComp: React.FC<Props> = ({homeViewContent}) => {
              alt="hero image"/>
       }
 
-      <div className={`absolute bottom-[25px] 
+      <div className={`absolute bottom-[25px]
          left-0 right-0 
          md:right-1/3`}>
         <div
@@ -59,6 +59,7 @@ const HeroComp: React.FC<Props> = ({homeViewContent}) => {
              </span>
           }
         </div>
+
       </div>
 
     </div>
