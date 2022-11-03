@@ -14,7 +14,7 @@ const MainIssueView = () => {
   // data
 
   let {feeling, tipCategory} = useParams()
-  console.log(tipCategory)
+
 
 
   useEffect(() => {
@@ -73,17 +73,17 @@ const MainIssueView = () => {
   }, [feeling, category, articles])
 
   return (
-    <div className={'lg:max-w-screen-xl mx-auto '}>
-      <section className={'px-3'}>
+    <div className={' mx-auto '}>
+      <section className={'px-4 md:mx-auto w-11/12'}>
         {error && <div>{error}</div>}
         <BreadCrumbs/>
       </section>
-      <div className={'px-3'}>
-        <h2 className={`text-left text-2xl md:text-5xl font-bold text-blue mx-auto`}>
+      <div className={'px-4  md:mx-auto w-11/12'}>
+        <h1 className={`text-left mx-auto`}>
           {category?.title}
-        </h2>
+        </h1>
       </div>
-      <div className={'lg:grid w-full px-3 gap-6 grid-cols-3 justify-start my-2 lg:my-8'} style={{minHeight:'150px'}}>
+      <div className={'lg:grid w-full px-3 gap-6 grid-cols-3 justify-start my-2 lg:my-8  md:mx-auto w-11/12'} style={{minHeight:'200px'}}>
         {
           articles && articles.map(
             a => <div key={a.slug.current}>
