@@ -7,13 +7,16 @@
     text-decoration: none !important;
     color: #2469A6;
 }
+
 .nav_links:focus {
     text-decoration: none !important;
     color: #2469A6;
     border: 2px black;
 }
+
 .nav_links:focus {
     text-decoration: underline !important;
+    text-underline-offset: 5px ;
     color: #2469A6;
     border: 2px black;
 }

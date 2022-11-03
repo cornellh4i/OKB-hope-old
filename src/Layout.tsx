@@ -57,10 +57,10 @@ const Layout: React.FC<Props> = ({children}) => {
 
 
   return (
-    <div className={'w-screen bg-white relative leading-5'}>
+    <div className={'w-screen bg-white relative'}>
       <div id={'topbar'} className={`w-screen bg-white fixed z-30 top-0 left-0 right-0 h-[108px] drop-shadow`}>
         <section
-          className={" bg-white md:flex items-center md:w-11/12 mx-auto md:px-14 fixed top-0 left-0 right-0 z-40 pt-2"}>
+          className={`bg-white md:flex items-center md:w-11/12 mx-auto md:px-14 fixed top-0 left-0 right-0 z-40 pt-2`}>
           <Topbar/>
           <NavbarComp/>
           {!windowBig && <div className={'fixed top-26  right-0 left-0 z-50'}>
