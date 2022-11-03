@@ -7,7 +7,7 @@ import GetInspiredComp from "../Components/HomeViewComps/GetInspiredComp";
 import useWindowSize from "../hooks/use.window.size";
 import GradientCommunicationSection from "../Components/HomeViewComps/GradientCommunicationSection";
 
-type Herocontent = {
+type HeroContent = {
   title: string,
   mainImage: any,
   text: TypedObject
@@ -18,7 +18,7 @@ type Slug = {
 }
 
 export interface HomeViewContent {
-  heroContent: Herocontent,
+  heroContent: HeroContent,
   slug: Slug,
   title: string,
   text: TypedObject

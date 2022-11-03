@@ -1,5 +1,5 @@
-import React, { useMemo, useState } from 'react';
-import { Feeling } from "../../Views/HomeView";
+import React, {useMemo, useState} from 'react';
+import {Feeling} from "../../Views/HomeView";
 import FeelingButton from "../Buttons/FeelingButton";
 import FeelingInfoHint from "./FeelingInfoHint";
 import LinkTo from "./LinkTo";
@@ -8,7 +8,7 @@ type Props = {
   feelings: Feeling[]
 }
 
-const FeelingComp: React.FC<Props> = ({ feelings }) => {
+const FeelingComp: React.FC<Props> = ({feelings}) => {
   const [tag, setTag] = useState<string | null>('');
 
   const buttonFeelings = useMemo(() => {
@@ -55,16 +55,26 @@ const FeelingComp: React.FC<Props> = ({ feelings }) => {
       <div className={`
       md:flex lg:justify-center mt-[15px] md:mt-[30px] md:w-10/12 md:mx-auto
       `}>
-        <div className={'flex flex-wrap justify-center items-start h-fit gap-[15px]'}>
+        <div>
+          <div className={'flex flex-wrap justify-center items-start h-fit gap-[15px]'}>
 
-          {buttonFeelings && buttonFeelings.map(f => <FeelingButton onClick={buttonClickHandler}
-            key={f.text}
-            activeFeeling={chosenFeeling ? chosenFeeling.tag : null}
-            feelingButton={f} />)}
+            {buttonFeelings
+              && buttonFeelings.map(
+                f => <FeelingButton onClick={buttonClickHandler}
+                                    key={f.text}
+                                    activeFeeling={chosenFeeling ? chosenFeeling.tag : null}
+                                    feelingButton={f}/>)}
+
+          </div>
+          <div className={'md:w-10/12 md:mx-auto mt-[15px] md:pl-3 mb-[20px]'}>
+            <LinkTo url={'/info-advice'}>
+              Browse specific topics
+            </LinkTo>
+          </div>
         </div>
 
         <div className={" w-full "}>
-          {chosenFeeling ? <FeelingInfoHint feeling={chosenFeeling} /> : <p className={"hidden md:block "}>
+          {chosenFeeling ? <FeelingInfoHint feeling={chosenFeeling}/> : <p className={"hidden md:block "}>
             We may have some useful tips for you.
             Just tell us how you are feeling, and we will try to help you :-)
           </p>}
@@ -72,11 +82,6 @@ const FeelingComp: React.FC<Props> = ({ feelings }) => {
 
       </div>
 
-      <div className={'md:w-10/12 md:mx-auto md:pl-10 mt-[15px] mb-[20px]'}>
-        <LinkTo url={'/info-advice'}>
-          Browse specific topics
-        </LinkTo>
-      </div>
 
     </div>
   );

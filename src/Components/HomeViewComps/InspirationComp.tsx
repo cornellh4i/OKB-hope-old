@@ -13,6 +13,17 @@ type Props = {
   heightState: null | number
   setHeightState: (n: number) => void
 }
+
+const components = {
+  block: {
+    unknownBlockStyle: (props: any) => (
+
+      <span style={{fontSize: '10px'}}>{props.node.paragraph}</span>
+
+    )
+  },
+}
+
 const InspirationComp: React.FC<Props> = ({inspiration, heightState, setHeightState}) => {
   const heightRef = useRef<null | HTMLDivElement>(null)
 
@@ -35,7 +46,8 @@ const InspirationComp: React.FC<Props> = ({inspiration, heightState, setHeightSt
   }, [heightRef, heightState])
 
   return (
-    <div className={'w-1/2 py-2 lg:w-1/4 cursor-pointer hover:underline focus:border'} onClick={() => handleNavigation(inspiration!.url)}>
+    <div className={'w-1/2 py-2 lg:w-1/4 cursor-pointer hover:underline focus:border'}
+         onClick={() => handleNavigation(inspiration!.url)}>
       <div className={'w-full rounded-t-md'}>
         {!windowBig ? <img className={'mx-auto rounded-t-md'} loading="lazy"
                            src={urlFor(inspiration?.mainImage).width(184).height(123).fit('scale').url()}
@@ -44,12 +56,12 @@ const InspirationComp: React.FC<Props> = ({inspiration, heightState, setHeightSt
                  src={urlFor(inspiration?.mainImage).width(400).height(250).fit('scale').url()} alt=""/>
         }
       </div>
-      <div ref={heightRef} className={'w-full mx-auto p-2 lg:p-3 rounded-b-md bg-white'}
+      <div ref={heightRef} className={'w-full mx-auto p-2 md:p-3 rounded-b-md bg-white w-[400px]'}
            style={{minHeight: `${heightState}px`}}>
         <h3
           className={'no-underline'}>{inspiration?.title}</h3>
-        <div className={'text-xs'}>
-          <PortableText value={inspiration!.text}/>
+        <div className={'text-xs '}>
+          <PortableText value={inspiration!.text} components={components}/>
         </div>
       </div>
     </div>
