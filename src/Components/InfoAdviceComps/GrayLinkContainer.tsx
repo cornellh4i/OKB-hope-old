@@ -12,7 +12,7 @@ type Props = {
   categoryObject: CategoryObject
 }
 const GrayLinkContainer: React.FC<Props> = ({categoryObject}) => {
-  console.log(categoryObject.url);
+
   let {pathname} = useLocation()
   const firstElementInPath = pathname.split('/')[1]
 
