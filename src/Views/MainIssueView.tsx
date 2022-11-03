@@ -83,7 +83,7 @@ const MainIssueView = () => {
           {category?.title}
         </h1>
       </div>
-      <div className={'lg:grid w-full px-3 gap-6 grid-cols-3 justify-start my-2 lg:my-8  md:mx-auto w-11/12'} style={{minHeight:'200px'}}>
+      <div className={'lg:grid w-full px-3 gap-6 grid-cols-3 justify-center my-2 lg:my-8  md:mx-auto w-10/12'} style={{minHeight:'200px'}}>
         {
           articles && articles.map(
             a => <div key={a.slug.current}>
