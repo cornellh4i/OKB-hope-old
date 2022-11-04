@@ -7,17 +7,16 @@
 
 .nav_links:hover {
     text-decoration: none ;
-    color: black !important;
+    color: #2469A6 !important;
 
 }
 
 .nav_links:focus {
     text-decoration: none ;
-    text-underline-offset: 5px ;
-    color: black;
+    color: #2469A6 !important;
 }
 .nav_links:active {
-    color: black;
+    color: #2469A6 !important;
     text-decoration: underline ;
 
 }
@@ -28,17 +27,17 @@
 }
 .nav_links_inactive:hover {
     text-decoration: none ;
-    color: black !important;
+    color: #2469A6 !important;
 
 }
 
 .nav_links_inactive:focus {
     text-decoration: none ;
-    color: black;
+    color: #2469A6 !important;
 }
 
 .nav_links_inactive:active {
-    color: black;
+    color: #2469A6 !important;
     text-decoration: underline ;
 
 }
