@@ -40,7 +40,7 @@ const HorizontalTeaserComp: React.FC<Props> = ({article}) => {
           }
         </div>
         <div className={'md:w-[400px] col-span-1 w-full'}>
-          <Link style={{lineHeight: '23px'}} to={`${article.slug.current}`}
+          <Link style={{lineHeight: '23px', fontFamily:"Futura PT Cond"}} to={`${article.slug.current}`}
                 className={'text-blue text-[18px] font-black no-underline'}>{article.title}</Link>
           <p className={'text-[14px]'} style={{padding: '0 0', margin: '0 0', lineHeight: '16px'}}>
             {article.teaser}

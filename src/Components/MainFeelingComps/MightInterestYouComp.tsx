@@ -85,7 +85,7 @@ const MightInterestYouComp: React.FC<Props> = ({category}) => {
   return (
     <div className={'bg-gradient-to-b from-[#E8FC97] to-[#9BFDF9] px-3 py-6 lg:py-10'}>
       {error && <div>{error}</div>}
-      <h2 className={`text-center text-xl lg:text-4xl font-bold text-blue mx-auto`}>
+      <h2 className={`text-center mx-auto`}>
         This might also interest you</h2>
       <div className={'flex gap-6 lg:gap-10 mt-4 lg:my-8 justify-center'}>
         {problemArticle && problemArticle.map(

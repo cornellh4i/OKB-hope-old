@@ -23,7 +23,7 @@ const BottomBlueContainerComp:React.FC<Props> = ({paragraph,  heightState, setHe
          style={{minHeight:`${heightState}px`}}
          className={` my-2 lg:my-4 rounded-md ${windowBig ? 'p-4' : 'p-2'} bg-greenish-blue `}>
 
-      <h3 className={'text-blue font-bold'}>{paragraph.title}</h3>
+      <h2 className={''}>{paragraph.title}</h2>
       <div className={paragraph.colorKey ? 'p-1' : 'p-0'}>
         <PortableText value={paragraph.body} components={paragraphComponents}/>
       </div>

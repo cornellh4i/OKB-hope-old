@@ -280,45 +280,52 @@ const SpecificIssueView = () => {
       setHeightState(n)
     }
   }
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
 
   return (
     <div className={'w-screen relative'}>
       {error && <div>{error}</div>}
-      {!windowBig && <div className={'mx-3'}>
+      {!windowBig && <div className={'m-4 pt-2'}>
         <BreadCrumbs/>
       </div>}
-      {problem && <div className={'mt-4'}>
+      {windowBig && firstElementInPath !== 'about-us' && <div className={'py-3 w-10/12 mx-auto'}>
+        <BreadCrumbs/>
+      </div>}
+      {problem && <div className={''}>
         <div className={'w-screen'}>
           {!windowBig &&
-            <img className={'object-cover'} loading="lazy" src={urlFor(problem.mainImage).width(400).url()}
+            <img className={'object-cover mx-auto'} loading="lazy" src={urlFor(problem.mainImage).width(500).url()}
                  alt={problem.title}/>}
           {windowBig &&
-            <img loading="lazy" className={'object-cover max-h-[600px] w-screen 2xl:max-w-screen-xl mx-auto'}
+            <img loading="lazy" className={'object-cover aspect-video md:aspect-[12/4] w-full mx-auto'}
                  src={urlFor(problem.mainImage).width(1280).url()} alt={problem.title}/>}
         </div>
-        <div className={'p-3 w-screen'}>
+        <div className={'p-4 w-screen  md:w-10/12 mx-auto md:absolute top-16 left-0 right-0 md:grid md:grid-cols-2'}>
           <div
-            className={'bg-light-blue p-3 rounded-lg mt-3 lg:absolute lg:top-6 2xl:left-1/4 lg:left-20 lg:right-1/3'}>
+            className={'bg-light-blue py-2 px-3 rounded-lg '}>
 
-            <h1 className={`text-left  font-bold mx-auto mb-3`}>
+            <h1 className={`text-left  font-bold mx-auto`}>
               {problem.title}
             </h1>
-            <p style={{fontFamily: 'Roboto'}}>{problem.summary}</p>
+
+            <p style={{fontFamily: 'Roboto', padding: '0 0'}}>{problem.summary}</p>
           </div>
+          <div></div>
 
         </div>
       </div>}
 
 
-      <section className={'w-full px-3 lg:max-w-screen-xl mx-auto '}>
-        {windowBig && firstElementInPath !== 'about-us' && <div className={'mb-3'}>
-          <BreadCrumbs/>
-        </div>}
-        {linkObjects && firstElementInPath !== 'about-us' &&
-          <LinkObjectContainer scrollToHandler={scrollToElementHandler} linkObjects={linkObjects}/>}
+      <section className={'w-full px-4 lg:w-10/12 mx-auto md:grid md:grid-cols-4 md:absolute md:top-[10vh]  2xl:top-[40vh]'}>
+        <div className={'md:col-span-2 lg:col-span-3'}></div>
+        <div className={'md:col-span-2 lg:col-span-1'}>        {linkObjects && firstElementInPath !== 'about-us' &&
+          <LinkObjectContainer scrollToHandler={scrollToElementHandler} linkObjects={linkObjects}/>}</div>
+
       </section>
 
-      <div className={'lg:grid grid-cols-3 w-full p-3 lg:max-w-screen-xl mx-auto lg:gap-10'}>
+      <div className={'lg:grid grid-cols-3 w-full px-4 lg:max-w-screen-xl mx-auto lg:gap-10'}>
 
         <div className={!blueContainerContent ? 'col-span-2' : 'col-span-2'}>
           <div>
@@ -328,7 +335,7 @@ const SpecificIssueView = () => {
           </div>
           <div>
             {!windowBig && problem && problem.blueContainerContent && blueContainerContent && blueContainerContent.map(
-              b => <div key={b.slug.current} className={'px-3 my-3'}>
+              b => <div key={b.slug.current} className={''}>
                 <ColoredContainerComp blueContainerContent={b}/>
               </div>
             )}

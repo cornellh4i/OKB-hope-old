@@ -66,7 +66,7 @@ const VerticalTeaserComp: React.FC<Props> = ({article, heightState, setHeightSta
         <Link
           to={`/info-advice/${categoryPath?.slug.current}/${article.slug.current}`}
           onClick={scroller}
-          className={'text-blue font-bold no-underline'}>{article.title}</Link>
+          className={'text-blue font-bold no-underline'}><h2>{article.title}</h2></Link>
         <p className={'leading-5 text-sm lg:text-base'}>{article.teaser}</p>
       </div>
     </div>

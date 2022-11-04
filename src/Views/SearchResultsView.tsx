@@ -22,7 +22,9 @@ const SearchResultsView = () => {
     console.log('tipArticleTitles', tipArticleTitles)
 
   }
-
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
   useEffect(() => {
     if (searchPhrase) {
       sanityClient
