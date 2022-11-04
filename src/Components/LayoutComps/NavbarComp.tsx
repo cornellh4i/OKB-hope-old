@@ -1,23 +1,22 @@
-import {NavLink} from "react-router-dom";
+import {NavLink, useLocation} from "react-router-dom";
 import classes from './NavbarComp.module.css'
 import useWindowSize from "../../hooks/use.window.size";
 import SearchBarComp from "./SearchBarComp";
 
 const NavbarComp = () => {
   const {windowBig} = useWindowSize()
+
+  const {pathname} = useLocation()
+  console.log(pathname)
   return (
     <nav className={`w-full z-50 md:text-lg pb-2 md:flex md:justify-between`}>
       <ul
         className={"flex text-black-color justify-between md:justify-start md:gap-6 px-3 items-center md:h-16 md:pr-6"}>
         <li className={''}>
-          <NavLink
-            className={
-              ({isActive}) => {
-                console.log(isActive)
-                return isActive ? classes.nav_links : classes.nav_links_inactive
-              }
-            }
-            to={"/"}
+          <NavLink style={pathname !== '/' ? {color: "black", textDecoration: 'none'} : {
+            color: "black", textDecoration: 'underline', textUnderlineOffset: '5px'
+          }}
+                   to={"/"}
           >
             <span className={"flex md:items-center"}>
               <span>
