@@ -7,7 +7,7 @@ const NavbarComp = () => {
   const {windowBig} = useWindowSize()
 
   const {pathname} = useLocation()
-  console.log(pathname)
+
   return (
     <nav className={`w-full z-50 md:text-lg pb-2 md:flex md:justify-between`}>
       <ul
