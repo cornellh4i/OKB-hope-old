@@ -1,5 +1,5 @@
 import {NavLink} from "react-router-dom";
-import modules from './NavbarComp.module.css'
+import classes from './NavbarComp.module.css'
 import useWindowSize from "../../hooks/use.window.size";
 import SearchBarComp from "./SearchBarComp";
 
@@ -7,9 +7,17 @@ const NavbarComp = () => {
   const {windowBig} = useWindowSize()
   return (
     <nav className={`w-full z-50 md:text-lg pb-2 md:flex md:justify-between`}>
-      <ul className={"flex justify-between md:justify-start md:gap-6 px-3 items-center md:h-16 md:pr-6"}>
+      <ul
+        className={"flex text-black-color justify-between md:justify-start md:gap-6 px-3 items-center md:h-16 md:pr-6"}>
         <li className={''}>
-          <NavLink className={modules.nav_links} to={"/"}
+          <NavLink
+            className={
+              ({isActive}) => {
+                console.log(isActive)
+                return isActive ? classes.nav_links : classes.nav_links_inactive
+              }
+            }
+            to={"/"}
           >
             <span className={"flex md:items-center"}>
               <span>
@@ -30,7 +38,13 @@ const NavbarComp = () => {
           </NavLink>
         </li>
         <li>
-          <NavLink className={modules.nav_links} to={'/info-advice'}>
+          <NavLink to={'/info-advice'}
+                   className={
+                     ({isActive}) => {
+                       return isActive ? classes.nav_links : classes.nav_links_inactive
+                     }
+                   }
+          >
             <span className={"flex md:items-center gap-0.5"}>
               <span>
                 <svg width="17" height="20" viewBox="0 0 17 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -38,7 +52,8 @@ const NavbarComp = () => {
 <path
   d="M10.0001 0.90918H2.72736C1.72736 0.90918 0.90918 1.72736 0.90918 2.72736V17.2728C0.90918 18.2728 1.72736 19.091 2.72736 19.091H13.6365C14.6365 19.091 15.4546 18.2728 15.4546 17.2728V6.36372L10.0001 0.90918Z"
   stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-<path d="M10 0.90918V6.36373H15.4545" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+<path d="M10 0.90918V6.36373H15.4545" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"
+      strokeLinejoin="round"/>
 <path d="M11.8186 10.9092H4.5459" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
 <path d="M11.8186 14.5459H4.5459" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
 <path d="M6.36408 7.27246H5.45499H4.5459" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"
@@ -59,7 +74,11 @@ const NavbarComp = () => {
           </NavLink>
         </li>
         <li>
-          <NavLink className={modules.nav_links} to={'/tips'}>
+          <NavLink to={'/tips'} className={
+            ({isActive}) => {
+              return isActive ? classes.nav_links : classes.nav_links_inactive
+            }
+          }>
 
             <span className={"flex md:items-center"}>
               <span>
@@ -70,7 +89,8 @@ const NavbarComp = () => {
 <path
   d="M7.12435 12.6665C6.45972 12.168 5.96878 11.4731 5.72107 10.6801C5.47335 9.88709 5.48143 9.03625 5.74414 8.2481C6.00686 7.45995 6.5109 6.77444 7.18487 6.28867C7.85884 5.8029 8.66856 5.5415 9.49935 5.5415C10.3301 5.5415 11.1399 5.8029 11.8138 6.28867C12.4878 6.77444 12.9918 7.45995 13.2546 8.2481C13.5173 9.03625 13.5253 9.88709 13.2776 10.6801C13.0299 11.4731 12.539 12.168 11.8743 12.6665C11.5653 12.9725 11.3325 13.3469 11.195 13.7595C11.0575 14.1721 11.019 14.6113 11.0827 15.0415C11.0827 15.4614 10.9159 15.8642 10.6189 16.1611C10.322 16.458 9.91928 16.6248 9.49935 16.6248C9.07942 16.6248 8.6767 16.458 8.37976 16.1611C8.08283 15.8642 7.91602 15.4614 7.91602 15.0415C7.97971 14.6113 7.94123 14.1721 7.8037 13.7595C7.66617 13.3469 7.43344 12.9725 7.12435 12.6665"
   stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-<path d="M7.67969 13.4585H11.3214" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+<path d="M7.67969 13.4585H11.3214" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"
+      strokeLinejoin="round"/>
 </svg>
 
               </span>
