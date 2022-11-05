@@ -1,4 +1,6 @@
-# Build And Deploy Instructions
+Note: Pushes to the master branch will automatically be deployed on the Netlify, so it might be best to use a test branch before pushing to master.
+
+# Manual Build And Deploy Instructions
 
 1. Ensure node is installed. [Offcial installion guide](https://nodejs.org/en/download/)
 2. From the root of the repo, run `npm install` to install the project's depencencies.
