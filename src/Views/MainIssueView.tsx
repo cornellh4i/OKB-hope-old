@@ -72,6 +72,10 @@ const MainIssueView = () => {
     }
   }, [feeling, category, articles])
 
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
+
   return (
     <div className={' mx-auto w-full '}>
       <section className={'px-4 md:mx-auto w-11/12'}>
