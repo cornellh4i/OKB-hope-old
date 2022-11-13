@@ -16,6 +16,7 @@ jobs:
       # Build to ./dist
       - run: npm install
       - run: npm run build
+      - run: cp netlify.toml dist/
 
       - name: Deploy to Netlify
         uses: nwtgck/actions-netlify@v1.2
