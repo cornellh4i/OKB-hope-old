@@ -1,6 +1,6 @@
-import { useEffect, useState } from "react";
+import {useEffect, useState} from "react";
 import sanityClient from "../client.js";
-import { TypedObject } from "@portabletext/types";
+import {TypedObject} from "@portabletext/types";
 import HeroComp from "../Components/HomeViewComps/HeroComp";
 import FeelingComp from "../Components/HomeViewComps/FeelingComp";
 import GetInspiredComp from "../Components/HomeViewComps/GetInspiredComp";
@@ -47,7 +47,7 @@ const HomeView = () => {
   const [homeViewContent, setHomeViewContent] = useState<null | HomeViewContent>(null);
   const [feelings, setFeelings] = useState<null | Feeling[]>(null);
   const [inspirations, setInspirations] = useState<null | Inspiration[]>(null);
-  const { windowBig } = useWindowSize();
+  const {windowBig} = useWindowSize();
 
 
   useEffect(() => {
@@ -78,7 +78,31 @@ const HomeView = () => {
         .fetch(
           `*[_type == 'getInspired' && page=='home']`
         )
-        .then((data) => setInspirations(data))
+        .then((data) => {
+          const mappedData: Inspiration[] = data.map(
+            (d: Inspiration) => {
+              if (d.title === 'Grounding techniques') {
+                return {
+                  ...d,
+                  url: 'tips/finding-your-inner-calm/grounding-techniques',
+                }
+              } else if (d.title === 'Basics of a healthy diet') {
+                return {
+                  ...d,
+                  url: 'tips/taking-care-of-yourself/basics-of-a-healthy-diet',
+                }
+              } else if (d.title === 'Calming breathing exercises') {
+                return {
+                  ...d,
+                  url: 'tips/finding-your-inner-calm/calming-breathing-exercises',
+                }
+              } else {
+                return d
+              }
+            }
+          )
+          setInspirations(mappedData)
+        })
         .catch((err) => {
           console.log(err);
           setError('error loading data')
@@ -97,21 +121,22 @@ const HomeView = () => {
     window.scrollTo(0, 0)
   }, [])
 
+
   return (
     <>
       {error && <div>{error}</div>}
       <section id={'hero'} className={''}>
-        <HeroComp homeViewContent={homeViewContent} />
+        <HeroComp homeViewContent={homeViewContent}/>
       </section>
       <section id={'feelings'} className={'mx-4'}>
-        {feelings && <FeelingComp feelings={feelings} />
+        {feelings && <FeelingComp feelings={feelings}/>
         }
       </section>
       <section id={'inspiration'} className={'mx-auto'}>
-        <GetInspiredComp inspirations={inspirations} />
+        <GetInspiredComp inspirations={inspirations}/>
       </section>
       <section id={'us'} className={'mt-[25px]'}>
-        <GradientCommunicationSection url={'/about-us'} title={'Get to know us!'} buttonText={'Learn more about us'} />
+        <GradientCommunicationSection url={'/about-us'} title={'Get to know us!'} buttonText={'Learn more about us'}/>
       </section>
     </>
   );

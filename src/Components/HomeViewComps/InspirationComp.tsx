@@ -29,6 +29,7 @@ const InspirationComp: React.FC<Props> = ({inspiration, heightState, setHeightSt
   }
 
   const {windowBig} = useWindowSize();
+  console.log(inspiration!.title)
 
   useEffect(() => {
     if (heightRef && heightRef.current!.offsetHeight > heightState!) {
