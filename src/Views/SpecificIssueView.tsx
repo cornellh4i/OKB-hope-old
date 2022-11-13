@@ -293,7 +293,7 @@ const SpecificIssueView = () => {
       {windowBig && firstElementInPath !== 'about-us' && <div className={'py-3 w-10/12 mx-auto'}>
         <BreadCrumbs/>
       </div>}
-      {problem && <div className={''}>
+      {problem && <div className={'relative'}>
         <div className={'w-screen'}>
           {!windowBig &&
             <img className={'object-cover mx-auto'} loading="lazy" src={urlFor(problem.mainImage).width(500).url()}
@@ -302,7 +302,7 @@ const SpecificIssueView = () => {
             <img loading="lazy" className={'object-cover aspect-video md:aspect-[12/4] w-full mx-auto'}
                  src={urlFor(problem.mainImage).width(1280).url()} alt={problem.title}/>}
         </div>
-        <div className={'p-4 w-screen  md:w-10/12 mx-auto md:absolute top-16 left-0 right-0 md:grid md:grid-cols-2'}>
+        <div className={'p-4 w-screen  md:w-10/12 mx-auto md:absolute top-4 left-0 right-0 md:grid md:grid-cols-2'}>
           <div
             className={'bg-light-blue py-2 px-3 rounded-lg '}>
 
@@ -315,15 +315,23 @@ const SpecificIssueView = () => {
           <div></div>
 
         </div>
+        <div className={'w-full px-4 lg:w-11/12 mx-auto md:grid md:grid-cols-4 lg:grid-cols-3 md:absolute md:bottom-4'}>
+
+          <div className={'md:col-span-2 lg:col-span-2'}></div>
+          <div className={'md:col-span-2 lg:col-span-1'}>        {linkObjects && firstElementInPath !== 'about-us' &&
+            <LinkObjectContainer scrollToHandler={scrollToElementHandler} linkObjects={linkObjects}/>}</div>
+
+        </div>
       </div>}
 
 
-      <section className={'w-full px-4 lg:w-10/12 mx-auto md:grid md:grid-cols-4 md:absolute md:top-[10vh]  2xl:top-[40vh]'}>
-        <div className={'md:col-span-2 lg:col-span-3'}></div>
-        <div className={'md:col-span-2 lg:col-span-1'}>        {linkObjects && firstElementInPath !== 'about-us' &&
-          <LinkObjectContainer scrollToHandler={scrollToElementHandler} linkObjects={linkObjects}/>}</div>
+      {/*<div className={'w-full px-4 lg:w-10/12 mx-auto md:grid md:grid-cols-4 md:absolute md:top-[10vh]  2xl:top-[40vh]'}>*/}
 
-      </section>
+      {/*  <div className={'md:col-span-2 lg:col-span-3'}></div>*/}
+      {/*  <div className={'md:col-span-2 lg:col-span-1'}>        {linkObjects && firstElementInPath !== 'about-us' &&*/}
+      {/*    <LinkObjectContainer scrollToHandler={scrollToElementHandler} linkObjects={linkObjects}/>}</div>*/}
+
+      {/*</div>*/}
 
       <div className={'lg:grid grid-cols-3 w-full px-4 lg:max-w-screen-xl mx-auto lg:gap-10'}>
 
