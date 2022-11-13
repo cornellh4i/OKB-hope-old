@@ -4,7 +4,7 @@ import NavbarComp from "./Components/LayoutComps/NavbarComp";
 import useWindowSize from "./hooks/use.window.size";
 import ScrollToTop from "react-scroll-to-top";
 import FooterComp from "./Components/LayoutComps/FooterComp";
-import useScrollDirection from "./hooks/useScrollDirection";
+// import useScrollDirection from "./hooks/useScrollDirection";
 import SearchComp from "./Components/LayoutComps/SearchComp";
 import {ShowSearchCtx} from "./ctx/showSearchCtx";
 
@@ -16,34 +16,34 @@ const Layout: React.FC<Props> = ({children}) => {
   const [screenHeight, setScreenHeight] = useState(0);
   const {windowBig} = useWindowSize();
 
-  const direction = useScrollDirection()
+  // const direction = useScrollDirection()
   const {showSearch} = useContext(ShowSearchCtx);
 
 
-  useEffect(() => {
-    const transformValuesOff = [
-      {transform: 'translateY(0)'},
-      {transform: 'translateY(-6.6rem)'},
-    ]
-    const transformValuesOn = [
-      {transform: 'translateY(-6.6rem)'},
-      {transform: 'translateY(0)'},
-    ]
-    const optionsOn = {
-      duration: 400,
-      fill: 'forwards',
-      easing: 'ease-out'
-    }
-
-    const element = document.getElementById('topbar')
-    if (direction && direction === 'down' && element) {
-      // @ts-ignore
-      element.animate(transformValuesOff, optionsOn)
-    } else if (element && direction && direction === 'up') {
-      // @ts-ignore
-      element.animate(transformValuesOn, optionsOn)
-    }
-  }, [direction,])
+  // useEffect(() => {
+  //   const transformValuesOff = [
+  //     {transform: 'translateY(0)'},
+  //     {transform: 'translateY(-6.6rem)'},
+  //   ]
+  //   const transformValuesOn = [
+  //     {transform: 'translateY(-6.6rem)'},
+  //     {transform: 'translateY(0)'},
+  //   ]
+  //   const optionsOn = {
+  //     duration: 400,
+  //     fill: 'forwards',
+  //     easing: 'ease-out'
+  //   }
+  //
+  //   const element = document.getElementById('topbar')
+  //   if (direction && direction === 'down' && element) {
+  //     // @ts-ignore
+  //     element.animate(transformValuesOff, optionsOn)
+  //   } else if (element && direction && direction === 'up') {
+  //     // @ts-ignore
+  //     element.animate(transformValuesOn, optionsOn)
+  //   }
+  // }, [direction,])
 
 
   useEffect(() => {
