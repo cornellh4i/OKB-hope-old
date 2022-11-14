@@ -6,7 +6,7 @@ import {useNavigate} from "react-router-dom";
 type Props = {
   title: string
   buttonText: string
-  url: string
+  url: string | undefined
 }
 const GradientCommunicationSection: React.FC<Props> = ({title, buttonText, url}) => {
   // const linkClasses = `text-white no-underline hover:bg-white hover:text-blue focus:border-[#5DADEC] focus:border`
@@ -21,10 +21,12 @@ const GradientCommunicationSection: React.FC<Props> = ({title, buttonText, url})
       <div className={'w-full flex justify-center mt-[15px]'}>
 
         <BoringRoundedButton onClick={() => {
-          navigate(url);
+         if (url){
+           navigate(url)
+         } else return null
         }}>
-          <span className={'text-base'} style={linkStyles}>
-            {buttonText}</span>
+          {url?<span className={'text-base'} style={linkStyles}>
+            {buttonText}</span>: <a className={'text-base'} style={linkStyles} href={'mailto:wohohiame@okbfoundation.org'}>{buttonText}</a>}
         </BoringRoundedButton>
       </div>
     </div>

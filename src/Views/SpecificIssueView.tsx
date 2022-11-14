@@ -380,7 +380,7 @@ const SpecificIssueView = () => {
       </div>
       <section id={'contact-us'} className={'mt-16'}>
         <GradientCommunicationSection
-          url={'/contact-us'} title={'Do you want to know about other topics?'}
+          url={undefined} title={'Do you want to know about other topics?'}
           buttonText={'Send us suggestions!'}/>
       </section>
     </div>

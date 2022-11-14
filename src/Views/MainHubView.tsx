@@ -156,7 +156,7 @@ const MainHubView = () => {
       </section>
       <section id={'topics'} className={'mt-[25px]'}>
         <GradientCommunicationSection
-          url={'/contact-us'} title={'Do you want to know about other topics?'}
+          url={undefined} title={'Do you want to know about other topics?'}
           buttonText={'Send us suggestions!'}/>
       </section>
     </div>
