@@ -49,8 +49,7 @@ const VerticalTeaserComp: React.FC<Props> = ({article, heightState, setHeightSta
 
   const navigate = useNavigate()
   const handleNavigation = (url: string) => {
-    navigate(url)
-    scroller()
+    window.location = url;
   }
   const scroller = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
