@@ -18,7 +18,6 @@ const MightInterestYouComp: React.FC<Props> = ({category}) => {
 
   const firstElementInPath = pathname.split('/')[1]
 
-
   const pathIncludesProblem = (param: string | undefined, problem: Article[]|undefined) => {
     return problem?.find(a => a.slug.current === param)
   }
@@ -46,7 +45,7 @@ const MightInterestYouComp: React.FC<Props> = ({category}) => {
           `*[_type == 'tipArticle' && !("${category._id}" in categories[]._ref)][0..1]`
         )
         .then((data) => {
-          console.log(data)
+          // console.log(data)
           setProblemArticle(data)
         })
         .catch((err) => {
@@ -69,7 +68,7 @@ const MightInterestYouComp: React.FC<Props> = ({category}) => {
         })
         .catch((err) => {
           console.log(err);
-          setError('error loading data')
+          setError(err.message)
         });
     }
   }, [sameProblem, problemArticle])

@@ -1,6 +1,6 @@
 import React, {useEffect, useRef, useState} from 'react';
 import {Article} from "../../Views/MainHubView";
-import {Link, useNavigate} from "react-router-dom";
+import {Link, useLocation} from "react-router-dom";
 import imageUrlBuilder from "@sanity/image-url";
 import sanity from "../../client";
 import {SanityImageSource} from "@sanity/image-url/lib/types/types";
@@ -13,8 +13,22 @@ type Props = {
 }
 
 const VerticalTeaserComp: React.FC<Props> = ({article, heightState, setHeightState}) => {
-  const [categoryPath, setCategoryPath] = useState<{ slug: { current: string, _type: 'slug' } } | null>(null);
-  const [error, setError] = useState<null | string>(null);
+  const [myPath, setMyPath] = useState<string | null>(null);
+  const [myCategory, setMyCategory] = useState('');
+
+
+  const {pathname} = useLocation()
+
+
+  useEffect(() => {
+    if (pathname && article) {
+      const pathArr = pathname.split('/')
+      setMyPath(`${pathArr[1]}`)
+    }
+  }, [pathname, article])
+
+  // console.log(`/${myPath}/${myCategory}/${article.slug.current}`)
+
 
   const heightRef = useRef<null | HTMLDivElement>(null)
   // sanity
@@ -31,44 +45,50 @@ const VerticalTeaserComp: React.FC<Props> = ({article, heightState, setHeightSta
 
 
   useEffect(() => {
-    if (!categoryPath) {
+    if (!myCategory && article) {
       const categoryRef = article.categories[0]._ref
+      console.log(categoryRef, myPath)
+      const queryString = myPath === 'tips' ? `*[_type == "tipCategory" && _id == "${categoryRef}" ] ` : `*[_type == "category" && _id == "${categoryRef}"] `
       sanityClient
         .fetch(
-          `*[_type == "category" && _id == "${categoryRef}"]{slug}`
+          queryString
         )
         .then((data) => {
-          setCategoryPath(data[0]);
+          setMyCategory(data[0].slug.current);
         })
         .catch((err) => {
           console.log(err);
-          setError('error loading data')
+
         });
     }
-  }, [categoryPath, article])
+  }, [myPath, article])
 
-  const navigate = useNavigate()
   const handleNavigation = (url: string) => {
     window.location.href = url;
+    // navigate(url)
   }
   const scroller = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    window.scrollTo({top: 0, behavior: 'smooth'});
   }
   return (
-    <div onClick={()=>handleNavigation(`/info-advice/${categoryPath?.slug.current}/${article.slug.current}`)}
-      className={'flex flex-col gap-0 w-full lg:w-[400px] hover:underline cursor-pointer focus:border'}>
-      {error && <div>{error}</div>}
-      <div>
-        <img className={'rounded-t-lg'} src={urlFor(article.mainImage).height(200).width(400).url()} loading="lazy" alt={article.title}/>
+    <>
+      <div onClick={() => handleNavigation(myPath ? `/${myPath}/${myCategory}/${article.slug.current}` : '')}
+           className={'flex flex-col gap-0 w-full lg:w-[400px] hover:underline cursor-pointer focus:border'}>
+        {/*{error && <div>{error}</div>}*/}
+        <div>
+
+          <img className={'rounded-t-lg'} src={urlFor(article.mainImage).height(200).width(400).url()} loading="lazy"
+               alt={article.title}/>
+        </div>
+        <div ref={heightRef} className={`bg-white p-3 rounded-b-lg`} style={{minHeight: `${heightState}px`}}>
+          <Link
+            to={myPath ? myPath : ''}
+            onClick={scroller}
+            className={'text-blue font-bold no-underline'}><h2>{article.title}</h2></Link>
+          <p className={'leading-5 text-sm lg:text-base'}>{article.teaser}</p>
+        </div>
       </div>
-      <div ref={heightRef} className={`bg-white p-3 rounded-b-lg`} style={{minHeight: `${heightState}px`}}>
-        <Link
-          to={`/info-advice/${categoryPath?.slug.current}/${article.slug.current}`}
-          onClick={scroller}
-          className={'text-blue font-bold no-underline'}><h2>{article.title}</h2></Link>
-        <p className={'leading-5 text-sm lg:text-base'}>{article.teaser}</p>
-      </div>
-    </div>
+    </>
   );
 };
 

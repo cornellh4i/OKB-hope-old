@@ -338,7 +338,7 @@ const SpecificIssueView = () => {
         <div className={!blueContainerContent ? 'col-span-2' : 'col-span-2'}>
           <div>
             {paragraphs && paragraphs.slice(0, 2).map(
-              p => <ParagraphComp key={p.slug.current} paragraph={p}/>
+              (p,idx) => <ParagraphComp key={p.slug.current+idx} paragraph={p}/>
             )}
           </div>
           <div>
@@ -350,7 +350,7 @@ const SpecificIssueView = () => {
           </div>
           <div className={''}>
             {paragraphs && paragraphs.slice(2,).map(
-              p => <ParagraphComp key={p.slug.current} paragraph={p}/>
+              (p,idx) => <ParagraphComp key={p.slug.current+idx} paragraph={p}/>
             )}
           </div>
 
@@ -368,7 +368,7 @@ const SpecificIssueView = () => {
 
       {problem && problem.yellowContainerContent?.length > 0 &&
         <div className={'w-full px-3 lg:max-w-screen-xl mx-auto lg:grid lg:grid-cols-3 lg:gap-4'}>
-          {problem.yellowContainerContent.map(y => <div key={y.serial_num}>
+          {problem.yellowContainerContent.map((y,idx) => <div key={idx}>
             <BottomBlueContainerComp heightState={heightState} setHeightState={heightStateHandler} paragraph={y}/>
           </div>)}
         </div>}
