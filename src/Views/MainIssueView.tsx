@@ -1,6 +1,6 @@
-import React, {useEffect, useState} from 'react';
-import {useParams} from "react-router-dom";
-import {Article, Category} from "./MainHubView";
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import { Article, Category } from "./MainHubView";
 import HorizontalTeaserComp from "../Components/InfoAdviceComps/HorizontalTeaserComp";
 import BreadCrumbs from "../Components/LayoutComps/BreadCrumbs";
 import MightInterestYouComp from "../Components/MainFeelingComps/MightInterestYouComp";
@@ -13,9 +13,7 @@ const MainIssueView = () => {
   const [articles, setArticles] = useState<null | Article[]>(null);
   // data
 
-  let {feeling, tipCategory} = useParams()
-
-
+  let { feeling, tipCategory } = useParams();
 
   useEffect(() => {
     if (feeling && !category) {
@@ -28,7 +26,7 @@ const MainIssueView = () => {
         })
         .catch((err) => {
           console.log(err);
-          setError('error loading data')
+          setError("error loading data");
         });
     }
     if (tipCategory && !category) {
@@ -41,7 +39,7 @@ const MainIssueView = () => {
         })
         .catch((err) => {
           console.log(err);
-          setError('error loading data')
+          setError("error loading data");
         });
     }
     if (feeling && category && !articles) {
@@ -54,7 +52,7 @@ const MainIssueView = () => {
         })
         .catch((err) => {
           console.log(err);
-          setError('error loading data')
+          setError("error loading data");
         });
     }
     if (tipCategory && category && !articles) {
@@ -67,40 +65,39 @@ const MainIssueView = () => {
         })
         .catch((err) => {
           console.log(err);
-          setError('error loading data')
+          setError("error loading data");
         });
     }
-  }, [feeling, category, articles])
+  }, [feeling, category, articles]);
 
   useEffect(() => {
-    window.scrollTo(0, 0)
-  }, [])
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
-    <div className={' mx-auto w-full '}>
-      <section className={'px-4 md:mx-auto w-11/12'}>
+    <div className={" mx-auto w-full "}>
+      <section className={"px-4 md:mx-auto w-11/12"}>
         {error && <div>{error}</div>}
-        <BreadCrumbs/>
+        <BreadCrumbs />
       </section>
-      <div className={'px-4 w-full md:mx-auto md:w-11/12'}>
-        <h1 className={`text-left mx-auto`}>
-          {category?.title}
-        </h1>
+      <div className={"px-4 w-full md:mx-auto md:w-11/12"}>
+        <h1 className={`text-left mx-auto`}>{category?.title}</h1>
       </div>
-      <div className={`
+      <div
+        className={`
       w-full px-4 justify-center my-2 md:flex md:mx-auto md:w-10/12 
-      `} style={{minHeight:'200px'}}>
-        {
-          articles && articles.map(
-            a => <div className={'w-full '} key={a.slug.current}>
-              <HorizontalTeaserComp article={a}/>
+      `}
+        style={{ minHeight: "200px" }}
+      >
+        {articles &&
+          articles.map((a) => (
+            <div className={"w-full "} key={a.slug.current}>
+              <HorizontalTeaserComp article={a} />
             </div>
-          )
-        }
+          ))}
       </div>
       <section>
-        {category && <MightInterestYouComp category={category}/>
-        }
+        {category && <MightInterestYouComp category={category} />}
       </section>
     </div>
   );

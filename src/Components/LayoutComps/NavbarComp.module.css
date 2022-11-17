@@ -1,43 +1,38 @@
 .nav_links {
-    text-decoration: underline !important;
-    color: black !important;
-    text-underline-offset: 5px ;
-
+  text-decoration: underline !important;
+  color: black !important;
+  text-underline-offset: 3px;
 }
 
 .nav_links:hover {
-    text-decoration: none ;
-    color: #2469A6 !important;
-
+  text-decoration: none;
+  color: #2469a6 !important;
 }
 
 .nav_links:focus {
-    text-decoration: none ;
-    color: #2469A6 !important;
+  text-decoration: none;
+  color: #2469a6 !important;
 }
 .nav_links:active {
-    color: #2469A6 !important;
-    text-decoration: underline ;
-
+  color: #2469a6 !important;
+  text-decoration: underline;
 }
 
 .nav_links_inactive {
-    text-decoration-line: none !important;
-    color: black;
+  text-decoration-line: none !important;
+  color: black;
 }
 .nav_links_inactive:hover {
-    text-decoration: none ;
-    color: #2469A6 !important;
-
+  text-decoration: none;
+  color: #2469a6 !important;
 }
 
 .nav_links_inactive:focus {
-    text-decoration: none ;
-    color: #2469A6 !important;
+  text-decoration: none;
+  color: #2469a6 !important;
 }
 
 .nav_links_inactive:active {
-    color: #2469A6 !important;
-    text-decoration: underline ;
-
+  color: #2469a6 !important;
+  text-decoration: underline;
 }
