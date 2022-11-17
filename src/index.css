@@ -3,119 +3,118 @@
 @tailwind utilities;
 
 :root {
-    font-size: 16px;
-    line-height: 26px;
-    font-weight: 400;
+  font-size: 16px;
+  line-height: 26px;
+  font-weight: 400;
 
-
-    font-synthesis: none;
-    text-rendering: optimizeLegibility;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    -webkit-text-size-adjust: 100%;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
 }
 
-
 a {
-    font-weight: 500;
-    font-size: 16px;
-    color: #2469A6;
-    /*color: black;*/
-    text-decoration: underline;
-    margin-top: 16px;
+  font-weight: 500;
+  font-size: 16px;
+  color: #2469a6;
+  /*color: black;*/
+  text-decoration: underline;
+  margin-top: 16px;
 }
 
 a:hover {
-    color: white;
-    background-color: #535bf2;
+  color: white;
+  background-color: #535bf2;
 }
 
 a:focus {
-    color: white;
-    background-color: #2469A6;
-    border: 2px solid #1C2430;
+  color: white;
+  background-color: #2469a6;
+  border: 2px solid #1c2430;
 }
 
 a:active {
-    color: #1C2430;
+  color: #1c2430;
 }
-
 
 body {
-    margin: 0;
+  margin: 0;
 
-    overflow: auto;
+  overflow: auto;
 }
 
-
-h1, h2, h3, h4, h5, h6 {
-    font-family: "Futura PT Cond", "Futura-CondensedExtraBold", "Futura C", Futura, Muli, sans-serif;
-    color: #2469A6;
-    font-weight: bolder;
-
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Futura PT Cond", "Futura-CondensedExtraBold", "Futura C", Futura,
+    Muli, sans-serif;
+  color: #2469a6;
+  font-weight: bolder;
 }
 
 h1 {
-    font-size: 25px;
-    line-height: 33px;
+  font-size: 25px;
+  line-height: 33px;
 }
 
 h2 {
-    font-size: 20px;
-    line-height: 26px;
+  font-size: 20px;
+  line-height: 26px;
 }
 
 h3 {
-    font-size: 16px;
-    line-height: 21px;
+  font-size: 16px;
+  line-height: 21px;
 }
 
 p {
-    font-family: Roboto, Montserrat, sans-serif;
-    color: black;
-    font-size: 16px;
-    line-height: 19px;
-    margin-top: 10px;
+  font-family: Roboto, Montserrat, sans-serif;
+  color: black;
+  font-size: 16px;
+  line-height: 19px;
+  margin-top: 10px;
 }
 
 li {
-    font-size: 16px;
-    line-height: 19px;
+  font-size: 16px;
+  line-height: 19px;
 }
 
 ul {
-    list-style-type: none;
+  list-style-type: none;
 }
 
 @media screen and (min-width: 30em) {
-    h1 {
-        font-size: 28px;
-        line-height: 36px;
-    }
+  h1 {
+    font-size: 28px;
+    line-height: 36px;
+  }
 
-    h2 {
-        line-height: 33px;
-        font-size: 25px;
-    }
+  h2 {
+    line-height: 33px;
+    font-size: 25px;
+  }
 
-    h3 {
-        font-size: 18px;
-        line-height: 23px;
-    }
+  h3 {
+    font-size: 18px;
+    line-height: 23px;
+  }
 
-    p {
-        font-size: 18px;
-        line-height: 21px;
+  p {
+    font-size: 18px;
+    line-height: 21px;
+  }
 
-    }
+  li {
+    font-size: 18px;
+    line-height: 21px;
+  }
 
-    li {
-        font-size: 18px;
-        line-height: 21px;
-    }
-
-    a {
-        /*font-size: 19px;*/
-    }
-
+  a {
+    /*font-size: 19px;*/
+  }
 }

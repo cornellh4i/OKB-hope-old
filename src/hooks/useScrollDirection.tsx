@@ -1,9 +1,8 @@
-import React, {useEffect, useState} from 'react';
-
+import React, { useEffect, useState } from "react";
 
 const useScrollDirection = () => {
   const threshold = 120;
-  const [scrollDir, setScrollDir] = useState('up');
+  const [scrollDir, setScrollDir] = useState("up");
 
   useEffect(() => {
     let previousScrollYPosition = window.scrollY;
@@ -21,8 +20,8 @@ const useScrollDirection = () => {
 
       if (scrolledMoreThanThreshold(currentScrollYPosition)) {
         const newScrollDirection = isScrollingUp(currentScrollYPosition)
-          ? 'down'
-          : 'up';
+          ? "down"
+          : "up";
         setScrollDir(newScrollDirection);
         previousScrollYPosition =
           currentScrollYPosition > 0 ? currentScrollYPosition : 0;
@@ -31,7 +30,7 @@ const useScrollDirection = () => {
     const onScroll = () => window.requestAnimationFrame(updateScrollDirection);
     window.addEventListener("scroll", onScroll);
     return () => window.removeEventListener("scroll", onScroll);
-  }, [])
+  }, []);
 
   return scrollDir;
 };

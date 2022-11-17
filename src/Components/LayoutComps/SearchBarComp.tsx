@@ -1,24 +1,33 @@
-import React, {useContext} from 'react';
+import React, { useContext } from "react";
 import RoundedButton from "../Buttons/RoundedButton";
-import {ShowSearchCtx} from "../../ctx/showSearchCtx";
+import { ShowSearchCtx } from "../../ctx/showSearchCtx";
 
 const SearchBarComp = () => {
-  const {showSearchHandler} = useContext(ShowSearchCtx);
+  const { showSearchHandler } = useContext(ShowSearchCtx);
 
   const searchHandler = () => {
-   showSearchHandler(true)
-
-  }
+    showSearchHandler(true);
+  };
   // const microphoneHandler = () => {
   //   console.log('microphone')
   // }
   return (
     <div className={"flex px-2 gap-2 md:gap-4"}>
-      <RoundedButton aLabel={'search'} onClick={searchHandler}>
-        <svg width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <RoundedButton aLabel={"search"} onClick={searchHandler}>
+        <svg
+          width="21"
+          height="21"
+          viewBox="0 0 21 21"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
           <path
             d="M19.875 19.875L13.6251 13.625M15.7083 8.41667C15.7083 12.4437 12.4437 15.7083 8.41667 15.7083C4.38959 15.7083 1.125 12.4437 1.125 8.41667C1.125 4.38959 4.38959 1.125 8.41667 1.125C12.4437 1.125 15.7083 4.38959 15.7083 8.41667Z"
-            stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
         </svg>
       </RoundedButton>
       {/*<RoundedButton aLabel={'voice search'} onClick={microphoneHandler}>*/}
@@ -28,9 +37,7 @@ const SearchBarComp = () => {
       {/*      stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>*/}
       {/*  </svg>*/}
       {/*</RoundedButton>*/}
-
     </div>
-
   );
 };
 

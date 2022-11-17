@@ -1,30 +1,30 @@
 export default {
-  name: 'blueContainerContent',
-  title: 'Blue Container Content',
-  type: 'document',
+  name: "blueContainerContent",
+  title: "Blue Container Content",
+  type: "document",
   fields: [
     {
-      name: 'title',
-      title: 'Title',
-      type: 'string',
+      name: "title",
+      title: "Title",
+      type: "string",
     },
     {
-      name: 'slug',
-      title: 'Slug',
-      type: 'slug',
+      name: "slug",
+      title: "Slug",
+      type: "slug",
       options: {
-        source: 'title',
+        source: "title",
       },
     },
     {
-      name: 'body',
-      title: 'Body',
-      type: 'blockContent',
+      name: "body",
+      title: "Body",
+      type: "blockContent",
     },
     {
-      name: 'warning',
-      title: 'warning',
-      type: 'blockContent',
+      name: "warning",
+      title: "warning",
+      type: "blockContent",
     },
     // {
     //   name: 'article', title: 'article', type: "array",
@@ -41,4 +41,4 @@ export default {
     //   ]
     // }
   ],
-}
+};
