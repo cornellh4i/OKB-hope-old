@@ -141,26 +141,28 @@ const MainHubView = () => {
   }, []);
 
   return (
-    <div className={"px-4 md:px-0 pt-[15px] mx-auto"}>
-      <section className={" md:w-10/12 mx-auto"}>
-        <h1 className={`text-left mx-auto mb-[5px] `}>
-          {firstElementInPath === "info-advice" && "Info & Advice"}
-          {firstElementInPath === "tips" && "Tips"}
-        </h1>
-        <p>All the information and support you need in one place.</p>
-      </section>
-      <section className={"mt-2 md:flex gap-4 md:w-10/12 mx-auto"}>
-        {error ? <div>{error}</div> : null}
-        {categoryObjects &&
-          categoryObjects.map((c, idx) => {
-            return (
-              <GrayLinkContainer
-                key={idx + c.title}
-                categoryObject={c}
-              ></GrayLinkContainer>
-            );
-          })}
-      </section>
+    <>
+      <div className={"px-4 md:px-0 pt-[15px] mx-auto"}>
+        <section className={" md:w-10/12 mx-auto"}>
+          <h1 className={`text-left mx-auto mb-[5px] `}>
+            {firstElementInPath === "info-advice" && "Info & Advice"}
+            {firstElementInPath === "tips" && "Tips"}
+          </h1>
+          <p>All the information and support you need in one place.</p>
+        </section>
+        <section className={"mt-2 md:flex gap-4 md:w-10/12 mx-auto"}>
+          {error ? <div>{error}</div> : null}
+          {categoryObjects &&
+            categoryObjects.map((c, idx) => {
+              return (
+                <GrayLinkContainer
+                  key={idx + c.title}
+                  categoryObject={c}
+                ></GrayLinkContainer>
+              );
+            })}
+        </section>
+      </div>
       <section id={"topics"} className={"mt-[25px]"}>
         <GradientCommunicationSection
           url={undefined}
@@ -168,7 +170,7 @@ const MainHubView = () => {
           buttonText={"Send us suggestions!"}
         />
       </section>
-    </div>
+    </>
   );
 };
 

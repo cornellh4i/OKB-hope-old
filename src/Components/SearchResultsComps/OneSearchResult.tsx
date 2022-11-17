@@ -43,7 +43,7 @@ const OneSearchResult: React.FC<Props> = ({ article, url }) => {
         <div>
           <img
             loading={"lazy"}
-            className={"rounded"}
+            className={"rounded max-h-[250px]"}
             src={urlFor(article.mainImage).height(300).width(400).url()}
             alt={article.title}
           />
