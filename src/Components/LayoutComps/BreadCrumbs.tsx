@@ -45,7 +45,7 @@ const BreadCrumbs = () => {
   const routes = transformPathToRoutes(location["pathname"]);
   const breadcrumbs = useBreadcrumbs(routes);
   console.log(breadcrumbs);
-  console.log(breadcrumbs[breadcrumbs.length-1].match.pathname);
+  const lastBreadCrumb= breadcrumbs[breadcrumbs.length-1].match.pathname
   return (
     <div
       className={"py-0.5"}
@@ -59,7 +59,7 @@ const BreadCrumbs = () => {
             to={match.pathname}>
             {breadcrumb}
           </Link>
-          {lastElementInPath!=match.pathname && <span>{" > "}</span> }
+          {lastBreadCrumb!=match.pathname && <span>{" > "}</span> }
         </span>
       ))}
     </div>
