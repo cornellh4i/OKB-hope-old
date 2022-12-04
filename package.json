@@ -12,13 +12,16 @@
     "@portabletext/react": "^1.0.6",
     "@sanity/client": "^3.4.1",
     "@sanity/image-url": "^1.0.1",
+    "esbuild": "^0.15.16",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.4.1",
-    "react-scroll-to-top": "^3.0.0"
+    "react-scroll-to-top": "^3.0.0",
+    "use-react-router-breadcrumbs": "^4.0.1"
   },
   "devDependencies": {
     "@portabletext/types": "^2.0.0",
+    "@types/node": "^18.11.9",
     "@types/react": "^18.0.17",
     "@types/react-dom": "^18.0.6",
     "@vitejs/plugin-react": "^2.1.0",
