@@ -54,7 +54,7 @@ const BreadCrumbs = () => {
       {breadcrumbs.map(({ match, breadcrumb }) => (
         <span>
           <Link
-            className={"no-underline text-black"}
+            className={`text-black ${lastBreadCrumb!=match.pathname ? "no-underline" : ""}`}
             key={match.pathname}
             to={match.pathname}>
             {breadcrumb}
