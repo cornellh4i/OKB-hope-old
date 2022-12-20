@@ -46,20 +46,20 @@ const BreadCrumbs = () => {
   const breadcrumbs = useBreadcrumbs(routes);
   console.log(breadcrumbs);
   const lastBreadCrumb= breadcrumbs[breadcrumbs.length-1].match.pathname
+
+  const lastBreadCrumbStyling = "lastBreadCrumbStyling no-underline"
+
   return (
-    <div
-      className={"py-0.5"}
-      style={{ fontFamily: "Futura PT Cond", fontWeight: "normal" }}
-    >
+    <div className={"py-0.5"}>
       {breadcrumbs.map(({ match, breadcrumb }) => (
         <span>
           <Link
-            className={`text-black ${lastBreadCrumb!=match.pathname ? "no-underline" : ""}`}
+            className={`${lastBreadCrumb!=match.pathname ? "regBreadCrumbStyling" : lastBreadCrumbStyling}`}
             key={match.pathname}
             to={match.pathname}>
             {breadcrumb}
           </Link>
-          {lastBreadCrumb!=match.pathname && <span>{" > "}</span> }
+          {lastBreadCrumb!=match.pathname && <span className="text-orange-800">{" > "}</span> }
         </span>
       ))}
     </div>
