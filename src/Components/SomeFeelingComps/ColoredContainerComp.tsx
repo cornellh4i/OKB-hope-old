@@ -24,7 +24,7 @@ const ColoredContainerComp: React.FC<Props> = ({ blueContainerContent }) => {
         />
       </div>
       {blueContainerContent && blueContainerContent.warning && (
-        <div className={`bg-[#DE304E] text-white p-2 my-2`}>
+        <div className={`bg-[#DE304E] text-white px-2 pb-1 my-2`}>
           <PortableText value={blueContainerContent.warning} />
         </div>
       )}
