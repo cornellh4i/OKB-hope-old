@@ -1,3 +1,22 @@
-.breadCrumbSeperator:last-child{
-    color: red;
+@font-face {
+    font-family: FuturaCondensedMedium;
+    src: url('fonts/Futura Condensed Medium.ttf');
+}
+@font-face {
+    font-family: FuturaCondensedExtraBold;
+    src: url("src/Components/LayoutComps/fonts/Futura Condensed ExtraBold.ttf");
+}
+
+.regBreadCrumbStyling{
+    color: #000000;
+    font-size: 13px;
+    font-family: FuturaCondensedMedium
+    
+}
+.lastBreadCrumbStyling{
+    color: #000000;
+    font-size: 13px;
+    cursor: not-allowed;
+    pointer-events: none;
+    font-family: "Futura-CondensedExtraBold"
 }
