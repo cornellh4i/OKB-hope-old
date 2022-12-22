@@ -302,7 +302,6 @@ const SpecificIssueView = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
-
   return (
     <div className={"w-screen relative"}>
       {error && <div>{error}</div>}
@@ -392,8 +391,10 @@ const SpecificIssueView = () => {
               paragraphs
                 .slice(0, 2)
                 .map((p, idx) => (
-                  <ParagraphComp key={p.slug.current + idx} paragraph={p} />
+                  <div><ParagraphComp key={p.slug.current + idx} paragraph={p} />      
+                </div>
                 ))}
+                
           </div>
           <div>
             {!windowBig &&
@@ -425,7 +426,8 @@ const SpecificIssueView = () => {
                 key={b.slug.current}
                 style={{ minHeight: `${(windowHeight / 3) * 2}px` }}
                 className={`flex flex-col justify-between`}
-              >
+              ><div>Testin 3
+                </div>
                 <ColoredContainerComp blueContainerContent={b} />
               </div>
             ))}

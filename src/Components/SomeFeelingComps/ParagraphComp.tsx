@@ -35,7 +35,7 @@ const ParagraphComp: React.FC<Props> = ({ paragraph }) => {
       className={`mt-3 myb-2 lg:mb-4 lg:mt-6 rounded-md  
     ${paragraph.colorKey ? paragraph.colorKey : "bg-white"} `}
     >
-      <h3 className={"text-blue lg:text-xl font-bold my-2"}>
+      <h3 className={"text-blue lg:text-xl font-bold mt-2"}>
         {paragraph.title}
       </h3>
       <div className={paragraph.colorKey ? "p-1" : "p-0"}>

@@ -2,7 +2,7 @@ import { NavLink, useLocation } from "react-router-dom";
 import classes from "./NavbarComp.module.css";
 import useWindowSize from "../../hooks/use.window.size";
 import SearchBarComp from "./SearchBarComp";
-
+import "./NavbarComp.module.css"
 const NavbarComp = () => {
   const { windowBig } = useWindowSize();
 
@@ -129,7 +129,7 @@ const NavbarComp = () => {
               return isActive ? classes.nav_links : classes.nav_links_inactive;
             }}
           >
-            <span className={"flex items-center gap-[5px]"}>
+            <span className={"flex items-center gap-[5px] tab-box"}>
               <span>
                 <svg
                   width="20"

@@ -6,8 +6,9 @@ const CustomHeadingComp: React.FC<Props> = (props) => {
   return (
     <p
       style={{
-        marginTop: ".5rem",
+        marginTop: "15px",
         fontWeight: "500",
+        marginBottom: "-7px",
       }}
       className={"text-blue"}
     >
