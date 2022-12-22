@@ -17,7 +17,6 @@ function transformPathToRoutes(link: string) {
       text[j] = temp.charAt(0).toUpperCase() + temp.slice(1)
     }
     const breadCrumbText = text.join(" ");
-    console.log(breadCrumbText);
     routes.push(
       {
         path: "/" + array[i],
@@ -44,7 +43,6 @@ const BreadCrumbs = () => {
   }, [location]);
   const routes = transformPathToRoutes(location["pathname"]);
   const breadcrumbs = useBreadcrumbs(routes);
-  console.log(breadcrumbs);
   const lastBreadCrumb= breadcrumbs[breadcrumbs.length-1].match.pathname
 
   const lastBreadCrumbStyling = "lastBreadCrumbStyling no-underline"

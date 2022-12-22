@@ -21,7 +21,7 @@ const BottomBlueContainerComp: React.FC<Props> = ({
       setHeightState(heightRef.current!.offsetHeight);
     }
   }, [heightRef, heightState]);
-
+  
   return (
     <div
       ref={heightRef}
