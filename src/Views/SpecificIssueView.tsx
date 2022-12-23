@@ -426,8 +426,7 @@ const SpecificIssueView = () => {
                 key={b.slug.current}
                 style={{ minHeight: `${(windowHeight / 3) * 2}px` }}
                 className={`flex flex-col justify-between`}
-              ><div>Testin 3
-                </div>
+              >
                 <ColoredContainerComp blueContainerContent={b} />
               </div>
             ))}
