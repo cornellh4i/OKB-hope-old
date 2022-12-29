@@ -23,7 +23,7 @@ const CustomImageComp: React.FC<Props> = ({ isInline, value }) => {
         .fit("max")
         .auto("format")
         .url()}
-      alt={"inline image"}
+      alt=""
       loading="lazy"
       style={{
         // Display alongside text if image appears inside a block text span

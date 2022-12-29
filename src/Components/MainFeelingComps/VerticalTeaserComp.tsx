@@ -88,7 +88,7 @@ const VerticalTeaserComp: React.FC<Props> = ({
             className={"rounded-t-lg"}
             src={urlFor(article.mainImage).height(200).width(400).url()}
             loading="lazy"
-            alt={article.title}
+            alt=""
           />
         </div>
         <div

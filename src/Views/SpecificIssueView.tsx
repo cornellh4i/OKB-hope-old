@@ -323,7 +323,7 @@ const SpecificIssueView = () => {
                 className={"object-cover mx-auto"}
                 loading="lazy"
                 src={urlFor(problem.mainImage).width(500).url()}
-                alt={problem.title}
+                alt=""
               />
             )}
             {windowBig && (
@@ -333,7 +333,7 @@ const SpecificIssueView = () => {
                   "object-cover aspect-video md:aspect-[12/4] w-full mx-auto"
                 }
                 src={urlFor(problem.mainImage).width(1280).url()}
-                alt={problem.title}
+                alt=""
               />
             )}
           </div>

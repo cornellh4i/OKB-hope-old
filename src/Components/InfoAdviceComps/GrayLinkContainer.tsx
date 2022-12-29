@@ -63,7 +63,7 @@ const GrayLinkContainer: React.FC<Props> = ({ categoryObject }) => {
                 ? heroInspiration
                 : undefined
             }
-            alt={categoryObject.title}
+            alt=""
           />
         </div>
       </div>
