@@ -1,38 +1,63 @@
 .nav_links tab-box{
-  text-decoration: underline !important;
+  text-decoration: none !important;
   color: black !important;
-  text-underline-offset: 3px;
+  font-size: 22px;
 }
-
-.nav_links:hover {
-  text-decoration: none;
-  color: #2469a6 !important;
+.nav_links:visited{
+  text-decoration: none !important;
+  font-size: 22px;
 }
-
 .nav_links:focus {
-  text-decoration: none;
   color: #2469a6 !important;
+  text-decoration: none !important;
+  font-size: 22px;
 }
+.nav_links:hover {
+  color: #2469a6 !important;
+  text-decoration: none !important;
+  font-size: 22px;
+}
+
 .nav_links:active {
   color: #2469a6 !important;
-  text-decoration: underline;
+  text-decoration: none !important;
+  font-size: 22px;
 }
 
 .nav_links_inactive {
-  text-decoration-line: none !important;
+  text-decoration: none !important;
   color: black;
+  font-size: 22px;
+}
+.nav_links:visited{
+  text-decoration: none;
+  font-size: 22px;
 }
 .nav_links_inactive:hover {
-  text-decoration: none;
   color: #2469a6 !important;
+  text-decoration: none !important;
 }
 
 .nav_links_inactive:focus {
-  text-decoration: none;
   color: #2469a6 !important;
+  text-decoration: none ;
+  font-size: 22px;
 }
 
 .nav_links_inactive:active {
   color: #2469a6 !important;
-  text-decoration: underline;
+  text-decoration: none;
+  font-size: 22px;
+}
+
+.tab{
+  border-bottom-style: solid;
+  border-bottom-color: #2469a6;
+  border-bottom-width: 3px;
+  font-size: 22px;
+}
+
+.tab_inactive{
+  border-bottom-style: none;
+  font-size: 22px;
 }
