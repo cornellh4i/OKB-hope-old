@@ -56,7 +56,7 @@ const InspirationComp: React.FC<Props> = ({
               .height(123)
               .fit("scale")
               .url()}
-            alt={inspiration?.title}
+            alt=""
           />
         ) : (
           <img

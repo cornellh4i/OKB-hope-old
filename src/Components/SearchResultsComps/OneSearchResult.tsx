@@ -45,7 +45,7 @@ const OneSearchResult: React.FC<Props> = ({ article, url }) => {
             loading={"lazy"}
             className={"rounded max-h-[250px]"}
             src={urlFor(article.mainImage).height(300).width(400).url()}
-            alt={article.title}
+            alt=""
           />
           {error && <div>{error}</div>}
         </div>

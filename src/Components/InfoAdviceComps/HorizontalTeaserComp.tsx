@@ -42,7 +42,7 @@ const HorizontalTeaserComp: React.FC<Props> = ({ article }) => {
               className={"rounded-t-xl object-cover"}
               loading="lazy"
               src={urlFor(article.mainImage).height(200).width(400).url()}
-              alt={article.title}
+              alt=""
             />
           ) : (
             <img
@@ -52,7 +52,7 @@ const HorizontalTeaserComp: React.FC<Props> = ({ article }) => {
                 .height(Math.ceil(windowWidth / 2.9))
                 .width(Math.ceil(windowWidth / 2))
                 .url()}
-              alt={article.title}
+              alt=""
             />
           )}
         </div>
