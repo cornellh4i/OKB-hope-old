@@ -15,14 +15,15 @@ const NavbarComp = () => {
           "flex text-black-color justify-between md:justify-start md:gap-6 px-3 items-center md:h-16 md:pr-6"
         }
       >
-        <li className={""}>
+        <li className= {pathname ==="/" ? classes.tab : classes.tab_inactive }>
           <NavLink
             to={"/"}
+            id = "nav1"
             className={
               pathname === "/" ? classes.nav_links : classes.nav_links_inactive
             }
           >
-            <span className={"flex items-center gap-[5px]"}>
+            <span className={"flex items-center gap-[5px] pb-[3px]"}>
               <span>
                 <svg
                   width="20"
@@ -58,14 +59,15 @@ const NavbarComp = () => {
             </span>
           </NavLink>
         </li>
-        <li>
+        <li className= {pathname ==="/info-advice" ? classes.tab : classes.tab_inactive }>
           <NavLink
             to={"/info-advice"}
+            id = "nav2"
             className={({ isActive }) => {
               return isActive ? classes.nav_links : classes.nav_links_inactive;
             }}
           >
-            <span className={"flex items-center gap-[5px]"}>
+            <span className={"flex items-center gap-[5px] pb-[3px]"}>
               <span>
                 <svg
                   width="17"
@@ -122,14 +124,15 @@ const NavbarComp = () => {
             </span>
           </NavLink>
         </li>
-        <li>
+        <li className= {pathname ==="/tips" ? classes.tab : classes.tab_inactive }>
           <NavLink
             to={"/tips"}
+            id = "nav3"
             className={({ isActive }) => {
               return isActive ? classes.nav_links : classes.nav_links_inactive;
             }}
           >
-            <span className={"flex items-center gap-[5px] tab-box"}>
+            <span className={"flex items-center gap-[5px] pb-[3px] tab-box"}>
               <span>
                 <svg
                   width="20"
