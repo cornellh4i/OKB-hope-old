@@ -302,6 +302,11 @@ const SpecificIssueView = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+
+  useEffect(()=>{
+    const title = problem?.title;
+    document.title = title + " | Wohohiame";
+  })
   return (
     <div className={"w-screen relative"}>
       {error && <div>{error}</div>}

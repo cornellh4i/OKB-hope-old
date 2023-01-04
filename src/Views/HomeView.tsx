@@ -112,6 +112,10 @@ const HomeView = () => {
     window.scrollTo(0, 0);
   }, []);
 
+  useEffect(()=>{
+    document.title = 'Homepage | Wohohiame'
+  });
+
   return (
     <>
       {error && <div>{error}</div>}

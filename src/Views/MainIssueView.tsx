@@ -74,6 +74,11 @@ const MainIssueView = () => {
     window.scrollTo(0, 0);
   }, []);
 
+  useEffect(()=>{
+    const title = category?.title;
+    document.title = title + " | Wohohiame";
+  })
+
   return (
     <div className={" mx-auto w-full "}>
       <section className={"px-4 md:mx-auto w-11/12"}>
