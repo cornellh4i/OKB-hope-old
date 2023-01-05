@@ -140,6 +140,11 @@ const MainHubView = () => {
     window.scrollTo(0, 0);
   }, []);
 
+  useEffect(()=>{
+    const title =  firstElementInPath === "info-advice" ? "Info & Advice" : "Tips";
+    document.title = title + " | Wohohiame";
+  })
+
   return (
     <>
       <div className={"px-4 md:px-0 pt-[15px] mx-auto"}>

@@ -16,7 +16,7 @@ const FooterComp = () => {
             About us
           </Link>
         </div>
-        <div>
+        <div aria-label="Wohohiame's Email">
           <a
             href="mailto:wohohiame@okbfoundation.org"
             className={linkClasses}
@@ -37,7 +37,7 @@ const FooterComp = () => {
         </span>
         <div className={"flex gap-4"}>
           <span>
-            <button>
+            <button aria-label="Wohohiame’s Instagram page">
               <a
                 style={{ color: "white" }}
                 href="https://www.instagram.com/wohohiame/"
@@ -62,7 +62,7 @@ const FooterComp = () => {
             </button>
           </span>
           <span>
-            <button>
+            <button aria-label="Wohohiame’s Facebook page">
               <a
                 style={{ color: "white" }}
                 href="https://www.facebook.com/profile.php?id=100086186303060"
@@ -83,7 +83,7 @@ const FooterComp = () => {
             </button>
           </span>
           <span>
-            <button>
+            <button aria-label="Wohohiame’s Twitter page">
               {/*              <svg width="43" height="31" viewBox="0 0 43 31" fill="none" xmlns="http://www.w3.org/2000/svg">*/}
               {/*<path d="M33.292 0.331543H9.6076C4.30147 0.331543 0 4.52899 0 9.7068V20.9563C0 26.1341 4.30147 30.3315 9.6076 30.3315H33.292C38.5981 30.3315 42.8996 26.1341 42.8996 20.9563V9.7068C42.8996 4.52899 38.5981 0.331543 33.292 0.331543Z" fill="white"/>*/}
               {/*<path d="M28.5734 15.3317L22.7593 18.7678L16.9453 22.2039V15.3317V8.45947L22.7593 11.8956L28.5734 15.3317Z" fill="#2469A6"/>*/}

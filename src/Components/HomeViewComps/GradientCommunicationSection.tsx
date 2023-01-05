@@ -1,7 +1,7 @@
 import React from "react";
 import BoringRoundedButton from "../Buttons/BoringRoundedButton";
 import { useNavigate } from "react-router-dom";
-
+import './preventSelect.css';
 type Props = {
   title: string;
   buttonText: string;
@@ -39,6 +39,7 @@ const GradientCommunicationSection: React.FC<Props> = ({
               {buttonText}
             </span>
           ) : (
+            <div className="prevent-select">
             <a
               className={"text-base"}
               style={linkStyles}
@@ -46,6 +47,7 @@ const GradientCommunicationSection: React.FC<Props> = ({
             >
               {buttonText}
             </a>
+            </div>
           )}
         </BoringRoundedButton>
       </div>
