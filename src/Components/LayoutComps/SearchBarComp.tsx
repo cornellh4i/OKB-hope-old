@@ -13,7 +13,7 @@ const SearchBarComp = () => {
   // }
   return (
     <div className={"flex px-2 gap-2 md:gap-4"}>
-      <RoundedButton aLabel={"search"} onClick={searchHandler}>
+      <RoundedButton aLabel={"Search Button"} onClick={searchHandler}>
         <svg
           width="21"
           height="21"

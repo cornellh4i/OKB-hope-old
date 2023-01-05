@@ -73,7 +73,7 @@ const InspirationComp: React.FC<Props> = ({
       <div
         ref={heightRef}
         className={
-          "w-full mx-auto p-2 md:p-3 rounded-b-md bg-white lg:w-[400px]"
+          "w-full mx-auto p-2 md:p-3 rounded-b-md bg-white"
         }
         style={{ minHeight: `${heightState}px` }}
       >
