@@ -1,0 +1,11 @@
+@font-face {
+    font-family: FuturaCondensedExtraBold;
+    src: url("src/Components/LayoutComps/fonts/Futura Condensed ExtraBold.ttf");
+}
+.article-headers{
+    font-family: "Futura-CondensedExtraBold";
+    font-size: 20px;
+    line-height:26px;
+    color: #2469A6;
+
+}

@@ -88,6 +88,24 @@ ul {
   list-style-type: none;
 }
 
+@font-face {
+  font-family: FuturaCondensedExtraBold;
+  src: url("src/Components/LayoutComps/fonts/Futura Condensed ExtraBold.ttf");
+}
+@font-face {
+  font-family: FuturaCondensedMedium;
+  src: url('fonts/Futura Condensed Medium.ttf');
+}
+.article-subheaders{
+  font-family: FuturaCondensedMedium;
+  font-size: 20px;
+  line-height: 25px;
+}
+.cat-headers{
+  font-family: "Futura-CondensedExtraBold";
+  font-size: 18px;
+  line-height: 23px;
+}
 @media screen and (min-width: 30em) {
   h1 {
     font-size: 28px;
