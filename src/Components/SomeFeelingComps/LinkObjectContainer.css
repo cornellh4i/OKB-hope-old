@@ -3,8 +3,18 @@
     src: url("src/Components/LayoutComps/fonts/Futura Condensed ExtraBold.ttf");
 }
 .futura-bold{
+    font-family: Roboto;
+    font-size: 14px;
+    line-height: 16px;
+    color:#000000;
+}
+.blue-paragraphs{
+    padding-bottom: 10px;
+}
+.heading-futura-bold{
     font-family: "Futura-CondensedExtraBold";
-    font-size: 16px;
-    line-height: 21px;
-    color:#2469A6;
+    font-size: 20px;
+    line-height: 26px;
+    color: #2469A6;
+    padding-bottom: 10px;
 }
