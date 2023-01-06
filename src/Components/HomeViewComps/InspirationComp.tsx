@@ -6,7 +6,7 @@ import { SanityImageSource } from "@sanity/image-url/lib/types/types";
 import useWindowSize from "../../hooks/use.window.size";
 import { PortableText } from "@portabletext/react";
 import { useNavigate } from "react-router-dom";
-
+import "./cardStyles.css";
 type Props = {
   inspiration: Inspiration | null;
   heightState: null | number;
@@ -77,7 +77,7 @@ const InspirationComp: React.FC<Props> = ({
         }
         style={{ minHeight: `${heightState}px` }}
       >
-        <h3 className={"no-underline"}>{inspiration?.title}</h3>
+        <p className={"no-underline card-titles"}>{inspiration?.title}</p>
         <div className={"text-xs"} style={{ fontSize: "14px" }}>
           <PortableText value={inspiration!.text} />
         </div>
