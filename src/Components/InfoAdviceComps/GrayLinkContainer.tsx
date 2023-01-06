@@ -18,13 +18,13 @@ const GrayLinkContainer: React.FC<Props> = ({ categoryObject }) => {
   return (
     <div className={`w-full bg-[#EFEFEF] p-3 mt-5 rounded md:w-1/3`}>
       <div className={""}>
+        <h2>
         <Link
-          style={{ fontFamily: "Futura PT Cond", lineHeight: "33px" }}
-          className={"no-underline text-[18px] md:text-[25px] font-bold"}
+          className={"no-underline text-[18px] md:text-[25px] font-bold cat-headers"}
           to={categoryObject.url}
         >
           {categoryObject.title}
-        </Link>
+        </Link></h2>
       </div>
       <div className={"grid grid-cols-2 "}>
         <div>

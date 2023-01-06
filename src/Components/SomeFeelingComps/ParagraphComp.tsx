@@ -5,7 +5,7 @@ import CustomImageComp from "../UIComps/CustomImageComp";
 import CustomBulletPointComp from "../UIComps/CustomBulletPointComp";
 import CustomHeadingComp from "../UIComps/CustomParagraphComp";
 import CustomParagraphComp from "../UIComps/CustomParagraphComp";
-
+import "./ParagraphComp.css";
 type Props = {
   paragraph: Paragraph;
 };
@@ -35,9 +35,9 @@ const ParagraphComp: React.FC<Props> = ({ paragraph }) => {
       className={`mt-3 myb-2 lg:mb-4 lg:mt-6 rounded-md  
     ${paragraph.colorKey ? paragraph.colorKey : "bg-white"} `}
     >
-      <h3 className={"text-blue lg:text-xl font-bold mt-2"}>
+      <h2 className={"article-headers text-blue lg:text-xl font-bold mt-2"}>
         {paragraph.title}
-      </h3>
+      </h2>
       <div className={paragraph.colorKey ? "p-1" : "p-0"}>
         <PortableText value={paragraph.body} components={paragraphComponents} />
       </div>

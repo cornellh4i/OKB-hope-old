@@ -4,16 +4,16 @@ type Props = any;
 
 const CustomHeadingComp: React.FC<Props> = (props) => {
   return (
-    <p
+    <h3
       style={{
         marginTop: "15px",
         fontWeight: "500",
         marginBottom: "-7px",
       }}
-      className={"text-blue"}
+      className={"text-blue article-subheaders"}
     >
       {props.children}
-    </p>
+    </h3>
   );
 };
 

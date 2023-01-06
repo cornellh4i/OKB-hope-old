@@ -1,0 +1,11 @@
+@font-face {
+    font-family: FuturaCondensedExtraBold;
+    src: url("src/Components/LayoutComps/fonts/Futura Condensed ExtraBold.ttf");
+}
+
+.card-titles{
+    font-size: 18px;
+    line-height: 23px;
+    color: #2469A4;
+    font-family: "Futura-CondensedExtraBold";
+}

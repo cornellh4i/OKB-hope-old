@@ -370,6 +370,7 @@ const SpecificIssueView = () => {
                 <LinkObjectContainer
                   scrollToHandler={scrollToElementHandler}
                   linkObjects={linkObjects}
+                  blueContainerTitle={blueContainerContent}
                 />
               )}
             </div>
