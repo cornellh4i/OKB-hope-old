@@ -1,0 +1,10 @@
+@font-face {
+    font-family: FuturaCondensedExtraBold;
+    src: url("src/Components/LayoutComps/fonts/Futura Condensed ExtraBold.ttf");
+}
+.futura-bold{
+    font-family: "Futura-CondensedExtraBold";
+    font-size: 16px;
+    line-height: 21px;
+    color:#2469A6;
+}

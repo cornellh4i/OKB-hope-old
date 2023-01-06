@@ -22,6 +22,7 @@ const SearchComp = () => {
       <div className={"w-full mx-auto flex justify-center px-3"}>
         <form onSubmit={searchHandler}>
           <input
+          aria-label="Search Text Field"
             autoFocus={true}
             ref={searchRef}
             className={

@@ -55,7 +55,7 @@ const Layout: React.FC<Props> = ({ children }) => {
     <div className={"w-screen bg-white relative"}>
       <div
         id={"topbar"}
-        className={`w-screen bg-white z-30 top-0 left-0 right-0 h-[108px] drop-shadow`}
+        className={`relative w-screen bg-white z-30 top-0 left-0 right-0 h-[108px] drop-shadow`}
       >
         <section
           className={`bg-white md:flex items-center md:w-11/12 mx-auto md:px-14 top-0 left-0 right-0 z-40 pt-2`}

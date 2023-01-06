@@ -9,7 +9,8 @@ type Props = {
 
 const ColoredContainerComp: React.FC<Props> = ({ blueContainerContent }) => {
   return (
-    <div
+    <div 
+    id="greenish-blue-box"
       className={
         "bg-greenish-blue my-6 rounded w-full p-3 lg:max-w-screen-xl mx-auto "
       }
