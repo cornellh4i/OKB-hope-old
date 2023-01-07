@@ -42,7 +42,6 @@ const MightInterestYouComp: React.FC<Props> = ({ category }) => {
         });
     }
     if (!problemArticle && firstElementInPath === "tips") {
-      console.log("runs");
       sanityClient
         .fetch(
           `*[_type == 'tipArticle' && !("${category._id}" in categories[]._ref)][0..1]`

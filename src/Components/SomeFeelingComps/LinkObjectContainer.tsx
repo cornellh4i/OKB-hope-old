@@ -30,7 +30,6 @@ const LinkObjectContainer: React.FC<Props> = ({
       title.push(blueContainerTitle[i].title);
     }
   }
-  console.log("error")
   if(bottomBlueContainerTitle.yellowContainerContent!=undefined &&bottomBlueContainerTitle.yellowContainerContent != null){
     ytitle =[]
     for(let i=0; i<bottomBlueContainerTitle.yellowContainerContent.length;i++){
