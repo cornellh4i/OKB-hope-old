@@ -25,7 +25,7 @@ const BottomBlueContainerComp: React.FC<Props> = ({
   return (
     <div
       ref={heightRef}
-      id={`${paragraph.slug.current}`}
+      id="bottom-blue-container"
       style={{ minHeight: `${heightState}px` }}
       className={` my-2 lg:my-4 rounded-md ${
         windowBig ? "p-4" : "p-2"
