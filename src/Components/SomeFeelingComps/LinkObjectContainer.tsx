@@ -6,17 +6,20 @@ type Props = {
   linkObjects: LinkObject[];
   scrollToHandler: (s: string) => void;
   blueContainerTitle: any;
+  bottomBlueContainerTitle: any;
 };
 
 const LinkObjectContainer: React.FC<Props> = ({
   scrollToHandler,
   linkObjects,
-  blueContainerTitle
+  blueContainerTitle,
+  bottomBlueContainerTitle,
 
 }) => {
-  console.log(blueContainerTitle);
   let title;
+  let ytitle;
   let containsTitles;
+  let containsYellowContainer;
   if (blueContainerTitle === null){
     title =[];
     containsTitles = false;
@@ -27,7 +30,18 @@ const LinkObjectContainer: React.FC<Props> = ({
       title.push(blueContainerTitle[i].title);
     }
   }
-  console.log(title);
+  if(bottomBlueContainerTitle.yellowContainerContent!=undefined &&bottomBlueContainerTitle.yellowContainerContent != null){
+    ytitle =[]
+    for(let i=0; i<bottomBlueContainerTitle.yellowContainerContent.length;i++){
+      ytitle.push(bottomBlueContainerTitle.yellowContainerContent[i].title)
+    }
+    containsYellowContainer= true;
+  }else{
+
+    ytitle = []
+    containsYellowContainer= false;
+  }
+
   return (
     <div className={"w-full bg-[#ebf2f0] rounded-xl  py-2 px-3 "}>
       <h2 className={"text-blue font-bold heading-futura-bold"}>What you’ll find on this page</h2>
@@ -46,7 +60,7 @@ const LinkObjectContainer: React.FC<Props> = ({
             </div>
           ))}
           {containsTitles && title.map((x) => (
-            <div className={""} key={"greenish-blue-box"}>
+            <div className={"blue-paragraphs"} key={"greenish-blue-box"}>
               <a
               aria-label="Navigation Elements"
                 className={
@@ -58,6 +72,20 @@ const LinkObjectContainer: React.FC<Props> = ({
               </a>
             </div>
           ))}
+          {containsYellowContainer && ytitle.map((x) => (
+              <div className={"blue-paragraphs"} key={"bottom-blue-container"}>
+                <a
+                aria-label="Navigation Elements"
+                  className={
+                    "no-underline cursor-pointer futura-bold"
+                  }
+                  onClick={() => scrollToHandler("bottom-blue-container")}
+                >
+                  {x}
+                </a>
+              </div>
+            ))
+          }
       </div>
     </div>
   );

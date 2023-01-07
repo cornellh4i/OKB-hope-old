@@ -47,7 +47,6 @@ const VerticalTeaserComp: React.FC<Props> = ({
   useEffect(() => {
     if (!myCategory && article) {
       const categoryRef = article.categories[0]._ref;
-      console.log(categoryRef, myPath);
       const queryString =
         myPath === "tips"
           ? `*[_type == "tipCategory" && _id == "${categoryRef}" ] `

@@ -13,7 +13,6 @@ type Props = {
 const HorizontalTeaserComp: React.FC<Props> = ({ article }) => {
   const [startComp, setStartComp] = useState(false);
   const { windowBig, windowWidth } = useWindowSize();
-  console.log(windowBig, windowWidth);
   // sanity
   const builder = imageUrlBuilder(sanity);
   const urlFor = (source: SanityImageSource) => {

@@ -3,11 +3,12 @@
   color: black !important;
   font-size: 22px;
 }
-.nav_links:visited{
+.nav_links_inactive {
   text-decoration: none !important;
+  color: black;
   font-size: 22px;
 }
-.nav_links:focus {
+.nav_links {
   color: #2469a6 !important;
   text-decoration: none !important;
   font-size: 22px;
@@ -17,25 +18,15 @@
   text-decoration: none !important;
   font-size: 22px;
 }
-
-.nav_links:active {
-  color: #2469a6 !important;
-  text-decoration: none !important;
-  font-size: 22px;
-}
-
-.nav_links_inactive {
-  text-decoration: none !important;
-  color: black;
-  font-size: 22px;
-}
-.nav_links:visited{
-  text-decoration: none;
-  font-size: 22px;
-}
 .nav_links_inactive:hover {
   color: #2469a6 !important;
   text-decoration: none !important;
+}
+/* 
+.nav_links:focus {
+  color: #2469a6 !important;
+  text-decoration: none !important;
+  font-size: 22px;
 }
 
 .nav_links_inactive:focus {
@@ -48,7 +39,7 @@
   color: #2469a6 !important;
   text-decoration: none;
   font-size: 22px;
-}
+} */
 
 .tab{
   border-bottom-style: solid;

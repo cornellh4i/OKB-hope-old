@@ -23,7 +23,7 @@ const NavbarComp = () => {
               pathname === "/" ? classes.nav_links : classes.nav_links_inactive
             }
           >
-            <span className={"flex items-center gap-[5px] pb-[3px]"}>
+            <span className={"flex items-center gap-[5px] pb-[3px] tab-box"}>
               <span>
                 <svg
                   width="20"
@@ -67,7 +67,7 @@ const NavbarComp = () => {
               return isActive ? classes.nav_links : classes.nav_links_inactive;
             }}
           >
-            <span className={"flex items-center gap-[5px] pb-[3px]"}>
+            <span className={"flex items-center gap-[5px] pb-[3px] tab-box"}>
               <span>
                 <svg
                   width="17"
