@@ -43,7 +43,6 @@ const LinkObjectContainer: React.FC<Props> = ({
     containsYellowContainer= false;
   }
 
-  
   return (
     <div className={"w-full bg-[#ebf2f0] rounded-xl  py-2 px-3 "}>
       <h2 className={"text-blue font-bold heading-futura-bold"}>What you’ll find on this page</h2>
