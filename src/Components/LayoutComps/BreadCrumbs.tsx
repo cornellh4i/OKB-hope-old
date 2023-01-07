@@ -43,10 +43,10 @@ const BreadCrumbs = () => {
   }, [location]);
   const routes = transformPathToRoutes(location["pathname"]);
   const breadcrumbs = useBreadcrumbs(routes);
+  //Remove following line if we want home in our breadcrumb
+  breadcrumbs.shift()
   const lastBreadCrumb= breadcrumbs[breadcrumbs.length-1].match.pathname
-
   const lastBreadCrumbStyling = "lastBreadCrumbStyling no-underline"
-
   return (
     <div className={"py-0.5"}>
       {breadcrumbs.map(({ match, breadcrumb }) => (
