@@ -63,9 +63,7 @@ const SpecificIssueView = () => {
   };
 
   let { pathname } = useLocation();
-
   const firstElementInPath = pathname.split("/")[1];
-
   let { problem: paramProblem, feeling, tipCategory, tip } = useParams();
   // console.log('tipCategory', tipCategory)
   // console.log('tip', tip)
@@ -316,7 +314,7 @@ const SpecificIssueView = () => {
         </div>
       )}
       {windowBig && firstElementInPath !== "about-us" && (
-        <div className={"py-3 w-10/12 mx-auto"}>
+        <div className={"w-10/12 mx-auto"}>
           <BreadCrumbs />
         </div>
       )}

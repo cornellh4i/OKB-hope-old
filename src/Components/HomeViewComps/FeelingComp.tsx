@@ -42,6 +42,7 @@ const FeelingComp: React.FC<Props> = ({ feelings }) => {
 
   return (
     <div className={" "}>
+      <div>
       <div className={"flex flex-col w-full"}>
         <h2
           className={`text-center 
@@ -77,11 +78,11 @@ const FeelingComp: React.FC<Props> = ({ feelings }) => {
                 />
               ))}
           </div>
-          <div className={"md:w-10/12 md:mx-auto mt-[15px] md:pl-3 mb-[20px]"}>
+          {!chosenFeeling && <div className={"md:w-10/12 md:mx-auto mt-[15px] md:pl-3 mb-[20px]"}>
             <LinkTo url={"/info-advice"}>Browse specific topics</LinkTo>
-          </div>
+          </div>}
         </div>
-
+        
         <div className={" w-full "}>
           {chosenFeeling ? (
             <FeelingInfoHint feeling={chosenFeeling} />
@@ -92,7 +93,12 @@ const FeelingComp: React.FC<Props> = ({ feelings }) => {
             </p>
           )}
         </div>
+        </div>
+        {chosenFeeling && <div className={"md:w-10/12 md:mx-auto mt-[15px] md:pl-3 mb-[20px]"}>
+            <LinkTo url={"/info-advice"}>Browse specific topics</LinkTo>
+          </div>}
       </div>
+
     </div>
   );
 };

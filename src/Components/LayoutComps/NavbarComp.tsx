@@ -59,7 +59,7 @@ const NavbarComp = () => {
             </span>
           </NavLink>
         </li>
-        <li className= {pathname ==="/info-advice" ? classes.tab : classes.tab_inactive }>
+        <li className= {pathname.includes("/info-advice") ? classes.tab : classes.tab_inactive }>
           <NavLink
             to={"/info-advice"}
             id = "nav2"
@@ -124,7 +124,7 @@ const NavbarComp = () => {
             </span>
           </NavLink>
         </li>
-        <li className= {pathname ==="/tips" ? classes.tab : classes.tab_inactive }>
+        <li className= {pathname.includes("/tips") ? classes.tab : classes.tab_inactive }>
           <NavLink
             to={"/tips"}
             id = "nav3"
