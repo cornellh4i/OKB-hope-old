@@ -26,6 +26,10 @@ const OneSearchResult: React.FC<Props> = ({ article, url }) => {
         `*[_type == "category" && _id == "${article.categories[0]._ref}"]{slug}`
       )
       .then((data) => {
+        console.log("Try");
+        console.log(article)
+        console.log(article.categories)
+        console.log(article.categories[0]._ref)
         setCategorySlug(data[0].slug.current);
       })
       .catch((err) => {
@@ -33,7 +37,6 @@ const OneSearchResult: React.FC<Props> = ({ article, url }) => {
         setError("error loading data");
       });
   }, []);
-
   return (
     <Link
       className={"no-underline"}
