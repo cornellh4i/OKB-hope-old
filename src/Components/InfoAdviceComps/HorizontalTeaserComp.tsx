@@ -4,7 +4,7 @@ import imageUrlBuilder from "@sanity/image-url";
 import sanity from "../../client";
 import { SanityImageSource } from "@sanity/image-url/lib/types/types";
 import { Link } from "react-router-dom";
-import useWindowSize from "../../hooks/use.window.size";
+import useWindowSize from "../../hooks/use.window.size"
 
 type Props = {
   article: Article;
@@ -57,9 +57,9 @@ const HorizontalTeaserComp: React.FC<Props> = ({ article }) => {
         </div>
         <div className={"md:w-[400px] col-span-1 w-full"}>
           <Link
-            style={{ lineHeight: "23px", fontFamily: "Futura PT Cond" }}
+            style={{ lineHeight: "23px" }}
             to={`${article.slug.current}`}
-            className={"text-blue text-[18px] font-black no-underline"}
+            className={"futura-extrabold text-blue text-[18px] font-black no-underline"}
           >
             {article.title}
           </Link>

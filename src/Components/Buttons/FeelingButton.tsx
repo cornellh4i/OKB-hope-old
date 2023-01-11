@@ -2,7 +2,6 @@ import React from "react";
 import imageUrlBuilder from "@sanity/image-url";
 import sanity from "../../client";
 import { SanityImageSource } from "@sanity/image-url/lib/types/types";
-
 type FeelingButton = {
   icon: any;
   text: string;
@@ -43,7 +42,7 @@ const FeelingButton: React.FC<Props> = ({
         src={urlFor(feelingButton.icon).url()}
         alt={feelingButton.text}
       />
-      <span>{feelingButton.text}</span>
+      <span className="futura-extrabold">{feelingButton.text}</span>
     </button>
   );
 };
