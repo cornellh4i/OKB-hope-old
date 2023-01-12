@@ -16,7 +16,10 @@ function transformPathToRoutes(link: string) {
       const temp = text[j];
       text[j] = temp.charAt(0).toUpperCase() + temp.slice(1)
     }
-    const breadCrumbText = text.join(" ");
+    let breadCrumbText = text.join(" ");
+    if (breadCrumbText=== "Info Advice"){
+      breadCrumbText = "Info & Advice"
+    }
     routes.push(
       {
         path: "/" + array[i],

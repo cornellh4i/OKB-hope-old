@@ -1,6 +1,7 @@
 import React from "react";
 import { LinkObject } from "../../Views/SpecificIssueView";
 import { BlueContainerContent } from "../../Views/SpecificIssueView";
+import { Link, useLocation } from "react-router-dom";
 import "./LinkObjectContainer.css"
 type Props = {
   linkObjects: LinkObject[];
@@ -41,7 +42,11 @@ const LinkObjectContainer: React.FC<Props> = ({
     ytitle = []
     containsYellowContainer= false;
   }
-
+  const location = useLocation();
+  let notDietPage = true;
+  if (location.pathname === "/tips/taking-care-of-yourself/basics-of-a-healthy-diet"){
+    notDietPage = false;
+  }
   return (
     <div className={"w-full bg-[#ebf2f0] rounded-xl  py-2 px-3 "}>
       <h2 className={"text-blue font-bold heading-futura-bold"}>What you’ll find on this page</h2>
@@ -72,7 +77,7 @@ const LinkObjectContainer: React.FC<Props> = ({
               </a>
             </div>
           ))}
-          {containsYellowContainer && ytitle.map((x) => (
+          {containsYellowContainer && notDietPage && ytitle.map((x) => (
               <div className={"blue-paragraphs"} key={"bottom-blue-container"}>
                 <a
                 aria-label="Navigation Elements"
