@@ -100,21 +100,13 @@ const Layout: React.FC<Props> = ({ children }) => {
       <footer className={"bg-blue "}>
         <FooterComp />
       </footer>
-      <div className={"flex gap-4 w-full bg-blue mx-auto px-4"}>
-        <div className={"relative  md:left-2/3 "}>
+      <div className={"flex justify-end w-full bg-blue mx-auto px-4"}>
+        <div className={"relative"}>
           <a
             style={{ color: "white", fontSize: "14px", textDecoration: "none" }}
             href="https://www.sanity.io"
           >
             Structured content powered by: Sanity.io
-          </a>
-        </div>
-        <div className={"relative  md:left-2/3 "}>
-          <a
-            style={{ color: "white", fontSize: "14px", textDecoration: "none" }}
-            href="https://www.vhodobay.com"
-          >
-            created by: vhodobay.com
           </a>
         </div>
       </div>
