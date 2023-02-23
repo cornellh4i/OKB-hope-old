@@ -7,6 +7,8 @@ import GetInspiredComp from "../Components/HomeViewComps/GetInspiredComp";
 import useWindowSize from "../hooks/use.window.size";
 import GradientCommunicationSection from "../Components/HomeViewComps/GradientCommunicationSection";
 
+import ChatRoom from "../Components/ChatComp/ChatRoom";
+
 type HeroContent = {
   title: string;
   mainImage: any;
@@ -119,6 +121,9 @@ const HomeView = () => {
   return (
     <>
       {error && <div>{error}</div>}
+      <section id={"hero"} className={""}>
+        <ChatRoom />
+      </section>
       <section id={"hero"} className={""}>
         <HeroComp homeViewContent={homeViewContent} />
       </section>
