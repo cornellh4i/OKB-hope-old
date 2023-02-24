@@ -5,6 +5,7 @@ import { useLocation } from "react-router-dom";
 import categoryObjectFactory from "../hooks/categoryObjectFactory";
 import sanityClient from "../client";
 import { Paragraph } from "./SpecificIssueView";
+import ChatBot2 from "../Components/ChatBot2";
 
 export type Category = {
   _id: string;
@@ -140,8 +141,8 @@ const MainHubView = () => {
     window.scrollTo(0, 0);
   }, []);
 
-  useEffect(()=>{
-    const title =  firstElementInPath === "info-advice" ? "Info & Advice" : "Tips";
+  useEffect(() => {
+    const title = firstElementInPath === "info-advice" ? "Info & Advice" : "Tips";
     document.title = title + " | Wohohiame";
   })
 
@@ -153,6 +154,7 @@ const MainHubView = () => {
             {firstElementInPath === "info-advice" && "Info & Advice"}
             {firstElementInPath === "tips" && "Tips"}
           </h1>
+          <ChatBot2 />
           <p>All the information and support you need in one place.</p>
         </section>
         <section className={"mt-2 md:flex gap-4 md:w-10/12 mx-auto"}>
