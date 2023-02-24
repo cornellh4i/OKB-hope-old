@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import firebase from 'firebase/app';
 import { initializeApp } from "firebase/app";
 import { getAuth, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { DocumentData, getFirestore, orderBy } from "firebase/firestore";
-import { collection, addDoc, query, serverTimestamp } from "firebase/firestore";
+import { DocumentData, getFirestore, orderBy, QueryDocumentSnapshot } from "firebase/firestore";
+import { collection, addDoc, query, serverTimestamp, getDocs } from "firebase/firestore";
 
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
@@ -53,6 +53,17 @@ const ChatRoom = () => {
 	const messagesRef = collection(db, 'messages');
 	const q = query(messagesRef, orderBy('createdAt'));
 
+	const [messages, setMessages] = useState<DocumentData[]>([]);
+
+	useEffect(() => {
+		const getMessages = async () => {
+			const querySnapshot = await getDocs(q);
+			const messageData = querySnapshot.docs.map((doc) => doc.data());
+			setMessages(messageData);
+		};
+		getMessages();
+	});
+
 	const [formValue, setFormValue] = useState('');
 
 	const sendMessage = async (e: any) => {
@@ -70,26 +81,25 @@ const ChatRoom = () => {
 
 	return (
 		<div>
+			<main>
+
+				{messages && messages.map(msg => <ChatMessage key={msg.id} message={msg} />)}
+
+			</main>
 			<form onSubmit={sendMessage}>
 
 				<input value={formValue} onChange={(e) => setFormValue(e.target.value)} placeholder="say something nice" />
 
-				<button type="submit" disabled={!formValue}>Submit</button>
+				<button type="submit" disabled={!formValue}>Send</button>
 
 			</form>
 		</div>
 	)
 };
 
-type MessageContent = {
-	text: string,
-	uid: string,
-	photoURL: string
-}
-
 type MessageProps = {
 	key: string,
-	message: MessageContent
+	message: DocumentData
 }
 
 const ChatMessage = (props: MessageProps) => {
@@ -100,10 +110,6 @@ const ChatMessage = (props: MessageProps) => {
 		<div >
 			<img src={photoURL || 'https://api.adorable.io/avatars/23/abott@adorable.png'} />
 			<p>{text}</p>
-      <section>
-        {user ? <ChatRoom /> : <SignIn />}
-      </section>
-    
 		</div>
 	</>
 	)
