@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 // import './App.css';
 
 // import firebase from 'firebase/app';
@@ -16,11 +16,22 @@ import { DocumentData } from '@firebase/firestore-types';
 
 
 
+
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 import { useCollectionData } from 'react-firebase-hooks/firestore';
 import { initializeApp } from 'firebase/app';
 // import { beforeAuthStateChanged } from 'react-firebase-hooks/auth';
+
+
+
+// import React, { useEffect, useState } from "react";
+// import firebase from 'firebase/app';
+// import { initializeApp } from "firebase/app";
+// import { getAuth, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+// import { useAuthState } from "react-firebase-hooks/auth";
+import { orderBy, QueryDocumentSnapshot } from "firebase/firestore";
+import { collection, addDoc, query, serverTimestamp, getDocs } from "firebase/firestore";
 
 
 const firebaseConfig = {
@@ -88,9 +99,18 @@ function ChatRoom() {
   const dummy = useRef<null | HTMLDivElement>(null);
   const messagesRef = firestore.collection('messages');
   const ref = messagesRef.orderBy('createdAt').limit(25);
+  const qdoc = query(messagesRef, orderBy('createdAt'));
 
-  let query: Query<DocumentData> = ref;
-  const [messages] = useCollectionData(query, { idField: 'id' });
+  const [messages, setMessages] = useState<DocumentData[]>([]);
+
+  useEffect(() => {
+    const getMessages = async () => {
+      const querySnapshot = await getDocs(qdoc);
+      const messageData = querySnapshot.docs.map((doc) => doc.data());
+      setMessages(messageData);
+    };
+    getMessages();
+  });
 
   const [formValue, setFormValue] = useState('');
 
