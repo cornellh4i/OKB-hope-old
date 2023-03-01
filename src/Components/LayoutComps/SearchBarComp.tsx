@@ -1,16 +1,19 @@
+// comment the following code
+
 import React, { useContext } from "react";
 import RoundedButton from "../Buttons/RoundedButton";
 import { ShowSearchCtx } from "../../ctx/showSearchCtx";
 
+// this component is used in the Layout component. It is a search bar that is displayed on the top right of the screen. It is hidden on mobile screens. 
 const SearchBarComp = () => {
   const { showSearchHandler } = useContext(ShowSearchCtx);
 
+  // this function is called when the search button is clicked. It calls the showSearchHandler function from the showSearchCtx context. This function is used to show the search bar.
   const searchHandler = () => {
     showSearchHandler(true);
   };
-  // const microphoneHandler = () => {
-  //   console.log('microphone')
-  // }
+
+  // this returns the search button. It is a rounded button with a magnifying glass svg icon.
   return (
     <div className={"flex px-2 gap-2 md:gap-4"}>
       <RoundedButton aLabel={"Search Button"} onClick={searchHandler}>
