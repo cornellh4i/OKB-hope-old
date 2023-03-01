@@ -188,7 +188,7 @@ import { useLocation } from "react-router-dom";
 import categoryObjectFactory from "../hooks/categoryObjectFactory";
 import sanityClient from "../client";
 import { Paragraph } from "./SpecificIssueView";
-import chatroom from "../Components/chatroom";
+import ChatRoom from "../Components/ChatRoom";
 
 export type Category = {
   _id: string;
@@ -337,7 +337,7 @@ const MainHubView = () => {
             {firstElementInPath === "info-advice" && "Info & Advice"}
             {firstElementInPath === "tips" && "Tips"}
           </h1>
-          <chatroom />
+          <ChatRoom />
           <p>All the information and support you need in one place.</p>
         </section>
         <section className={"mt-2 md:flex gap-4 md:w-10/12 mx-auto"}>
