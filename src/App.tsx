@@ -7,6 +7,7 @@ import MainIssueView from "./Views/MainIssueView";
 import SpecificIssueView from "./Views/SpecificIssueView";
 
 import ShowSearchCtxProvider from "./ctx/showSearchCtx";
+import SignedInCtxProvider from "./ctx/signedinCtx";
 import SearchResultsView from "./Views/SearchResultsView";
 
 const router = createBrowserRouter([
@@ -97,9 +98,11 @@ const router = createBrowserRouter([
 const App = () => {
   return (
     <>
-      <ShowSearchCtxProvider>
-        <RouterProvider router={router} />
-      </ShowSearchCtxProvider>
+      <SignedInCtxProvider>
+        <ShowSearchCtxProvider>
+          <RouterProvider router={router} />
+        </ShowSearchCtxProvider>
+      </SignedInCtxProvider>
     </>
   );
 };

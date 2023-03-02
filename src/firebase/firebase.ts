@@ -2,7 +2,7 @@
 import { FirebaseApp, getApps, initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
 import { addDoc, collection, getDocs, getFirestore, query, where } from "firebase/firestore";
-import { FacebookAuthProvider, getAuth, GoogleAuthProvider, signInWithPopup, TwitterAuthProvider } from "firebase/auth";
+import { FacebookAuthProvider, getAuth, GoogleAuthProvider, signInWithPopup, TwitterAuthProvider, signOut } from "firebase/auth";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -38,11 +38,11 @@ export const signInWithGoogle = async () => {
   try {
     const res = await signInWithPopup(auth, providers.google);
     const user = res.user;
-    const q = query(collection(db, "Users + Admin + Volunteer"), where("user_id", "==", user.uid));
+    const q = query(collection(db, "User + Admin + Volunteer"), where("user_id", "==", user.uid));
     const docs = await getDocs(q);
 
     if (docs.docs.length === 0) {
-      await addDoc(collection(db, "Users + Admin + Volunteer"), {
+      await addDoc(collection(db, "User + Admin + Volunteer"), {
         user_id: user.uid,
         name: user.displayName,
         authProvider: "google",
@@ -57,5 +57,11 @@ export const signInWithGoogle = async () => {
     }
   }
 };
+
+export const loggedIn = auth.currentUser;
+
+export const logout = () => {
+  signOut(auth);
+}
 
 export { auth, db, analytics };
