@@ -2,6 +2,8 @@ import { NavLink, useLocation } from "react-router-dom";
 import classes from "./NavbarComp.module.css";
 import useWindowSize from "../../hooks/use.window.size";
 import SearchBarComp from "./SearchBarComp";
+import BoringRoundedButton from "../Buttons/BoringRoundedButton";
+import { signInWithGoogle } from "../../firebase/firebase";
 import "./NavbarComp.module.css"
 const NavbarComp = () => {
   const { windowBig } = useWindowSize();
@@ -15,10 +17,10 @@ const NavbarComp = () => {
           "flex text-black-color justify-between md:justify-start md:gap-6 px-3 items-center md:h-16 md:pr-6"
         }
       >
-        <li className= {pathname ==="/" ? classes.tab : classes.tab_inactive }>
+        <li className={pathname === "/" ? classes.tab : classes.tab_inactive}>
           <NavLink
             to={"/"}
-            id = "nav1"
+            id="nav1"
             className={
               pathname === "/" ? classes.nav_links : classes.nav_links_inactive
             }
@@ -59,10 +61,10 @@ const NavbarComp = () => {
             </span>
           </NavLink>
         </li>
-        <li className= {pathname.includes("/info-advice") ? classes.tab : classes.tab_inactive }>
+        <li className={pathname.includes("/info-advice") ? classes.tab : classes.tab_inactive}>
           <NavLink
             to={"/info-advice"}
-            id = "nav2"
+            id="nav2"
             className={({ isActive }) => {
               return isActive ? classes.nav_links : classes.nav_links_inactive;
             }}
@@ -124,10 +126,10 @@ const NavbarComp = () => {
             </span>
           </NavLink>
         </li>
-        <li className= {pathname.includes("/tips") ? classes.tab : classes.tab_inactive }>
+        <li className={pathname.includes("/tips") ? classes.tab : classes.tab_inactive}>
           <NavLink
             to={"/tips"}
-            id = "nav3"
+            id="nav3"
             className={({ isActive }) => {
               return isActive ? classes.nav_links : classes.nav_links_inactive;
             }}
@@ -174,6 +176,9 @@ const NavbarComp = () => {
           <SearchBarComp />
         </div>
       )}
+      <div className="mt-2">
+        <BoringRoundedButton children={"Sign In With Google"} onClick={signInWithGoogle} />
+      </div>
     </nav>
   );
 };

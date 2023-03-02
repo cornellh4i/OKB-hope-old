@@ -1,8 +1,8 @@
 // Import the functions you need from the SDKs you need
 import { FirebaseApp, getApps, initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
-import { getFirestore } from "firebase/firestore";
-import { FacebookAuthProvider, getAuth, GoogleAuthProvider, TwitterAuthProvider } from "firebase/auth";
+import { addDoc, collection, getDocs, getFirestore, query, where } from "firebase/firestore";
+import { FacebookAuthProvider, getAuth, GoogleAuthProvider, signInWithPopup, TwitterAuthProvider } from "firebase/auth";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -32,6 +32,30 @@ const providers = {
   google: new GoogleAuthProvider(),
   facebook: new FacebookAuthProvider(),
   twitter: new TwitterAuthProvider(),
+};
+
+export const signInWithGoogle = async () => {
+  try {
+    const res = await signInWithPopup(auth, providers.google);
+    const user = res.user;
+    const q = query(collection(db, "Users + Admin + Volunteer"), where("user_id", "==", user.uid));
+    const docs = await getDocs(q);
+
+    if (docs.docs.length === 0) {
+      await addDoc(collection(db, "Users + Admin + Volunteer"), {
+        user_id: user.uid,
+        name: user.displayName,
+        authProvider: "google",
+        email: user.email,
+      });
+    }
+  }
+  catch(err) {
+    console.error(err);
+    if (err instanceof Error) {
+      alert(err.message);
+    }
+  }
 };
 
 export { auth, db, analytics };
