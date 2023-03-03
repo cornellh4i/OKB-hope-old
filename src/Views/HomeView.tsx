@@ -6,6 +6,7 @@ import FeelingComp from "../Components/HomeViewComps/FeelingComp";
 import GetInspiredComp from "../Components/HomeViewComps/GetInspiredComp";
 import useWindowSize from "../hooks/use.window.size";
 import GradientCommunicationSection from "../Components/HomeViewComps/GradientCommunicationSection";
+import Chatroom from "../Components/HomeViewComps/Chatroom";
 
 type HeroContent = {
   title: string;
@@ -112,7 +113,7 @@ const HomeView = () => {
     window.scrollTo(0, 0);
   }, []);
 
-  useEffect(()=>{
+  useEffect(() => {
     document.title = 'Homepage | Wohohiame'
   });
 
@@ -127,6 +128,9 @@ const HomeView = () => {
       </section>
       <section id={"inspiration"} className={"mx-auto"}>
         <GetInspiredComp inspirations={inspirations} />
+      </section>
+      <section>
+        <Chatroom></Chatroom>
       </section>
       <section id={"us"} className={"mt-[25px]"}>
         <GradientCommunicationSection
