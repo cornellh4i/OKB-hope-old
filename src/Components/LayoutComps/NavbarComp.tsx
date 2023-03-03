@@ -4,7 +4,7 @@ import useWindowSize from "../../hooks/use.window.size";
 import SearchBarComp from "./SearchBarComp";
 import BoringRoundedButton from "../Buttons/BoringRoundedButton";
 import { signInWithGoogle, logout } from "../../firebase/firebase";
-import { SignedInCtx } from "../../ctx/signedinCtx";
+import { useAuth } from "../../firebase/auth/AuthUserProvider";
 import "./NavbarComp.module.css"
 import { useContext } from "react";
 const NavbarComp = () => {
@@ -12,9 +12,7 @@ const NavbarComp = () => {
 
   const { pathname } = useLocation();
 
-  const { showUser } = useContext(SignedInCtx);
-
-  console.log(showUser)
+  const { user } = useAuth();
 
   return (
     <nav className={`w-full z-50 md:text-lg pb-2 md:flex md:justify-between`}>
@@ -183,7 +181,7 @@ const NavbarComp = () => {
         </div>
       )}
       {
-        showUser ?
+        user ?
           <div className="mt-2">
             <BoringRoundedButton children={"Sign Out"} onClick={logout} />
           </div> : <div className="mt-2">

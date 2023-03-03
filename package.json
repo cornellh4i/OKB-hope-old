@@ -19,6 +19,7 @@
     "react-firebase-hooks": "^5.1.1",
     "react-router-dom": "^6.4.1",
     "react-scroll-to-top": "^3.0.0",
+    "react-with-firebase-auth": "^1.4.1",
     "standard": "^17.0.0",
     "use-react-router-breadcrumbs": "^4.0.1"
   },

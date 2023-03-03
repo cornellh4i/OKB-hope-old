@@ -3,6 +3,7 @@ import { FirebaseApp, getApps, initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
 import { addDoc, collection, getDocs, getFirestore, query, where } from "firebase/firestore";
 import { FacebookAuthProvider, getAuth, GoogleAuthProvider, signInWithPopup, TwitterAuthProvider, signOut } from "firebase/auth";
+import withFirebaseAuth from "react-with-firebase-auth"
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -29,14 +30,19 @@ const auth = getAuth(app);
 const db = getFirestore(app);
 
 const providers = {
-  google: new GoogleAuthProvider(),
-  facebook: new FacebookAuthProvider(),
-  twitter: new TwitterAuthProvider(),
+  googleProvider: new GoogleAuthProvider(),
+  facebookProvider: new FacebookAuthProvider(),
+  twitterProvider: new TwitterAuthProvider(),
 };
+
+const createComponentWithAuth = withFirebaseAuth({
+  providers,
+  firebaseAppAuth: auth,
+})
 
 export const signInWithGoogle = async () => {
   try {
-    const res = await signInWithPopup(auth, providers.google);
+    const res = await signInWithPopup(auth, providers.googleProvider);
     const user = res.user;
     const q = query(collection(db, "User + Admin + Volunteer"), where("user_id", "==", user.uid));
     const docs = await getDocs(q);
@@ -64,4 +70,4 @@ export const logout = () => {
   signOut(auth);
 }
 
-export { auth, db, analytics };
+export { auth, db, analytics, createComponentWithAuth };
