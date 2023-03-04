@@ -94,7 +94,7 @@ const Layout: React.FC<Props> = ({ children }) => {
             padding: "0 1rem",
             filter: "drop-shadow(0 4px 2px rgb(0 0 0 / 0.10))",
           }}
-          // component={<span>back to top</span>}
+        // component={<span>back to top</span>}
         />
       </div>
       <footer className={"bg-blue "}>
