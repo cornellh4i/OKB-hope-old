@@ -188,8 +188,6 @@ const NavbarComp = () => {
             <BoringRoundedButton children={"Sign In With Google"} onClick={signInWithGoogle} />
           </div>
       }
-
-
     </nav>
   );
 };
