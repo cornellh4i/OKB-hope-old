@@ -1,6 +1,8 @@
-name: Cypress End-to-End Tests
+name: Cypress Tests
 
-on: [push]
+on: 
+  pull-request:
+    branches: [ master ]
 
 jobs:
   cypress-run:
