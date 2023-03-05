@@ -1,6 +1,5 @@
 // comment the following code
 
-import { useContext, useState } from "react";
 import RoundedButton from "../Buttons/RoundedButton";
 // import { ShowSearchCtx } from "../../ctx/showSearchCtx";
 

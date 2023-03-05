@@ -11,9 +11,6 @@ const NavbarComp = () => {
   const { pathname } = useLocation();
   const [searchBarIsVisible, setSearchBarIsVisible] = useState(false);
 
-
-
-
   return (
     <nav className={`w-full z-50 md:text-lg pb-2 md:flex md:justify-between`}>
       <ul

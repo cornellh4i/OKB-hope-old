@@ -1,11 +1,10 @@
-import React, { useContext, useRef } from "react";
-// import { useState } from 'react';
+import { useContext, useRef } from "react";
 import { ShowSearchCtx } from "../../ctx/showSearchCtx";
 import { useNavigate } from "react-router-dom";
 
 
 const SearchComp = ({ searchBarIsVisible, setSearchBarIsVisible }: any) => {
-  const { showSearchHandler, setSearchPhrase } = useContext(ShowSearchCtx);
+  const { setSearchPhrase } = useContext(ShowSearchCtx);
   const navigate = useNavigate();
   const searchRef = useRef<HTMLInputElement | null>(null);
 
@@ -21,7 +20,6 @@ const SearchComp = ({ searchBarIsVisible, setSearchBarIsVisible }: any) => {
   };
 
   return (
-    // <div className={"pt-6 md:pr-10 w-full bg-[#EDF3F8]"}>
     <div className={"w-full mx-auto flex justify-center px-3"}>
       <form onSubmit={searchHandler}>
         <input
@@ -51,11 +49,10 @@ const SearchComp = ({ searchBarIsVisible, setSearchBarIsVisible }: any) => {
           </svg>
         </button>
       </form>
-      {/* </div> */}
 
       <div
         className={"flex justify-left align-items:center cursor-pointer"}
-        onClick={function (event) { setSearchBarIsVisible(false) }}
+        onClick={() => { setSearchBarIsVisible(false) }}
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
