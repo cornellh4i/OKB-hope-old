@@ -96,11 +96,9 @@ const router = createBrowserRouter([
 
 const App = () => {
   return (
-    <>
       <ShowSearchCtxProvider>
         <RouterProvider router={router} />
       </ShowSearchCtxProvider>
-    </>
   );
 };
 
