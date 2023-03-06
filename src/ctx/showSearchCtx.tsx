@@ -7,9 +7,10 @@ type Props = {
 // This is the context that is used to show and hide the search bar. It is used in the Layout component. The Layout component is used in every page, so the search bar is always available. 
 export const ShowSearchCtx = createContext({
   searchPhrase: "",
-  setSearchPhrase: (y: string) => {},
+  setSearchPhrase: (y: string) => { },
   showSearch: false,
-  showSearchHandler: (x: boolean) => {},
+
+
 });
 
 // This is the provider for the showSearchCtx context. It is used in the Layout component. 
@@ -26,12 +27,11 @@ const ShowSearchCtxProvider: React.FC<Props> = ({ children }) => {
 
   const value: {
     showSearch: boolean;
-    showSearchHandler: (x: boolean) => void;
+
     searchPhrase: string;
     setSearchPhrase: (y: string) => void;
   } = {
     showSearch,
-    showSearchHandler: showHandler,
     searchPhrase,
     setSearchPhrase: searchHandler,
   };
