@@ -41,6 +41,7 @@ const FooterComp = () => {
               <a
                 style={{ color: "white" }}
                 href="https://www.instagram.com/wohohiame/"
+                target="_blank"
               >
                 <svg
                   width="31"
@@ -66,6 +67,7 @@ const FooterComp = () => {
               <a
                 style={{ color: "white" }}
                 href="https://www.facebook.com/profile.php?id=100086186303060"
+                target="_blank"
               >
                 <svg
                   width="17"
@@ -91,6 +93,7 @@ const FooterComp = () => {
               <a
                 style={{ color: "white" }}
                 href="https://twitter.com/wohohiame"
+                target="_blank"
               >
                 <svg
                   width="38"
