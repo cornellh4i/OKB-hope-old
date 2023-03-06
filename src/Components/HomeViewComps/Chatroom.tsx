@@ -1,24 +1,24 @@
-import React from "react";
 
-// Import the functions you need from the SDKs you need
-import { initializeApp } from "firebase/app";
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
-
-// Your web app's Firebase configuration
-const firebaseConfig = {
-  apiKey: "AIzaSyBTzKQpFSWs2xb9ft4l3AgsLUdHokwfp34",
-  authDomain: "chatroom-1681c.firebaseapp.com",
-  projectId: "chatroom-1681c",
-  storageBucket: "chatroom-1681c.appspot.com",
-  messagingSenderId: "152038362616",
-  appId: "1:152038362616:web:c127cf01c402a620d35a0d"
-};
-
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
-
+// const analytics = getAnalytics(app);
+import NavBar from "./NavBar"
+import ChatBox from "./Chatbox"
+import Welcome from "./Welcome"
+import { auth } from "./firebase";
+import { useAuthState } from "react-firebase-hooks/auth";
+import "./chatroom.css"
 function Chatroom() {
-  return <p>CHAT ROOM</p>
+  const [user] = useAuthState(auth);
+
+  return (
+    <div className="Chatroom">
+
+      <NavBar />
+      {!user ? (<p>PLEASE LOGIN ON THE RIGHT TO USE THE CHATROOM</p>) :
+        (<>
+          <ChatBox />
+        </>)
+      }
+    </div>
+  );
 }
 export default Chatroom;
