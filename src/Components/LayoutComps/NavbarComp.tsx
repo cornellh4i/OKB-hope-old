@@ -6,7 +6,6 @@ import BoringRoundedButton from "../Buttons/BoringRoundedButton";
 import { signInWithGoogle, logout } from "../../firebase/firebase";
 import { useAuth } from "../../firebase/auth/AuthUserProvider";
 import "./NavbarComp.module.css"
-import { useContext } from "react";
 const NavbarComp = () => {
   const { windowBig } = useWindowSize();
 
