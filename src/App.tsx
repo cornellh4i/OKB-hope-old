@@ -97,13 +97,11 @@ const router = createBrowserRouter([
 
 const App = () => {
   return (
-    <>
       <AuthUserProvider>
         <ShowSearchCtxProvider>
           <RouterProvider router={router} />
         </ShowSearchCtxProvider>
       </AuthUserProvider>
-    </>
   );
 };
 
