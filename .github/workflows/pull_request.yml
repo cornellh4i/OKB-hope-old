@@ -1,6 +1,6 @@
 name: Cypress Tests
 
-on: 
+on:
   pull-request:
     branches: [ master ]
 
@@ -21,4 +21,3 @@ jobs:
           cache: 'pnpm'
           build: npm run build
           start: npm start
-      

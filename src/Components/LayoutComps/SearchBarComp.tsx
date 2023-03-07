@@ -4,7 +4,7 @@ import RoundedButton from "../Buttons/RoundedButton";
 // import { ShowSearchCtx } from "../../ctx/showSearchCtx";
 
 // this component is used in the Layout component. It is a search bar that is displayed on the top right of the screen. It is hidden on mobile screens. 
-const SearchBarComp = ({ searchBarIsVisible, setSearchBarIsVisible }: any) => {
+const SearchBarComp = ({ setSearchBarIsVisible }: any) => {
   // const { showSearchHandler } = useContext(ShowSearchCtx);
   // const [searchBarIsVisible, setSearchBarIsVisible] = useState(false);
 
