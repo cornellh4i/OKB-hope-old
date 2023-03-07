@@ -7,6 +7,7 @@ import MainIssueView from "./Views/MainIssueView";
 import SpecificIssueView from "./Views/SpecificIssueView";
 
 import ShowSearchCtxProvider from "./ctx/showSearchCtx";
+import AuthUserProvider from "./firebase/auth/AuthUserProvider";
 import SearchResultsView from "./Views/SearchResultsView";
 
 const router = createBrowserRouter([
@@ -96,9 +97,11 @@ const router = createBrowserRouter([
 
 const App = () => {
   return (
-      <ShowSearchCtxProvider>
-        <RouterProvider router={router} />
-      </ShowSearchCtxProvider>
+      <AuthUserProvider>
+        <ShowSearchCtxProvider>
+          <RouterProvider router={router} />
+        </ShowSearchCtxProvider>
+      </AuthUserProvider>
   );
 };
 
