@@ -52,7 +52,7 @@ const Layout: React.FC<Props> = ({ children }) => {
   }, []);
 
   // Dummy function because I can't figure out how to make setSearchBarIsVisible an optional prop
-  function setSearchBarIsVisible(value: boolean): void {
+  function setSearchBarIsVisible(): void {
     throw new Error("Function not implemented.");
   }
 
