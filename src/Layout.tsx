@@ -51,6 +51,11 @@ const Layout: React.FC<Props> = ({ children }) => {
     }
   }, []);
 
+  // Dummy function because I can't figure out how to make setSearchBarIsVisible an optional prop
+  function setSearchBarIsVisible(value: boolean): void {
+    throw new Error("Function not implemented.");
+  }
+
   return (
     <div className={"w-screen bg-white relative"}>
       <div
@@ -64,13 +69,13 @@ const Layout: React.FC<Props> = ({ children }) => {
           <NavbarComp />
           {!windowBig && (
             <div className={"top-26  right-0 left-0 z-50"}>
-              {showSearch && <SearchComp />}
+              {showSearch && <SearchComp setSearchBarIsVisible={setSearchBarIsVisible} />}
             </div>
           )}
         </section>
         {windowBig && (
           <div className={"relative w-full top-[106px]  right-0 left-0 z-50"}>
-            {showSearch && <SearchComp />}
+            {showSearch && <SearchComp setSearchBarIsVisible={setSearchBarIsVisible} />}
           </div>
         )}
       </div>

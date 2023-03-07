@@ -2,13 +2,14 @@ import { useContext, useRef } from "react";
 import { ShowSearchCtx } from "../../ctx/showSearchCtx";
 import { useNavigate } from "react-router-dom";
 
-type SetSearchBarIsVisible = (value: boolean) => void;
+type SetSearchBarIsVisibleType = (value: boolean) => void;
 interface SearchBarComponentProps {
-  searchBarIsVisible: boolean;
-  setSearchBarIsVisible: SetSearchBarIsVisible;
+  searchBarIsVisible?: boolean;
+  setSearchBarIsVisible: SetSearchBarIsVisibleType;
 }
 
 const SearchComp = (props: SearchBarComponentProps) => {
+
   const { setSearchPhrase } = useContext(ShowSearchCtx);
   const navigate = useNavigate();
   const searchRef = useRef<HTMLInputElement | null>(null);

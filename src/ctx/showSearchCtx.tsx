@@ -15,12 +15,12 @@ export const ShowSearchCtx = createContext({
 
 // This is the provider for the showSearchCtx context. It is used in the Layout component. 
 const ShowSearchCtxProvider: React.FC<Props> = ({ children }) => {
-  const [showSearch, setShowSearch] = useState(false);
+  const [showSearch] = useState(false);
   const [searchPhrase, setSearchPhrase] = useState("");
 
-  const showHandler = (x: boolean) => {
-    setShowSearch(x);
-  };
+  // const showHandler = (x: boolean) => {
+  //   setShowSearch(x);
+  // };
   const searchHandler = (y: string) => {
     setSearchPhrase(y);
   };
