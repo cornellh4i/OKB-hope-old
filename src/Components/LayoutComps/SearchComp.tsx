@@ -2,8 +2,13 @@ import { useContext, useRef } from "react";
 import { ShowSearchCtx } from "../../ctx/showSearchCtx";
 import { useNavigate } from "react-router-dom";
 
+type SetSearchBarIsVisible = (value: boolean) => void;
+interface SearchBarComponentProps {
+  searchBarIsVisible: boolean;
+  setSearchBarIsVisible: SetSearchBarIsVisible;
+}
 
-const SearchComp = ({ setSearchBarIsVisible }: any) => {
+const SearchComp = (props: SearchBarComponentProps) => {
   const { setSearchPhrase } = useContext(ShowSearchCtx);
   const navigate = useNavigate();
   const searchRef = useRef<HTMLInputElement | null>(null);
@@ -52,7 +57,7 @@ const SearchComp = ({ setSearchBarIsVisible }: any) => {
 
       <div
         className={"flex justify-left align-items:center cursor-pointer"}
-        onClick={() => { setSearchBarIsVisible(false) }}
+        onClick={() => { props.setSearchBarIsVisible(false) }}
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"

@@ -1,17 +1,22 @@
 // comment the following code
-
 import RoundedButton from "../Buttons/RoundedButton";
 // import { ShowSearchCtx } from "../../ctx/showSearchCtx";
 
+type SetSearchBarIsVisible = (value: boolean) => void;
+interface SearchBarComponentProps {
+  searchBarIsVisible: boolean;
+  setSearchBarIsVisible: SetSearchBarIsVisible;
+}
+
 // this component is used in the Layout component. It is a search bar that is displayed on the top right of the screen. It is hidden on mobile screens. 
-const SearchBarComp = ({ setSearchBarIsVisible }: any) => {
+const SearchBarComp = (props: SearchBarComponentProps) => {
   // const { showSearchHandler } = useContext(ShowSearchCtx);
   // const [searchBarIsVisible, setSearchBarIsVisible] = useState(false);
 
   // this function is called when the search button is clicked. It calls the showSearchHandler function from the showSearchCtx context. This function is used to show the search bar.
   const searchHandler = () => {
     // showSearchHandler(false);
-    setSearchBarIsVisible(true)
+    props.setSearchBarIsVisible(true)
   };
 
   // this returns the search button. It is a rounded button with a magnifying glass svg icon.
